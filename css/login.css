@@ -103,6 +103,7 @@ body {
   color: #777;
 }
 
+.boton-color:hover{background: red;}
 /* Fallback for Edge
 -------------------------------------------------- */
 @supports (-ms-ime-align: auto) {

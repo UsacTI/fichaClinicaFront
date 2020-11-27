@@ -1,4 +1,4 @@
-//var Dominio = 'http://10.111.112.14';
+var dominio = 'http://localhost:3000/';
 //var baseUrl    = Dominio+ ':4000/';
 var nombre    = getCookie('api-nombre');
 var rol    = getCookie('api-rol');

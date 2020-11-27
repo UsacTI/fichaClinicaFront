@@ -1,21 +1,33 @@
-
+$(document).ready(function () {
+tipoCuenta = 0;
+$(".divDoctor").hide();
+$(".divPaciente").hide();
+});
 
 
 function login() {
     username = $("#inputEmail").val();
     password = $("#inputPassword").val();
 
-    if(username==="oliver@mail.com" && password==="12345678"){
-        window.location.href = "principal.html";
-        var  nombre = "Oliver Rodas";
-        var rol = "Prueba";
+    $.ajax({
+        type: 'GET',
+        url:  dominio + "user/" + username + "/" + password,
+        contentType: "application/json",
+        dataType: 'json',
+        crossDomain: true,
+        async: false,
+        success: function (data) {
+          console.log(data.user[0].firstName);
+          var  nombre = data.user[0].firstName;
+          var rol = data.user[0].lastName;
 
-        setCookie('api-nombre', nombre, 1);
-        setCookie('api-rol', rol, 1);
-    }
-    else{
-      alert("datos incorrectos");
-    }
+          setCookie('api-nombre', nombre, 1);
+          setCookie('api-rol', rol, 1);
+
+          window.location.href = "principal.html";
+        }
+
+    });
 /*    data     = ' {"username": "' + username + '", "password": "' + password + '"}';
 
     $.ajax({
@@ -116,4 +128,20 @@ $('body').keyup(function (e) {
     if (e.keyCode == 13) {
           login();
     }
+});
+
+$("#doctor").on('click', function () {
+        this.style.background="#2DEE3E";
+        $("#paciente").attr('style',  'background-color:#F1F0F0');
+        tipoCuenta = 1;
+        $(".divDoctor").show();
+        $(".divPaciente").hide();
+});
+
+$("#paciente").on('click', function () {
+        this.style.background="#2DEE3E";
+        $("#doctor").attr('style',  'background-color:#F1F0F0');
+        tipoCuenta = 2;
+        $(".divPaciente").show();
+        $(".divDoctor").hide();
 });

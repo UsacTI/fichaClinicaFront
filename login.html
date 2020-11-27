@@ -36,27 +36,46 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="css/login.css" rel="stylesheet">
+     <link href="css/login.css" rel="stylesheet">
   </head>
   <body>
     <div class="form-signin">
   <div class="text-center mb-4">
-    <img class="mb-4" src="img/logood.png" alt="" width="100" height="100">
+    <img class="mb-4" src="img/Usac_logo.png" alt="" width="115" height="115">
+    <img class="mb-4" src="img/logood.png" alt="" width="115" height="115">
     <h1 class="h3 mb-3 font-weight-normal">Inicio de Sesión</h1>
+    <h5 class="mb-3 font-weight-normal">Seleccione tipo de cuenta</h5>
+    <div class="">
+      <button type="button" name="button" id="doctor"><img class="mb-4" src="img/doc.png" alt="" width="115" height="115"> <br>Odontología</button>
+      <button type="button" name="button" id="paciente"><img class="mb-4" src="img/pac.png" alt="" width="115" height="115"> <br> Pacientes</button>
+    </div>
+  </div>
+  <div class="divDoctor">
+    <div class="form-label-group">
+      <input type="email" id="correoDoctor" class="form-control" placeholder="correo electronico" required autofocus>
+      <label for="correoDoctor">correo electronico</label>
+    </div>
 
+    <div class="form-label-group">
+      <input type="password" id="passwordDoctor" class="form-control" placeholder="Contraseña" required>
+      <label for="passwordDoctor">Contraseña</label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" id="log">Iniciar Sesión</button>
   </div>
 
-  <div class="form-label-group">
-    <input type="email" id="inputEmail" class="form-control" placeholder="correo electronico" required autofocus>
-    <label for="inputEmail">correo electronico</label>
+  <div class="divPaciente">
+    <div class="form-label-group">
+      <input type="email" id="correoPaciente" class="form-control" placeholder="correo electronico" required autofocus>
+      <label for="correoPaciente">correo electronico</label>
+    </div>
+
+    <div class="form-label-group">
+      <input type="password" id="passwordPaciente" class="form-control" placeholder="Contraseña" required>
+      <label for="passwordPaciente">Contraseña</label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" id="log">Iniciar Sesión</button>
   </div>
 
-  <div class="form-label-group">
-    <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
-    <label for="inputPassword">Contraseña</label>
-  </div>
-
-  <button class="btn btn-lg btn-primary btn-block" type="submit" id="log">Iniciar Sesión</button>
   <p class="mt-5 mb-3 text-muted text-center">&copy; FOUSAC 2020</p>
 </div>
 <script src="vendor/jquery/jquery.min.js"></script>
