@@ -5,10 +5,10 @@ $(".divPaciente").hide();
 });
 
 
-function login() {
+function login(cuenta) {
     username = $("#inputEmail").val();
     password = $("#inputPassword").val();
-
+/*
     $.ajax({
         type: 'GET',
         url:  dominio + "user/" + username + "/" + password,
@@ -119,17 +119,6 @@ function login() {
 */
 }
 
-$("#log").on('click', function () {
-        login();
-});
-
-
-$('body').keyup(function (e) {
-    if (e.keyCode == 13) {
-          login();
-    }
-});
-
 $("#doctor").on('click', function () {
         this.style.background="#2DEE3E";
         $("#paciente").attr('style',  'background-color:#F1F0F0');
@@ -144,4 +133,18 @@ $("#paciente").on('click', function () {
         tipoCuenta = 2;
         $(".divPaciente").show();
         $(".divDoctor").hide();
+});
+
+$("#logDoctor").on('click', function () {
+        login(tipoCuenta);
+});
+
+$("#logPaciente").on('click', function () {
+        login(tipoCuenta);
+});
+
+$('body').keyup(function (e) {
+    if (e.keyCode == 13) {
+          login(tipoCuenta);
+    }
 });
