@@ -34,7 +34,7 @@
 
     <div class="wrapper">
 
-        <nav id="sidebar" class="border-shadow-sidebar">
+        <nav id="sidebar" class="border-shadow-sidebar panel_none" >
             <div class="sidebar-header">
                 <img class="mb-4" src="img/logood.png" alt="" width="100" height="100">
             </div>
@@ -54,7 +54,7 @@
 
         <!-- Page Content  -->
         <div id="content">
-            <nav class="navbar navbar-expand-lg navbar-light"
+            <nav class="navbar navbar-expand-lg navbar-light panel_none"
                 style="background: linear-gradient(to right, rgba(76,40,130,1) 0%, rgba(157,39,185,1) 100%); color:white;">
                 <div class="container-fluid">
                     <a type="button" id="sidebarCollapse" class="btn" style="font-size:30px;">
@@ -81,148 +81,150 @@
                 </div>
             </nav>
 
-            <div class="container border-r1 border-shadow">
-                <h2 style="text-align: center;">BOLETA DE PAGO</h2>
-                <div class="line"></div>
-                <div class="div-center">
-                    <div class="boleta">
-                        <div class="flex_container">
-                        <div class="row" >
-                            <div class="boleta-div-1 logo">
-                            <span class="float-right">
-                                <p style="font-size: 0.7em;">Fecha de impresión: </p>
-                            </span>
-                            <p style="font-size: 0.7em;">Fecha de emisión: </p>
+            <div class="container border-r1 border-shadow ">
+                <h2 class="panel_none" style="text-align: center;">BOLETA DE PAGO</h2>
+                <div class="line panel_none"></div>
+                <div class="panel_print">
+                    <div class="div-center">
+                        <div class="boleta">
+                            <div class="flex_container">
                             <div class="row" >
-                                <div class="seccion-total title">
-                                <p>Orden de pago</p>
+                                <div class="boleta-div-1 logo">
+                                <span class="float-right">
+                                    <p style="font-size: 0.7em;">Fecha de impresión: </p>
+                                </span>
+                                <p style="font-size: 0.7em;">Fecha de emisión: </p>
+                                <div class="row" >
+                                    <div class="seccion-total title">
+                                    <p>Orden de pago</p>
+                                    </div>
+                                    <div class="seccion-1">
+                                    <p class="float-right">No.</p>
+                                    </div>
+                                    <div class="seccion-2">
+                                    
+                                    </div>
+                                    <div class="seccion-1">
+                                    <p class="float-right">Carné</p>
+                                    </div>
+                                    <div class="seccion-2">
+                                    
+                                    </div>
+                                    <div class="seccion-1">
+                                    <p class="float-right">Nombre</p>
+                                    </div>
+                                    <div class="seccion-2">
+                                    
+                                    </div>
+                                    <div class="seccion-1">
+                                    <p class="float-right">Unidad</p>
+                                    </div>
+                                    <div class="seccion-2">
+                                    
+                                    </div>
+                                    <div class="seccion-1">
+                                    <p class="float-right">Extensión</p>
+                                    </div>
+                                    <div class="seccion-2">
+                                    
+                                    </div>
+                                    <div class="seccion-1">
+                                    <p class="float-right">Carrera</p>
+                                    </div>
+                                    <div class="seccion-2">
+                                    
+                                    </div>
+                                    <div class="seccion-total title">
+                                    <p>Detalle de pago</p>
+                                    </div>
+                                    <div class="seccion-total">
+                                    <div class="row">
+                                        <div class="seccion-4" style="text-align: center">
+                                        <p class="float-right"></p>
+                                        </div>
+                                        <div class="seccion-5">
+                                        <p class="float-right"></p>
+                                        </div>
+                                        <div class="seccion-4" style="text-align: center">
+                                        <p class="float-right"><strong>Total a pagar Q</strong></p>
+                                        </div>
+                                        <div class="seccion-5">
+                                        <p class="float-right"></p>
+                                        </div>
+                                    </div>
+                                    </div>
                                 </div>
-                                <div class="seccion-1">
-                                <p class="float-right">No.</p>
-                                </div>
-                                <div class="seccion-2">
                                 
                                 </div>
-                                <div class="seccion-1">
-                                <p class="float-right">Carné</p>
-                                </div>
-                                <div class="seccion-2">
-                                
-                                </div>
-                                <div class="seccion-1">
-                                <p class="float-right">Nombre</p>
-                                </div>
-                                <div class="seccion-2">
-                                
-                                </div>
-                                <div class="seccion-1">
-                                <p class="float-right">Unidad</p>
-                                </div>
-                                <div class="seccion-2">
-                                
-                                </div>
-                                <div class="seccion-1">
-                                <p class="float-right">Extensión</p>
-                                </div>
-                                <div class="seccion-2">
-                                
-                                </div>
-                                <div class="seccion-1">
-                                <p class="float-right">Carrera</p>
-                                </div>
-                                <div class="seccion-2">
-                                
-                                </div>
-                                <div class="seccion-total title">
-                                <p>Detalle de pago</p>
-                                </div>
-                                <div class="seccion-total">
+                                <div class="boleta-div-2">
                                 <div class="row">
-                                    <div class="seccion-4" style="text-align: center">
+                                    <div class="seccion-total title">
+                                    <strong>Para uso exclusivo del banco</strong>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Orden de pago</p>
+                                    </div>
+                                    <div class="seccion-midle">
                                     <p class="float-right"></p>
                                     </div>
-                                    <div class="seccion-5">
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Carné</p>
+                                    </div>
+                                    <div class="seccion-midle">
                                     <p class="float-right"></p>
                                     </div>
-                                    <div class="seccion-4" style="text-align: center">
-                                    <p class="float-right"><strong>Total a pagar Q</strong></p>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Total a pagar Q.</p>
                                     </div>
-                                    <div class="seccion-5">
+                                    <div class="seccion-midle">
                                     <p class="float-right"></p>
                                     </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Unidad</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-right"></p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Extensión</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-right"></p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Carrera</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-right"></p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Rubro de pago</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-right"></p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Llave</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-right"></p>
+                                    </div>
+                                    <div class="seccion-total" style="text-align: center; font-size: 11px">
+                                    Puede efectuar su pago en cualquier agencia o banca virtual de BANRURAL (ATX-253) O GyT Continental.
+                                    </div>
                                 </div>
                                 </div>
                             </div>
-                            
-                            </div>
-                            <div class="boleta-div-2">
-                            <div class="row">
-                                <div class="seccion-total title">
-                                <strong>Para uso exclusivo del banco</strong>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-left">Orden de pago</p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-right"></p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-left">Carné</p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-right"></p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-left">Total a pagar Q.</p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-right"></p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-left">Unidad</p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-right"></p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-left">Extensión</p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-right"></p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-left">Carrera</p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-right"></p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-left">Rubro de pago</p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-right"></p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-left">Llave</p>
-                                </div>
-                                <div class="seccion-midle">
-                                <p class="float-right"></p>
-                                </div>
-                                <div class="seccion-total" style="text-align: center; font-size: 11px">
-                                Puede efectuar su pago en cualquier agencia o banca virtual de BANRURAL (ATX-253) O GyT Continental.
-                                </div>
-                            </div>
-                            </div>
+                            </div>  
                         </div>
-                        </div>  
+                        <div style="text-align: justify; font-size: 0.8em;">
+                            <strong >** El documento es válido para su pago únicamente hasta el día .**</strong>
+                        </div>
                     </div>
-                    <div style="text-align: justify; font-size: 0.8em;">
-                        <strong >** El documento es válido para su pago únicamente hasta el día .**</strong>
+                    <br>
+                    <div style="text-align: center;">
+                        <button type="button" class="btn btn-primary" onclick="printBoleta()">Imprimir</button>
                     </div>
-                </div>
-                <br>
-                <div style="text-align: center;">
-                    <button type="button" class="btn btn-primary">Imprimir</button>
                 </div>
             </div>
         </div>
@@ -256,6 +258,11 @@
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
         });
+
+        function printBoleta() {
+            console.log('hola mundo');
+            window.print();
+        }
     </script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
@@ -401,5 +408,72 @@
     .div-center{
         width: 196mm;
         margin: 0px auto;
+    }
+
+    .panel_none{
+        display: block;
+    }
+
+    @media print {
+        /* invert the display (show/hide) properties of the main */
+        /* aplication component and the printing component       */
+        .panel_print {
+            display: block;
+            position: absolute;
+            left: -50mm;
+        }
+
+        .boleta{
+            border: 1mm solid;
+            width: 320mm;
+            padding: 0;
+            background: #fff;
+            
+            text-align: justify;
+        }
+
+        .seccion-total{
+        margin: 0 2mm;
+        padding: 0;
+        width: 100%;
+        font-size: 0.8em
+        }
+        .seccion-1{
+        margin: 0 2mm;
+        padding: 0;
+        width: 20%;
+        font-weight: bold;
+        font-size: 0.8em
+        }
+        .seccion-2{
+        margin: 0 2mm;
+        padding: 0;
+        width: 73%;
+        font-size: 0.8em
+        }
+        .seccion-4{
+        margin: 1mm 2mm;
+        padding: 0;
+        width: 78%;
+        font-size: 0.8em
+        }
+        .seccion-5{
+        margin: 0 2mm;
+        padding: 0;
+        width: 15%;
+        font-size: 0.8em
+        }
+
+        .seccion-midle{
+        margin: 0.8mm 2mm;
+        padding: 0;
+        width: 42%;
+        font-size: 0.8em
+        }
+
+        .panel_none {
+            display: none;
+        }
+        
     }
 </style>
