@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Registro Profesor </title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="css/principal.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img class="mb-4" src="img/logood.png" alt="" width="100" height="100">
+            </div>
+
+            <ul class="list-unstyled components">
+                <li >
+                    <a href="#homeSubmenu">Inicio</a>
+                </li>
+                <li class="active">
+                    <a href="#regProfesor">Registro Profesor</a>
+                </li>
+                <li>
+                    <a href="#regEstudiante">Registro Estudiante</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light"
+                style="background: linear-gradient(to right, rgba(76,40,130,1) 0%, rgba(157,39,185,1) 100%); color:white;">
+                <div class="container-fluid">
+                    <a type="button" id="sidebarCollapse" class="btn" style="font-size:30px;">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <div class="" id="nombreUsuario">
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" style="color: white;">Cerrar Sesión <i
+                                        class="fas fa-sign-out-alt"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="leftspace">
+                <h2 style="text-align: center;">Registro Profesor</h2>
+                <div class="line"></div>
+
+
+                <form>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Nombre</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput">
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Apellido</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2">
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Genero</label>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <input type="radio" id="masculino" name="gender" value="M"> </input> &nbsp;&nbsp;
+                        <label for="masculino">Masculino</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" id="femenino" name="gender" value="F">&nbsp;&nbsp;
+                        <label for="femenino">Femenino</label>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Fecha de Nacimiento:</label>
+                        <input type="date" id="fechanacimiento" name="trip-start" value="2020-01-01" min="1940-01-01"
+                            max="2020-01-01" class="form-control">
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>DPI:</label>
+                        <input type="text" id="dpi" name="dpi" placeholder="2201-01669-0101" class="form-control" />
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Contraseña:</label>
+                        <input type="password" id="contrasenia" name="contrasenia" class="form-control" />
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Confirmar contraseña:</label>
+                        <input type="password" id="contrasenia2" name="contrasenia2" class="form-control" />
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Direccion:</label>
+                        <input type="text" id="direccion" name="direccion" class="form-control" />
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Teléfono:</label>
+                        <input type="text" id="telefono" name="telefono" class="form-control" />
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Registro Personal:</label>
+                        <input type="text" id="regpersonal" name="regpersonal" class="form-control" />
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Área:&nbsp;&nbsp;</label>
+                        <select name="tipopaciente">
+                            <option>Selecciona una área</option>
+                            <option value="1">AREA1</option>
+                            <option value="2">AREA2</option>
+                            <option value="3">AREA3</option>
+                            <option value="4">AREA4</option>
+                        </select>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <a href="" class="boton_personalizado">Registrar</a>
+                    </div>
+                    </br>
+                    </br>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+    <script src="js/cookie.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/registroProfesor.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+</body>
+
+</html>
