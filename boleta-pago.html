@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Oficina de Información </title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="css/principal.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <nav id="sidebar" class="border-shadow-sidebar panel_none" >
+            <div class="sidebar-header">
+                <img class="mb-4" src="img/logood.png" alt="" width="100" height="100">
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#homeSubmenu">Inicio</a>
+                </li>
+                <li>
+                    <a href="#pacientes">Pacientes</a>
+                </li>
+                <li>
+                    <a href="#bancoPacientes">Banco de Pacientes</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light panel_none"
+                style="background: linear-gradient(to right, rgba(76,40,130,1) 0%, rgba(157,39,185,1) 100%); color:white;">
+                <div class="container-fluid">
+                    <a type="button" id="sidebarCollapse" class="btn" style="font-size:30px;">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <div class="" id="nombreUsuario">
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" style="color: white;">Cerrar Sesión <i
+                                        class="fas fa-sign-out-alt"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container border-r1 border-shadow ">
+                <h2 class="panel_none" style="text-align: center;">BOLETA DE PAGO</h2>
+                <div class="line panel_none"></div>
+                <div class="panel_print">
+                    <div class="div-center">
+                        <div class="boleta">
+                            <div class="flex_container">
+                            <div class="row" >
+                                <div class="boleta-div-1 logo">
+                                <span class="float-right">
+                                    <p style="font-size: 0.7em;">Fecha de impresión: </p>
+                                </span>
+                                <p style="font-size: 0.7em;">Fecha de emisión: </p>
+                                <div class="row" >
+                                    <div class="seccion-total title">
+                                    <p>Orden de pago</p>
+                                    </div>
+                                    <div class="seccion-1">
+                                    <p class="float-right">No.</p>
+                                    </div>
+                                    <div class="seccion-2">
+                                    
+                                    </div>
+                                    <div class="seccion-1">
+                                    <p class="float-right">Carné</p>
+                                    </div>
+                                    <div class="seccion-2">
+                                    
+                                    </div>
+                                    <div class="seccion-1">
+                                    <p class="float-right">Nombre</p>
+                                    </div>
+                                    <div class="seccion-2">
+                                    
+                                    </div>
+                                    <div class="seccion-1">
+                                    <p class="float-right">Unidad</p>
+                                    </div>
+                                    <div class="seccion-2">
+                                    
+                                    </div>
+                                    <div class="seccion-1">
+                                    <p class="float-right">Extensión</p>
+                                    </div>
+                                    <div class="seccion-2">
+                                    
+                                    </div>
+                                    <div class="seccion-1">
+                                    <p class="float-right">Carrera</p>
+                                    </div>
+                                    <div class="seccion-2">
+                                    
+                                    </div>
+                                    <div class="seccion-total title">
+                                    <p>Detalle de pago</p>
+                                    </div>
+                                    <div class="seccion-total">
+                                    <div class="row">
+                                        <div class="seccion-4" style="text-align: center">
+                                        <p class="float-right"></p>
+                                        </div>
+                                        <div class="seccion-5">
+                                        <p class="float-right"></p>
+                                        </div>
+                                        <div class="seccion-4" style="text-align: center">
+                                        <p class="float-right"><strong>Total a pagar Q</strong></p>
+                                        </div>
+                                        <div class="seccion-5">
+                                        <p class="float-right"></p>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                
+                                </div>
+                                <div class="boleta-div-2">
+                                <div class="row">
+                                    <div class="seccion-total title">
+                                    <strong>Para uso exclusivo del banco</strong>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Orden de pago</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-right"></p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Carné</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-right"></p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Total a pagar Q.</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-right"></p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Unidad</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-right"></p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Extensión</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-right"></p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Carrera</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-right"></p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Rubro de pago</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-right"></p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-left">Llave</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                    <p class="float-right"></p>
+                                    </div>
+                                    <div class="seccion-total" style="text-align: center; font-size: 11px">
+                                    Puede efectuar su pago en cualquier agencia o banca virtual de BANRURAL (ATX-253) O GyT Continental.
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>  
+                        </div>
+                        <div style="text-align: justify; font-size: 0.8em;">
+                            <strong >** El documento es válido para su pago únicamente hasta el día .**</strong>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="panel_none" style="text-align: center;">
+                        <button type="button" class="btn btn-primary" onclick="printBoleta()">Imprimir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+
+        function printBoleta() {
+            console.log('hola mundo');
+            window.print();
+        }
+    </script>
+    <script src="js/cookie.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/registroPaciente.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+</body>
+
+</html>
+<style>
+    div.container{
+        padding: 6mm;
+        margin: 3% 8%;
+        background: #fff;
+    }
+
+    .border-r1{
+        border-radius: 7px 7px 7px 7px;
+        -moz-border-radius: 7px 7px 7px 7px;
+        -webkit-border-radius: 7px 7px 7px 7px;
+        border: 0px solid #000000;
+    }
+    .border-r2{
+        border-radius: 12px 12px 12px 12px;
+        -moz-border-radius: 12px 12px 12px 12px;
+        -webkit-border-radius: 12px 12px 12px 12px;
+        border: 0px solid #000000;
+    }
+
+    .border-r2{
+        border-radius: 16px 16px 16px 16px;
+        -moz-border-radius: 16px 16px 16px 16px;
+        -webkit-border-radius: 16px 16px 16px 16px;
+        border: 0px solid #000000;
+    }
+
+    .border-shadow{
+        -webkit-box-shadow: 0px 1px 12px -3px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 1px 12px -3px rgba(0,0,0,0.75);
+        box-shadow: 0px 1px 12px -3px rgba(0,0,0,0.75);
+    }
+    .border-shadow-sidebar{
+        -webkit-box-shadow: 3px 0px 5px 0px rgba(158,158,158,1);
+        -moz-box-shadow: 3px 0px 5px 0px rgba(158,158,158,1);
+        box-shadow: 3px 0px 5px 0px rgba(158,158,158,1);
+    }
+
+    .boleta{
+      border: 1mm solid;
+      width: 196mm;
+      padding: 0;
+      background: #fff;
+      
+      text-align: justify;
+    }
+    .flex-container{
+        display: flex;
+        
+    }
+    .row{
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        padding: 0;
+        margin: 0;
+    }
+    .boleta-div-1{
+        padding: 1mm 1mm;
+        margin: 0;
+        width: 65%;
+        
+        /*background: red;*/
+    }
+    .logo{
+      background: url("res/drawable/imgs/logoUSAC2019C-15P.jpg") no-repeat;
+      background-position: center;
+    }
+    .seccion-total{
+      margin: 0 2mm;
+      padding: 0;
+      width: 100%;
+      font-size: 0.8em
+    }
+    .seccion-1{
+      margin: 0 2mm;
+      padding: 0;
+      width: 20%;
+      font-weight: bold;
+      font-size: 0.8em
+    }
+    .seccion-2{
+      margin: 0 2mm;
+      padding: 0;
+      width: 73%;
+      font-size: 0.8em
+    }
+    .seccion-4{
+      margin: 1mm 2mm;
+      padding: 0;
+      width: 78%;
+      font-size: 0.8em
+    }
+    .seccion-5{
+      margin: 0 2mm;
+      padding: 0;
+      width: 15%;
+      font-size: 0.8em
+    }
+
+    .seccion-midle{
+      margin: 0.8mm 2mm;
+      padding: 0;
+      width: 42%;
+      font-size: 0.6em
+    }
+
+    .boleta-div-2{
+        padding: 1mm 1mm;
+        margin: 0;
+        width: 32%;
+        border-left: 1px solid;
+        /*background: red;*/
+    }
+
+    .float-right{
+      float: right;
+      margin: 0;
+      padding: 0;
+    }
+    .float-left{
+      float: left;
+      margin: 0;
+      padding: 0;
+    }
+    .title{
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    p{
+        color: #000000;
+    }
+
+    .div-center{
+        width: 196mm;
+        margin: 0px auto;
+    }
+
+    .panel_none{
+        display: block;
+    }
+
+    @media print {
+        /* invert the display (show/hide) properties of the main */
+        /* aplication component and the printing component       */
+        .panel_print {
+            display: block;
+            position: absolute;
+            left: -50mm;
+        }
+
+        .boleta{
+            border: 1mm solid;
+            width: 320mm;
+            padding: 0;
+            background: #fff;
+            
+            text-align: justify;
+        }
+
+        .seccion-total{
+        margin: 0 2mm;
+        padding: 0;
+        width: 100%;
+        font-size: 0.8em
+        }
+        .seccion-1{
+        margin: 0 2mm;
+        padding: 0;
+        width: 20%;
+        font-weight: bold;
+        font-size: 0.8em
+        }
+        .seccion-2{
+        margin: 0 2mm;
+        padding: 0;
+        width: 73%;
+        font-size: 0.8em
+        }
+        .seccion-4{
+        margin: 1mm 2mm;
+        padding: 0;
+        width: 78%;
+        font-size: 0.8em
+        }
+        .seccion-5{
+        margin: 0 2mm;
+        padding: 0;
+        width: 15%;
+        font-size: 0.8em
+        }
+
+        .seccion-midle{
+        margin: 0.8mm 2mm;
+        padding: 0;
+        width: 42%;
+        font-size: 0.8em
+        }
+
+        .panel_none {
+            display: none;
+        }
+        
+    }
+</style>
