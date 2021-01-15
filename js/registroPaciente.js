@@ -16,7 +16,7 @@ function registroPaciente () {
   consulta = $('#consulta').val()
 
   if (password != password2) {
-    alertify.alert('La contraseña no coincide')
+    alertify.warning('La contraseña no coincide')
   } else {
     data = '{"nombres": "' + nombres + '", "apellidos": "' + apellidos + '", "genero": "' + genero + '", "nacimiento": "' +
       fechanacimiento + '", "dpi": "' + dpi + '", "contrasenia": "' + password + '", "direccion": "' + direccion + '", "telefono":' +
@@ -34,6 +34,7 @@ function registroPaciente () {
       }
     })
   }
+
 }
 
 function registroPacienteTrabSocial () {
@@ -56,15 +57,14 @@ function registroPacienteTrabSocial () {
   doctor = $('#doctor').val()
   consulta = $('#consulta').val()
 
-  if (password !== password2) {
-
-    alertify.warning('La contraseña no coincide');
+  if (password != password2) {
+    alertify.warning('La contraseña no coincide')
   } else {
-    data = '{"nombres": "' + nombres + '", "apellidos": "' + apellidos + '", "genero": "' + genero + '", "nacimiento": "' + fechanacimiento +
-     '", "dpi": "' + dpi + '", "contrasenia": "' + password + '", "direccion": "' + direccion + '", "telefono":' + telefono +
-      ', "nohijos": ' + nohijos + ', "escolaridad": "' + escolaridad + '", "nivel": ' + nivel + ', "profesion": "' + trauoficio +
-       '", "nacionalidad": "' + nacionalidad + '", "transporte": "' + transporte + '", "consulta": "' + consulta + '", "doctor": "' + doctor +
-       '", "tipopaciente": ' + tipopaciente + '}'
+    data = '{"nombres": "' + nombres + '", "apellidos": "' + apellidos + '", "genero": "' + genero + '", "nacimiento": "' +
+      fechanacimiento + '", "dpi": "' + dpi + '", "contrasenia": "' + password + '", "direccion": "' + direccion + '", "telefono":' +
+      telefono + ', "nohijos": "' + nohijos + ', "escolaridad": "' + escolaridad + ', "nivel": "' + nivel + ', "profesion": "' + trauoficio +
+       ', "nacionalidad": "' + nacionalidad + ', "transporte": "' + transporte + ', "consulta": "' + consulta + ', "doctor": "' + doctor +
+       ', "tipopaciente": "' + tipopaciente + '"}'
 
     $.ajax({
       type: 'POST',
