@@ -34,7 +34,7 @@
 
     <div class="wrapper">
 
-        <nav id="sidebar">
+        <nav id="sidebar" class="border-shadow-sidebar">
             <div class="sidebar-header">
                 <img class="mb-4" src="img/logood.png" alt="" width="100" height="100">
             </div>
@@ -81,20 +81,20 @@
                 </div>
             </nav>
 
-            <div class="leftspace">
+            <div class="container border-r1 border-shadow">
                 <h2 style="text-align: center;">Registro Pacientes</h2>
                 <div class="line"></div>
 
 
-                <form>
+                <div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput">Nombre</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput">
+                        <label for="formGroupExampleInput">Nombres</label>
+                        <input type="text" class="form-control" id="nombre">
                     </div>
                     </br>
                     <div class="form-group">
-                        <label for="formGroupExampleInput2">Apellido</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2">
+                        <label for="formGroupExampleInput2">Apellidos</label>
+                        <input type="text" class="form-control" id="apellido">
                     </div>
                     </br>
                     <div class="form-group">
@@ -102,9 +102,9 @@
                     </div>
                     </br>
                     <div class="form-group">
-                        <input type="radio" id="masculino" name="gender" value="M"> </input> &nbsp;&nbsp;
+                        <input type="radio" id="genero" name="gender" value="0"> </input> &nbsp;&nbsp;
                         <label for="masculino">Masculino</label> &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="radio" id="femenino" name="gender" value="F">&nbsp;&nbsp;
+                        <input type="radio" id="genero" name="gender" value="1">&nbsp;&nbsp;
                         <label for="femenino">Femenino</label>
                     </div>
                     </br>
@@ -136,7 +136,7 @@
                     </br>
                     <div class="form-group">
                         <label>Teléfono:</label>
-                        <input type="text" id="telefono" name="telefono" class="form-control" />
+                        <input type="number" id="telefono" name="telefono" class="form-control" />
                     </div>
                     </br>
                     <div class="form-group">
@@ -145,11 +145,11 @@
                     </div>
                     </br>
                     <div class="form-group">
-                        <a href="" class="boton_personalizado">Registrar</a>
+                        <button class="boton_personalizado" id="registro">Registrar</button>
                     </div>
                     </br>
                     </br>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -183,6 +183,8 @@
             });
         });
     </script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/alertify.js"></script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
     <script src="js/registroPaciente.js"></script>

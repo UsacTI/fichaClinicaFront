@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Banco Paciente</title>
+    <title>Citas</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -48,11 +48,11 @@
                 <li>
                     <a href="#homeSubmenu">Inicio</a>
                 </li>
-                <li>
-                    <a href="#pacientes">Pacientes</a>
-                </li>
                 <li class="active">
-                    <a href="#bancoPacientes">Banco de Pacientes</a>
+                    <a href="#citas">Citas</a>
+                </li>
+                <li>
+                    <a href="#tratamientos">Tratamientos</a>
                 </li>
             </ul>
         </nav>
@@ -87,39 +87,44 @@
             </nav>
 
             <div class="container border-r1 border-shadow">
-                <h2 style="text-align: center;">Banco Pacientes</h2>
+                <h2 style="text-align: center;">Citas</h2>
                 <div class="line"></div>
                 <div class="table-responsive">
-                    <table id="table1" class="table table-striped no-margin">
+                    <table id="table4" class="table table-striped no-margin">
                         <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>DPI</th>
-                                <th>Opciones</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Doctor</th>
+                                <th>Detalle</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Tiger Nixon</td>
-                                <td>2514789654022</td>
-                                <td><img src="icon/user.png"> <img src="icon/table.png"> </td>
+                                <td>12/02/2020</td>
+                                <td>8:00 AM</td>
+                                <td>Alvaro Azurdia</td>
+                                <td><img src="icon/ficha.png"> </td>
                             </tr>
                             <tr>
-                                <td>Garrett Winters</td>
-                                <td>2514789654022</td>
-                                <td><img src="icon/user.png"> <img src="icon/table.png"></td>
+                                <td>17/02/2020</td>
+                                <td>9:00 AM</td>
+                                <td>Luis Merlos</td>
+                                <td><img src="icon/ficha.png"> </td>
                             </tr>
                             <tr>
-                                <td>Ashton Cox</td>
-                                <td>2514789654022</td>
-                                <td> <img src="icon/user.png"> <img src="icon/table.png"></td>
+                                <td>15/05/2020</td>
+                                <td>2:00 PM</td>
+                                <td>Juan Benito</td>
+                                <td> <img src="icon/ficha.png"> </td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Nombre</th>
-                                <th>DPI</th>
-                                <th>Opciones</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Doctor</th>
+                                <th>Detalle</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -159,10 +164,9 @@
     </script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
-    <script src="js/bancoPaciente.js"></script>
+    <script src="js/cita.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>
-
 
 </html>

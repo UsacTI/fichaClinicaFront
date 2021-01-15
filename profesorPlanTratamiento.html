@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Banco Paciente</title>
+    <title>Plan de Tratamiento</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -49,10 +49,16 @@
                     <a href="#homeSubmenu">Inicio</a>
                 </li>
                 <li>
-                    <a href="#pacientes">Pacientes</a>
+                    <a href="#aprobacion">Aprobaciones</a>
                 </li>
                 <li class="active">
-                    <a href="#bancoPacientes">Banco de Pacientes</a>
+                    <a href="#plandetratamiento">Plan de Tratamiento</a>
+                </li>
+                <li>
+                    <a href="#tratamiento">Tratamiento</a>
+                </li>
+                <li>
+                    <a href="#bancopaciente">Banco Pacientes</a>
                 </li>
             </ul>
         </nav>
@@ -87,32 +93,36 @@
             </nav>
 
             <div class="container border-r1 border-shadow">
-                <h2 style="text-align: center;">Banco Pacientes</h2>
+                <h2 style="text-align: center;">Plan de Tratamiento</h2>
                 <div class="line"></div>
                 <div class="table-responsive">
-                    <table id="table1" class="table table-striped no-margin">
+                    <table id="table7" class="table table-striped no-margin">
                         <thead>
                             <tr>
-                                <th>Nombre</th>
+                                <th>Estudiante</th>
+                                <th>Paciente</th>
                                 <th>DPI</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td>Juan García</td>
                                 <td>Tiger Nixon</td>
                                 <td>2514789654022</td>
-                                <td><img src="icon/user.png"> <img src="icon/table.png"> </td>
+                                <td><img src="icon/check-list.png"> </td>
                             </tr>
                             <tr>
+                                <td>Mario Aguilar</td>
                                 <td>Garrett Winters</td>
                                 <td>2514789654022</td>
-                                <td><img src="icon/user.png"> <img src="icon/table.png"></td>
+                                <td><img src="icon/check-list.png"> </td>
                             </tr>
                             <tr>
+                                <td>Manuel Galvan</td>
                                 <td>Ashton Cox</td>
                                 <td>2514789654022</td>
-                                <td> <img src="icon/user.png"> <img src="icon/table.png"></td>
+                                <td> <img src="icon/check-list.png"> </td>
                             </tr>
                         </tbody>
                         <tfoot>
@@ -159,10 +169,9 @@
     </script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
-    <script src="js/bancoPaciente.js"></script>
+    <script src="js/profesorPlanTratamiento.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>
-
 
 </html>

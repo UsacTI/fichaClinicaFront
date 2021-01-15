@@ -1,7 +1,7 @@
-var dominio = 'http://localhost:3000/';
+var dominio = 'http://10.0.0.127:8080/';
 //var baseUrl    = Dominio+ ':4000/';
-var nombre    = getCookie('api-nombre');
-var rol    = getCookie('api-rol');
+var nombre    = getCookie('api-nombreUsuario');
+var apellido    = getCookie('api-apellidoUsuario');
 
 
 function get(url, param) {
