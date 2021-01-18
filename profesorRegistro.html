@@ -40,7 +40,7 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li >
+                <li>
                     <a href="#homeSubmenu">Inicio</a>
                 </li>
                 <li class="active">
@@ -86,15 +86,15 @@
                 <div class="line"></div>
 
 
-                <form>
+                <div>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Nombre</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput">
+                        <input type="text" class="form-control" id="nombre">
                     </div>
                     </br>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Apellido</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2">
+                        <input type="text" class="form-control" id="apellido">
                     </div>
                     </br>
                     <div class="form-group">
@@ -102,9 +102,9 @@
                     </div>
                     </br>
                     <div class="form-group">
-                        <input type="radio" id="masculino" name="gender" value="M"> </input> &nbsp;&nbsp;
+                        <input type="radio" id="genero" name="gender" value="0"> </input> &nbsp;&nbsp;
                         <label for="masculino">Masculino</label> &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="radio" id="femenino" name="gender" value="F">&nbsp;&nbsp;
+                        <input type="radio" id="genero" name="gender" value="1">&nbsp;&nbsp;
                         <label for="femenino">Femenino</label>
                     </div>
                     </br>
@@ -116,7 +116,7 @@
                     </br>
                     <div class="form-group">
                         <label>DPI:</label>
-                        <input type="text" id="dpi" name="dpi" placeholder="2201-01669-0101" class="form-control" />
+                        <input type="number" id="dpi" name="dpi" placeholder="2201-01669-0101" class="form-control" />
                     </div>
                     </br>
                     <div class="form-group">
@@ -128,47 +128,57 @@
                         <label>Confirmar contraseña:</label>
                         <input type="password" id="contrasenia2" name="contrasenia2" class="form-control" />
                     </div>
-                    </br>
-                    <div class="form-group">
-                        <label>Direccion:</label>
-                        <input type="text" id="direccion" name="direccion" class="form-control" />
-                    </div>
+
                     </br>
                     <div class="form-group">
                         <label>Teléfono:</label>
-                        <input type="text" id="telefono" name="telefono" class="form-control" />
+                        <input type="number" id="telefono" name="telefono" class="form-control" />
                     </div>
                     </br>
                     <div class="form-group">
-                        <label>Registro Personal:</label>
-                        <input type="text" id="regpersonal" name="regpersonal" class="form-control" />
+                        <label>Registro Estudiantil:</label>
+                        <input type="number" id="regestudiante" name="regestudiante" class="form-control" />
                     </div>
                     </br>
                     <div class="form-group">
                         <label>Área:&nbsp;&nbsp;</label>
-                        <select name="tipopaciente">
+                        <select name="tipopaciente" id="tipopaciente">
                             <option>Selecciona una área</option>
-                            <option value="1">AREA1</option>
-                            <option value="2">AREA2</option>
-                            <option value="3">AREA3</option>
-                            <option value="4">AREA4</option>
+                            <option value="1">CLINICA</option>
+                            <option value="2">RESTAURATIVA</option>
+                            <option value="3">OPERATORIA DELTAN</option>
+                            <option value="4">MEDICO QUIRURGICA</option>
+                            <option value="5">PATOLOGÍA</option>
+                            <option value="6">ODONTOPEDIATRIA</option>
                         </select>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <label>Subdivisión:&nbsp;&nbsp;</label>
+                        <select name="tipopaciente" id="tipopaciente">
+                            <option>Selecciona una sub área</option>
+                            <option value="1">CLINICA</option>
+                            <option value="2">RESTAURATIVA</option>
+                            <option value="3">OPERATORIA DELTAN</option>
+                            <option value="4">MEDICO QUIRURGICA</option>
+                            <option value="5">PATOLOGÍA</option>
+                            <option value="6">ODONTOPEDIATRIA</option>
+                        </select>
+
                     </div>
                     </br>
                     <div class="form-group">
-                        <a href="" class="boton_personalizado">Registrar</a>
+                        <button href="" class="boton_personalizado" id="registro">Registro</button>
                     </div>
                     </br>
                     </br>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
@@ -194,6 +204,8 @@
             });
         });
     </script>
+
+    <script src="js/alertify.js"></script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
     <script src="js/registroProfesor.js"></script>
