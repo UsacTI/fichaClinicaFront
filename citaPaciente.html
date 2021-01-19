@@ -45,13 +45,18 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li>
-                    <a href="citaPaciente.html">Citas</a>
+                <li  class="active">
+                    <a href="#">Citas</a>
                 </li>
-                <li class="active">
-                    <a href="#">Abonos</a>
+                <li>
+                    <a href="abono.html">Abonos</a>
                 </li>
             </ul>
+
+            <div class="sidebar-footer">
+                <img class="mb-4" src="img/logobn.png" alt=""  width="200" height="200" style="padding-bottom: 10px;">
+            </div>
+
         </nav>
 
         <!-- Page Content  -->
@@ -75,7 +80,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" style="color: white;" id="cerrarSesion">Cerrar Sesión <i
+                                <a class="nav-link" href="#" style="color: white;" id="cerrarSesion">Cerrar Sesión <i
                                         class="fas fa-sign-out-alt"></i></a>
                             </li>
                         </ul>
@@ -84,10 +89,10 @@
             </nav>
 
             <div class="container border-r1 border-shadow">
-                <h2 style="text-align: center;">Abonos</h2>
+                <h2 style="text-align: center;">Citas</h2>
                 <div class="line"></div>
                 <div class="table-responsive">
-                    <table id="table1" class="table table-striped no-margin">
+                    <table id="tableC" class="table table-striped no-margin">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -159,7 +164,7 @@
     </script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
-    <script src="js/abono.js"></script>
+    <script src="js/citaPaciente.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>
