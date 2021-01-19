@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Oficina de Trabajo Social </title>
+    <title>Actualización </title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -30,7 +30,7 @@
 
 </head>
 
-<body>
+<body onload="loading()">
 
     <div class="wrapper">
 
@@ -44,10 +44,7 @@
                     <a href="#homeSubmenu">Inicio</a>
                 </li>
                 <li>
-                    <a href="#pacientes">Pacientes</a>
-                </li>
-                <li>
-                    <a href="#bancoPacientes">Banco de Pacientes</a>
+                    <a href="#bancoPacientes">Banco Pacientes</a>
                 </li>
             </ul>
         </nav>
@@ -82,7 +79,7 @@
             </nav>
 
             <div class="container border-r1 border-shadow">
-                <h2 style="text-align: center;">Registro Pacientes</h2>
+                <h2 style="text-align: center;">Pacientes Actualización</h2>
                 <div class="line"></div>
 
 
@@ -104,7 +101,7 @@
                     <div class="form-group">
                         <input type="radio" id="genero" name="gender" value="0"> </input> &nbsp;&nbsp;
                         <label for="masculino">Masculino</label> &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="radio" id="genero" name="gender" value="1">&nbsp;&nbsp;
+                        <input type="radio" id="genero2" name="gender" value="1">&nbsp;&nbsp;
                         <label for="femenino">Femenino</label>
                     </div>
                     </br>
@@ -117,16 +114,6 @@
                     <div class="form-group">
                         <label>DPI:</label>
                         <input type="text" id="dpi" name="dpi" placeholder="2201-01669-0101" class="form-control" onkeypress="return isIntegerKey(event)" maxlength="15" />
-                    </div>
-                    </br>
-                    <div class="form-group">
-                        <label>Contraseña:</label>
-                        <input type="password" id="contrasenia" name="contrasenia" class="form-control" />
-                    </div>
-                    </br>
-                    <div class="form-group">
-                        <label>Confirmar contraseña:</label>
-                        <input type="password" id="contrasenia2" name="contrasenia2" class="form-control" />
                     </div>
                     </br>
                     <div class="form-group">
@@ -170,7 +157,7 @@
                     </br>
                     <div class="form-group">
                         <label>Trabajo u Oficio:</label>
-                        <input type="text" id="trauoficio" name="direccion" class="form-control" />
+                        <input type="text" id="trauoficio" name="trauoficio" class="form-control" />
                     </div>
                     </br>
                     <div class="form-group">
@@ -215,7 +202,7 @@
                     </div>
                     </br>
                     <div class="form-group">
-                        <button href="" class="boton_personalizado" id="registro2">Registrar</button>
+                        <button href="" class="boton_personalizado" id="actualizar">Actualizar</button>
                     </div>
                     </br>
                     </br>
@@ -225,9 +212,7 @@
     </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
@@ -253,11 +238,10 @@
             });
         });
     </script>
-    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/alertify.js"></script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
-    <script src="js/registroPaciente.js"></script>
+    <script src="js/pacienteActualizacion.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>

@@ -35,7 +35,7 @@
 
 </head>
 
-<body>
+<body onload="loading()">
 
     <div class="wrapper">
 
@@ -95,11 +95,11 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th>DPI</th>
-                                <th>Opciones</th>
+                                <th>Perfil|Citas|Actualizar</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody  id="tablita">
+                            <!-- <tr>
                                 <td>Tiger Nixon</td>
                                 <td>2514789654022</td>
                                 <td><img src="icon/user.png"> <img src="icon/table.png"> </td>
@@ -113,7 +113,7 @@
                                 <td>Ashton Cox</td>
                                 <td>2514789654022</td>
                                 <td> <img src="icon/user.png"> <img src="icon/table.png"></td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                         <tfoot>
                             <tr>
@@ -129,9 +129,7 @@
     </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
