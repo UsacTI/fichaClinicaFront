@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Oficina de Información </title>
+    <title>Citas</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -28,6 +28,11 @@
         integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
         crossorigin="anonymous"></script>
 
+    <!-- Table Paciente -->
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
 </head>
 
 <body>
@@ -40,14 +45,14 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li class="active">
+                <li>
                     <a href="#homeSubmenu">Inicio</a>
                 </li>
-                <li>
-                    <a href="#pacientes">Pacientes</a>
+                <li class="active">
+                    <a href="#citas">Citas</a>
                 </li>
                 <li>
-                    <a href="#bancoPacientes">Banco de Pacientes</a>
+                    <a href="#tratamientos">Tratamientos</a>
                 </li>
             </ul>
         </nav>
@@ -82,35 +87,96 @@
             </nav>
 
             <div class="container border-r1 border-shadow">
-                <h2 style="text-align: center;">Realizar Abono</h2>
+                <h2 style="text-align: center;">Gestión de Citas</h2>
                 <div class="line"></div>
-                
-                    <div class="form-group">
-                        <label for="formGroupExampleInput">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" readonly>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Tratamiento</label>
+                            <select id="tratamiento" class="form-control">
+                                <option value="1">tratamiento 1</option>
+                                <option value="2">tratamiento 2</option>
+                                <option value="3">tratamiento 3</option>
+                                <option value="4">tratamiento 4</option>
+                            </select>
+                        </div>
+                        <br>
                     </div>
-                    </br>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">Apellido</label>
-                        <input type="text" class="form-control" id="apellido" readonly>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Fecha</label>
+                            <input type="date" id="fecha" name="trip-start" value="2021-01-01" min="1940-01-01"
+                            max="2030-01-01" class="form-control">
+                        </div>
+                        <br>
                     </div>
-                    <br>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput3">DPI</label>
-                        <input type="text" class="form-control" id="dpi" readonly>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Pieza dental</label>
+                            <input type="text" class="form-control" id="pieza" readonly>
+                        </div>
+                        </br>
                     </div>
-                    <br>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput3">Monto a abonar</label>
-                        <input type="text" class="form-control" id="monto" >
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Valor</label>
+                            <input type="text" class="form-control" id="valor" readonly>
+                        </div>
+                        </br>   
                     </div>
-                    <br>
-                    <div style="text-align: center;">
-                        <input type="text" id="idpaciente" value="1" hidden>
-                        <button id="registro-abono" class="btn btn-primary">Generar boleta</button>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="idpaciente" value="1" hidden>
+                            <button class="boton_personalizado" id="registro-cita" style="font-size: 13px;">Crear cita</button>
+                        </div>
                     </div>
-                    <br>
-                
+                </div>
+                <br>
+                <div class="table-responsive">
+                    <table id="table4" class="table table-striped no-margin">
+                        <thead>
+                            <tr>
+                                <th>Tratamiento</th>
+                                <th>Pieza</th>
+                                <th>Costo (Q)</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tratamiento</td>
+                                <td>12</td>
+                                <td>150.00</td>
+                                <td>11/05/2021> </td>
+                                <td><img src="icon/circulo-negro.png" style="color: green"> </td>
+                            </tr>
+                            <tr>
+                                <td>Tratamiento</td>
+                                <td>12</td>
+                                <td>150.00</td>
+                                <td>11/05/2021> </td>
+                                <td><img src="icon/circulo-negro.png" style="color: green"> </td>
+                            </tr>
+                            <tr>
+                                <td>Tratamiento</td>
+                                <td>12</td>
+                                <td>150.00</td>
+                                <td>11/05/2021> </td>
+                                <td><img src="icon/circulo-negro.png" style="color: green"> </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Tratamiento</th>
+                                <th>Pieza</th>
+                                <th>Costo (Q)</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -144,7 +210,8 @@
     </script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
-    <script src="js/registroAbono.js"></script>
+    <script src="js/cita.js"></script>
+    <script src="js/registroCita.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>

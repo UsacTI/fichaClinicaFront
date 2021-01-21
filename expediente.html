@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Oficina de Información </title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="css/principal.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <nav id="sidebar" class="border-shadow-sidebar">
+            <div class="sidebar-header">
+                <img class="mb-4" src="img/logood.png" alt="" width="100" height="100">
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#homeSubmenu">Inicio</a>
+                </li>
+                <li>
+                    <a href="#pacientes">Pacientes</a>
+                </li>
+                <li>
+                    <a href="#bancoPacientes">Banco de Pacientes</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light"
+                style="background: linear-gradient(to right, rgba(76,40,130,1) 0%, rgba(157,39,185,1) 100%); color:white;">
+                <div class="container-fluid">
+                    <a type="button" id="sidebarCollapse" class="btn" style="font-size:30px;">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <div class="" id="nombreUsuario">
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" style="color: white;">Cerrar Sesión <i
+                                    class="fas fa-sign-out-alt"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container border-r1 border-shadow">
+                <h2 style="text-align: center;">Expediente</h2>
+                <div class="line"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>M.C.</strong></p>
+                        <textarea name="mc" id="mc" rows="5" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>H.P.E.</strong></p>
+                        <textarea name="mc" id="mc" rows="5" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <p><strong>H.M.A. Custionario</strong></p>
+                    </div>
+                    
+                    
+                </div>
+                <div id="hma-seccion" class="row">
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p><strong>H.M.A. Comentarios y Observaciones</strong></p>
+                        <textarea name="hma-comentarios" id="hma-comentarios" rows="5" style="width: 100%;"></textarea>
+                    </div>
+                </div>
+                <div id="hoa-seccion" class="row">
+                    <div id="hoa-items" class="col-md-6">
+                        <p><strong>H.O.A. Cuestionario</strong></p>
+                    </div>
+                    <div id="hoa-items" class="col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="5" name="hoa">
+                            <label class="form-check-label" for="5">
+                                Dolor dentario
+                            </label>
+                            <span style="float: right"><button class="btn btn-primary btn-sm" onclick="addColumn()">+ Columna</button></span>
+                        </div>
+                        <div style="width: 100%; overflow-x: auto;">
+                            <table  class="table table-striped table-bordered table-sm" style="table-layout: fixed; width: 50%;">
+                                <tbody id="tabla-hoa">
+                                <tr id="id-pieza">
+                                    <td style="width: 110px;">Pieza</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr id="id-intensidad">
+                                    <td style="width: 110px;">Intensidad</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr id="id-duracion">
+                                    <td style="width: 110px;">Duración</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr id="id-inicio">
+                                    <td style="width: 110px;">Inicio</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr id="id-frecuencia">
+                                    <td style="width: 110px;">Frecuencia</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>H.O.A. Comentarios y Observaciones</strong></p>
+                        <textarea name="hoa-comentarios" id="hoa-comentarios" rows="5" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Hábitos</strong></p>
+                        <textarea name="habitos" id="habitos" rows="5" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Evaluación Roentgenológica</strong></p>
+                        <textarea name="roentgenologica" id="roentgenologica" rows="5" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Precauciones y cuidades especiales</strong></p>
+                        <textarea name="precauciones" id="precauciones" rows="5" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <p><strong>Evaluación clínica de cara y cuello, tejidos blandos, tejidos duros</strong></p>
+                        <textarea name="evaluacion" id="evaluacion" rows="5" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Evaluación de la oclusión</strong></p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="oclusion-1" name="oclusion">
+                                    <label class="form-check-label" for="oclusion-1">
+                                        Normoclusión
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="oclusion-2" name="oclusion">
+                                    <label class="form-check-label" for="oclusion-2">
+                                        Maloclusión: Clase I
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="oclusion-3" name="oclusion">
+                                    <label class="form-check-label" for="oclusion-3">
+                                        Clase II
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="oclusion-4" name="oclusion">
+                                    <label class="form-check-label" for="oclusion-4">
+                                        Clase III
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="oclusion-5" name="oclusion">
+                                    <label class="form-check-label" for="oclusion-5">
+                                        Oclusión evaluable
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Descripción</strong></p>
+                        <textarea name="oclusion-descripcion" id="oclusion-descripcion" rows="5" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Ordenes Roentoenogramas</strong></p>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="orden-1" name="ordenes">
+                                    <label class="form-check-label" for="orden-1">
+                                        Rutina
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="orden-2" name="ordenes">
+                                    <label class="form-check-label" for="orden-2">
+                                        Otros
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <textarea name="oclusion" id="oclusion" rows="5" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Opciones adicionales</strong></p>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="op-1" name="opciones-1">
+                                    <label class="form-check-label" for="op-1">
+                                        Modelos de estudio
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="op-2" name="opciones-1">
+                                    <label class="form-check-label" for="op-2">
+                                        Exámenes de laboratorio
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <textarea name="opciones-descripcion" id="opciones-descripcion" rows="5" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="consulta-1" name="opciones-1">
+                            <label class="form-check-label" for="consulta-1">
+                                Consultas
+                            </label>
+                        </div>
+                        <textarea name="consulta-descripcion" id="consulta-descripcion" rows="5" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="consulta-1" name="opciones-1">
+                            <label class="form-check-label" for="consulta-1">
+                                Estudios Especiales
+                            </label>
+                        </div>
+                        <textarea name="consulta-descripcion" id="consulta-descripcion" rows="5" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Equipo Diagnóstico</strong></p>
+                        <textarea name="consulta-descripcion" id="consulta-descripcion" rows="5" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+    <script src="js/cookie.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/expediente.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+</body>
+
+</html>
