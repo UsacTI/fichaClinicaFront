@@ -15,13 +15,13 @@ function registroAbono() {
         data: data,
         success: function (data) {
             console.log(data);
-
+            location.href = './boleta-pago.html'
         }
     });
 }
 
 $("#registro-abono").on('click', function () {
-    
+    console.log('hola');
     registroAbono();
 });
   
