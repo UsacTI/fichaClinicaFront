@@ -1,4 +1,4 @@
-var dominio = 'http://10.0.0.127:8080/' // 'http://localhost:8080'  'http://10.0.0.127:8080/'
+var dominio = 'http://localhost:8080/' // 'http://localhost:8080'  'http://10.0.0.127:8080/'
 // var baseUrl    = Dominio+ ':4000/';
 var nombre = getCookie('api-nombreUsuario')
 var apellido = getCookie('api-apellidoUsuario')

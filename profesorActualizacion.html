@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Actualización </title>
+    <title>Actualizacion Profesor </title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -40,14 +40,14 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li >
+                <li>
                     <a href="#homeSubmenu">Inicio</a>
                 </li>
                 <li class="active">
-                    <a href="#ActualizacionPacientes">Actualización Paciente</a>
+                    <a href="#regProfesor">Registro Profesor</a>
                 </li>
                 <li>
-                    <a href="#bancoPacientes">Banco Pacientes</a>
+                    <a href="#regEstudiante">Registro Estudiante</a>
                 </li>
             </ul>
         </nav>
@@ -82,7 +82,7 @@
             </nav>
 
             <div class="container border-r1 border-shadow">
-                <h2 style="text-align: center;">Pacientes Actualización</h2>
+                <h2 style="text-align: center;">Actualización Profesor</h2>
                 <div class="line"></div>
 
 
@@ -116,92 +116,50 @@
                     </br>
                     <div class="form-group">
                         <label>DPI:</label>
-                        <input type="text" id="dpi" name="dpi" placeholder="2201-01669-0101" class="form-control" onkeypress="return isIntegerKey(event)" maxlength="15" />
-                    </div>
-                    </br>
-                    <div class="form-group">
-                        <label>Direccion:</label>
-                        <input type="text" id="direccion" name="direccion" class="form-control" />
+                        <input type="number" id="dpi" name="dpi" placeholder="2201-01669-0101" class="form-control" />
                     </div>
                     </br>
                     <div class="form-group">
                         <label>Teléfono:</label>
-                        <input type="text" id="telefono" name="telefono" class="form-control" />
+                        <input type="number" id="telefono" name="telefono" class="form-control" />
                     </div>
                     </br>
                     <div class="form-group">
-                        <label>No. Hijos:&nbsp;&nbsp;</label>
-                        <input type="number" id="Nohijos" name="Nohijos" class="form-control"
-                            style="width: 15%;" />&nbsp;&nbsp;
+                        <label>Registro Académico:</label>
+                        <input type="number" id="regestudiante" name="regestudiante" class="form-control" />
                     </div>
                     </br>
                     <div class="form-group">
-                        <label>Escolaridad:&nbsp;&nbsp;</label>
-                        <select name="escolaridad" id="escolaridad">
-                            <option>Selecciona una opción</option>
-                            <option value="primario">PRIMARIO</option>
-                            <option value="basico">BASICO</option>
-                            <option value="diversificado">DIVERSIFICADO</option>
-                            <option value="universitario">UNIVERSITARIO</option>
+                        <label>Área:&nbsp;&nbsp;</label>
+                        <select name="area" id="area">
+                            <option>Selecciona una área</option>
+                            <option value="CLINICA">CLINICA</option>
+                            <option value="RESTAURATIVA">RESTAURATIVA</option>
+                            <option value="OPERATORIA DENTA">OPERATORIA DENTAL</option>
+                            <option value="MEDICO QUIRURGICA">MEDICO QUIRURGICA</option>
+                            <option value="PATOLOGIA">PATOLOGÍA</option>
+                            <option value="ODONTOPEDIATRIA">ODONTOPEDIATRIA</option>
                         </select>
-                        &nbsp;&nbsp;
-                      </br>
-                      <br>
-                        <select name="nivel" id="nivel">
-                            <option>Selecciona el nivel</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <label>Subdivisión:&nbsp;&nbsp;</label>
+                        <select name="subarea" id="subarea">
+                            <option>Selecciona una sub área</option>
+                            <option value="DIAGNOSTICO">DIAGNOSTICO</option>
+                            <option value="PROTESIS PARCIAL FIJA">PROTESIS PARCIAL FIJA</option>
+                            <option value="PROTESIS TOTAL">PROTESIS TOTAL</option>
+                            <option value="PROTESIS PARCIAL REMOVIBLE">PROTESIS PARCIAL REMOVIBLE</option>
+                            <option value="OPREATORIA DENTAL">OPREATORIA DENTAL</option>
+                            <option value="ENDODONCIA">ENDODONCIA</option>
+                            <option value="PERIODONCIA">PERIODONCIA</option>
+                            <option value="CIRUGIA">CIRUGIA</option>
+                            <option value="ODONTOPEDIAGRIA">ODONTOPEDIAGRIA</option>
+                            <option value="PATOLOGIA">PATOLOGIA</option>
+                            <option value="CIRUGIA Y EXODONCIA">CIRUGIA Y EXODONCIA</option>
+                            <option value="ENDODONCIA">ENDODONCIA</option>
                         </select>
-                    </div>
-                    </br>
-                    <div class="form-group">
-                        <label>Trabajo u Oficio:</label>
-                        <input type="text" id="trauoficio" name="trauoficio" class="form-control" />
-                    </div>
-                    </br>
-                    <div class="form-group">
-                        <label>Nacionalidad:</label>
-                        <input type="text" id="nacionalidad" name="nacionalidad" class="form-control" />
-                    </div>
-                    </br>
-                    <div class="form-group">
-                        <label>Transporte:&nbsp;&nbsp;</label>
-                        <select name="transporte" id="transporte">
-                            <option>Selecciona una opción</option>
-                            <option value="pie">A PIE</option>
-                            <option value="bicicleta">BICICLETA</option>
-                            <option value="bus">BUS</option>
-                            <option value="moto">MOTO</option>
-                            <option value="carro propio">CARRO PROPIO</option>
-                            <option value="carro de la empresa">CARRO DE LA EMPRESA</option>
-                            <option value="uber">UBER</option>
-                            <option value="otro">OTRO</option>
-                        </select>
-                    </div>
-                    </br>
-                    <div class="form-group">
-                        <label>Tipo de Paciente:&nbsp;&nbsp;</label>
-                        <select name="tipopaciente" id="tipopaciente">
-                            <option>Selecciona una opción</option>
-                            <option value="1">INTEGRAL</option>
-                            <option value="2">CASO ESPECIAL</option>
-                            <option value="3">PROTESIS TOTAL</option>
-                            <option value="4">ODONTOPEDIATRIA</option>
-                        </select>
-                    </div>
-                    </br>
-                    <div class="form-group">
-                        <label>Doctor:</label>
-                        <input type="text" id="doctor" name="doctor" class="form-control" />
-                    </div>
-                    </br>
-                    <div class="form-group">
-                        <label>Consulta:</label>
-                        <input type="text" id="consulta" name="consulta" class="form-control" />
+
                     </div>
                     </br>
                     <div class="form-group">
@@ -241,10 +199,11 @@
             });
         });
     </script>
+
     <script src="js/alertify.js"></script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
-    <script src="js/pacienteActualizacion.js"></script>
+    <script src="js/profesorActualizacion.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>
