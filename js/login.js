@@ -48,7 +48,7 @@ else if(cuenta==1){
 data     = '{"usuario": "' + username + '", "contrasenia": "' + password + '"}';
   $.ajax({
       type: 'POST',
-      url:  dominio + "login",
+      url:  dominio + "loginU",
       contentType: "application/json",
       dataType: 'json',
       crossDomain: true,
@@ -58,13 +58,19 @@ data     = '{"usuario": "' + username + '", "contrasenia": "' + password + '"}';
         console.log(data);
         var acceso = data.paciente;
       //console.log(acceso);
-      if(acceso===null){
+      if(paciente===null){
         alertify.error("Usuario o Contraseña Incorrecto!");
       }else{
-          var nombres = data.paciente.nombres;
+          var nombres = data.paciente.nombre;
           var apellidos = data.paciente.apellidos;
+          var tipoUsuario = data.paciente.tipousuario;
+          var token = data.token;
+
           setCookie('api-nombreUsuario', nombres, 1);
           setCookie('api-apellidoUsuario', apellidos, 1);
+          setCookie('api-token', token, 1);
+          setCookie('api-tipoUsuario', tipoUsuario, 1);
+          //setCookie('api-usuario', usuario, 1);
           window.location.href = "principal.html";
 
       }
