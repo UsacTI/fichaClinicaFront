@@ -17,7 +17,7 @@ function loading () {
     async: false,
     data: data,
     success: function (data) {
-      console.log(data.paciente)
+      // console.log(data.paciente)
       document.getElementById('nombre').value = data.paciente.nombres
       document.getElementById('apellido').value = data.paciente.apellidos
       document.getElementById('dpi').value = data.paciente.dpi
@@ -86,7 +86,7 @@ function actualizarRegistro () {
     async: false,
     data: data,
     success: function (data) {
-      console.log(data)
+      // console.log(data)
     }
   })
 }

@@ -11,7 +11,7 @@ function loading () {
     crossDomain: true,
     async: false,
     success: function (data) {
-      console.log(data)
+      // console.log(data)
       for (const value of data.usuarios) {
         // console.log(value)
         var fila = ''

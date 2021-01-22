@@ -30,11 +30,19 @@ function registroPaciente () {
       async: false,
       data: data,
       success: function (data) {
-        console.log(data)
+        // console.log(data)
       }
     })
   }
 }
+
+function isIntegerKey (evt) {
+  // console.log(evt)
+  var charCode = (evt.which) ? evt.which : evt.keyCode
+  if (charCode > 31 &&
+    (charCode < 48 || charCode > 57)) { return false }
+  return true
+};
 
 $('#registro').on('click', function () {
   registroPaciente()
