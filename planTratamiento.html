@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Plan de tratamiento</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="css/principal.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+
+    <!-- Table Paciente -->
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <nav id="sidebar" class="border-shadow-sidebar">
+            <div class="sidebar-header">
+                <img class="mb-4" src="img/logood.png" alt="" width="100" height="100">
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#homeSubmenu">Inicio</a>
+                </li>
+                <li class="active">
+                    <a href="#citas">Citas</a>
+                </li>
+                <li>
+                    <a href="#tratamientos">Tratamientos</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light"
+                style="background: linear-gradient(to right, rgba(76,40,130,1) 0%, rgba(157,39,185,1) 100%); color:white;">
+                <div class="container-fluid">
+                    <a type="button" id="sidebarCollapse" class="btn" style="font-size:30px;">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <div class="" id="nombreUsuario">
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" style="color: white;">Cerrar Sesión <i
+                                        class="fas fa-sign-out-alt"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container border-r1 border-shadow">
+                <h2 style="text-align: center;">Plan de tratamiento</h2>
+                <div class="line"></div>
+                <div class="table-responsive">
+                    <div style="width: 100%; overflow-x: auto;">
+                        <table id="table4" class="table table-striped no-margin table-bordered table-xs" style="table-layout: fixed; width: 50%;">
+                            <tbody style="font-size: 0.8em;">
+                                <tr>
+                                    <td style="width: 140px;">COLOR</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">CONTORNO</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">CONSISTENCIA</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">TAMAÑO</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">EXUDADO</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">MOVILIDAD</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">LESION M - G</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">FAC. IRRITANTES</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">PDB/MATERIA ALBA</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">CALCULOS</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">OTROS</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">OTROS</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;"></td>
+                                    <td style="width: 50px;">1</td>
+                                    <td style="width: 50px;">2</td>
+                                    <td style="width: 50px;">3</td>
+                                    <td style="width: 50px;">4a</td>
+                                    <td style="width: 50px;">5b</td>
+                                    <td style="width: 50px;">6c</td>
+                                    <td style="width: 50px;">7d</td>
+                                    <td style="width: 50px;">8e</td>
+                                    <td style="width: 50px;">9f</td>
+                                    <td style="width: 50px;">10g</td>
+                                    <td style="width: 50px;">11h</td>
+                                    <td style="width: 50px;">12i</td>
+                                    <td style="width: 50px;">13j</td>
+                                    <td style="width: 50px;">14</td>
+                                    <td style="width: 50px;">15</td>
+                                    <td style="width: 50px;">16</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;"></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/18-1.png" data-pieza="1" style="cursor: pointer;"><img src="./img/odontograma/18-1.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/17-2.png" data-pieza="2" style="cursor: pointer;"><img src="./img/odontograma/17-2.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/16-3.png" data-pieza="3" style="cursor: pointer;"><img src="./img/odontograma/16-3.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/15-4a.png" data-pieza="4a" style="cursor: pointer;"><img src="./img/odontograma/15-4a.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/14-5b.png" data-pieza="5b" style="cursor: pointer;"><img src="./img/odontograma/14-5b.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/13-6c.png" data-pieza="6c" style="cursor: pointer;"><img src="./img/odontograma/13-6c.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/12-7d.png" data-pieza="7d" style="cursor: pointer;"><img src="./img/odontograma/12-7d.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/11-8e.png" data-pieza="8e" style="cursor: pointer;"><img src="./img/odontograma/11-8e.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/21-9f.png" data-pieza="9f" style="cursor: pointer;"><img src="./img/odontograma/21-9f.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/22-10g.png" data-pieza="10g" style="cursor: pointer;"><img src="./img/odontograma/22-10g.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/23-11h.png" data-pieza="11h" style="cursor: pointer;"><img src="./img/odontograma/23-11h.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/24-12i.png" data-pieza="12i" style="cursor: pointer;"><img src="./img/odontograma/24-12i.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/25-13j.png" data-pieza="13j" style="cursor: pointer;"><img src="./img/odontograma/25-13j.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/26-14.png" data-pieza="14" style="cursor: pointer;"><img src="./img/odontograma/26-14.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/27-15.png" data-pieza="15" style="cursor: pointer;"><img src="./img/odontograma/27-15.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/28-16.png" data-pieza="16" style="cursor: pointer;"><img src="./img/odontograma/28-16.png"></a></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;"></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/48-32.png" data-pieza="32" style="cursor: pointer;"><img src="./img/odontograma/48-32.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/47-31.png" data-pieza="31" style="cursor: pointer;"><img src="./img/odontograma/47-31.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/46-30.png" data-pieza="30" style="cursor: pointer;"><img src="./img/odontograma/46-30.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/45-29t.png" data-pieza="29t" style="cursor: pointer;"><img src="./img/odontograma/45-29t.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/44-28s.png" data-pieza="28s" style="cursor: pointer;"><img src="./img/odontograma/44-28s.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/43-27r.png" data-pieza="27r" style="cursor: pointer;"><img src="./img/odontograma/43-27r.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/42-26q.png" data-pieza="26q" style="cursor: pointer;"><img src="./img/odontograma/42-26q.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/41-25p.png" data-pieza="25p" style="cursor: pointer;"><img src="./img/odontograma/41-25p.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/31-24o.png" data-pieza="24o" style="cursor: pointer;"><img src="./img/odontograma/31-24o.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/32-23n.png" data-pieza="23n" style="cursor: pointer;"><img src="./img/odontograma/32-23n.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/33-22m.png" data-pieza="22m" style="cursor: pointer;"><img src="./img/odontograma/33-22m.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/34-21l.png" data-pieza="21l" style="cursor: pointer;"><img src="./img/odontograma/34-21l.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/35-20k.png" data-pieza="20k" style="cursor: pointer;"><img src="./img/odontograma/35-20k.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/36-19.png" data-pieza="19" style="cursor: pointer;"><img src="./img/odontograma/36-19.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/37-18.png" data-pieza="18" style="cursor: pointer;"><img src="./img/odontograma/37-18.png"></a></td>
+                                    <td style="width: 50px;"><a data-toggle="modal" data-target="#exampleModal" data-image="./img/odontograma/38-17.png" data-pieza="17" style="cursor: pointer;"><img src="./img/odontograma/38-17.png"></a></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;"></td>
+                                    <td style="width: 50px;">32</td>
+                                    <td style="width: 50px;">31</td>
+                                    <td style="width: 50px;">30</td>
+                                    <td style="width: 50px;">29t</td>
+                                    <td style="width: 50px;">28s</td>
+                                    <td style="width: 50px;">27r</td>
+                                    <td style="width: 50px;">26q</td>
+                                    <td style="width: 50px;">25p</td>
+                                    <td style="width: 50px;">24o</td>
+                                    <td style="width: 50px;">23n</td>
+                                    <td style="width: 50px;">22m</td>
+                                    <td style="width: 50px;">21l</td>
+                                    <td style="width: 50px;">20k</td>
+                                    <td style="width: 50px;">19</td>
+                                    <td style="width: 50px;">18</td>
+                                    <td style="width: 50px;">17</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">COLOR</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">CONTORNO</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">CONSISTENCIA</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">TAMAÑO</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">EXUDADO</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">MOVILIDAD</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">LESION M - G</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">FAC. IRRITANTES</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">PDB/MATERIA ALBA</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">CALCULOS</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">OTROS</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px;">OTROS</td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                    <td style="width: 50px;" contenteditable="true"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <div style="margin: 0 auto;"><img id="modal-image" width="80"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var image = button.data('image') // Extract info from data-* attributes
+            var pieza = button.data('pieza') 
+            document.getElementById('modal-image').setAttribute('src', image)
+            var modal = $(this)
+            modal.find('.modal-title').text('Pieza dental: ' + pieza)
+            
+        })
+        
+    </script>
+    <script src="js/cookie.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/cita.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    
+</body>
+
+</html>
