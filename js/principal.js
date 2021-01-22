@@ -6,8 +6,12 @@ $(document).ready(function () {
 });
 
 
+
 function menu(tipoU) {
 
+    if(tipoU == 3){
+
+    $('#contenido').load("./inicioEstudiante.html");
 
     data = '{"tipomenu": ' + tipoU + '}'
     $.ajax({
@@ -30,9 +34,12 @@ function menu(tipoU) {
 
         document.getElementById("llenarMenu").innerHTML = html;
 
-      }
-    })
-
+      },
+      error: function (response) {
+           window.location.href = "index.html";
+          }
+    });
+}
 
 }
 
@@ -41,3 +48,10 @@ function contentUrl(url) {
 $('#contenido').load("./"+url);
 
 }
+
+
+///////////////cerrar sesion
+  $("#cerrarSesion").on('click', function () {
+    setCookie('api-token', 'null', 1);
+    window.location.href = "index.html";
+  });
