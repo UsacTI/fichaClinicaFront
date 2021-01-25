@@ -14,7 +14,7 @@ function login(cuenta) {
   data     = '{"usuario": "' + username + '", "contrasenia": "' + password + '"}';
     $.ajax({
         type: 'POST',
-        url:  dominio + "api/customers/login",
+        url:  dominio + "login",
         contentType: "application/json",
         dataType: 'json',
         crossDomain: true,
@@ -24,19 +24,60 @@ function login(cuenta) {
           console.log(data);
           var acceso = data.paciente;
         //console.log(acceso);
-        if(acceso===null){
+        if(paciente===null){
           alertify.error("Usuario o Contraseña Incorrecto!");
         }else{
-            var nombres = data.paciente.nombres;
+            var nombres = data.paciente.nombre;
             var apellidos = data.paciente.apellidos;
+            var token = data.token;
+            var usuario = data.paciente.usuario;
             setCookie('api-nombreUsuario', nombres, 1);
             setCookie('api-apellidoUsuario', apellidos, 1);
-            window.location.href = "principal.html";
+            setCookie('api-token', token, 1);
+            setCookie('api-usuario', usuario, 1);
+            window.location.href = "abono.html";
 
         }
         }
     });
 }
+else if(cuenta==1){
+  username = $("#correoDoctor").val();
+  password = $("#passwordDoctor").val();
+
+data     = '{"usuario": "' + username + '", "contrasenia": "' + password + '"}';
+  $.ajax({
+      type: 'POST',
+      url:  dominio + "loginU",
+      contentType: "application/json",
+      dataType: 'json',
+      crossDomain: true,
+      async: false,
+      data: data,
+      success: function (data) {
+        console.log(data);
+        var acceso = data.paciente;
+      //console.log(acceso);
+      if(paciente===null){
+        alertify.error("Usuario o Contraseña Incorrecto!");
+      }else{
+          var nombres = data.paciente.nombre;
+          var apellidos = data.paciente.apellidos;
+          var tipoUsuario = data.paciente.tipousuario;
+          var token = data.token;
+
+          setCookie('api-nombreUsuario', nombres, 1);
+          setCookie('api-apellidoUsuario', apellidos, 1);
+          setCookie('api-token', token, 1);
+          setCookie('api-tipoUsuario', tipoUsuario, 1);
+          //setCookie('api-usuario', usuario, 1);
+          window.location.href = "principal.html";
+
+      }
+      }
+  });
+}
+
 }
 
 $("#doctor").on('click', function () {
