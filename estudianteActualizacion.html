@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Banco Paciente</title>
+    <title>Visualizacion Estudiante </title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -28,14 +28,9 @@
         integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
         crossorigin="anonymous"></script>
 
-    <!-- Table Paciente -->
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
 </head>
 
-<body onload="loading()">
+<body  onload="loading()">
 
     <div class="wrapper">
 
@@ -49,10 +44,10 @@
                     <a href="#homeSubmenu">Inicio</a>
                 </li>
                 <li>
-                    <a href="#pacientes">Pacientes</a>
+                    <a href="#regProfesor">Registro Profesor</a>
                 </li>
                 <li class="active">
-                    <a href="#bancoPacientes">Banco de Pacientes</a>
+                    <a href="#regEstudiante">Registro Estudiante</a>
                 </li>
             </ul>
         </nav>
@@ -87,48 +82,64 @@
             </nav>
 
             <div class="container border-r1 border-shadow">
-                <h2 style="text-align: center;">Banco Pacientes</h2>
+                <h2 style="text-align: center;">Visualizacion Estudiante</h2>
                 <div class="line"></div>
-                <div class="table-responsive">
-                    <table id="table1" class="table table-striped no-margin">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>DPI</th>
-                                <th>Perfil|Citas|Editar</th>
-                            </tr>
-                        </thead>
-                        <tbody  id="tablita">
-                            <!-- <tr>
-                                <td>Tiger Nixon</td>
-                                <td>2514789654022</td>
-                                <td><img src="icon/user.png"> <img src="icon/table.png"> </td>
-                            </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>2514789654022</td>
-                                <td><img src="icon/user.png"> <img src="icon/table.png"></td>
-                            </tr>
-                            <tr>
-                                <td>Ashton Cox</td>
-                                <td>2514789654022</td>
-                                <td> <img src="icon/user.png"> <img src="icon/table.png"></td>
-                            </tr> -->
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>DPI</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+
+
+                <div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Nombre</label>
+                        <input type="text" class="form-control" id="nombre">
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Apellido</label>
+                        <input type="text" class="form-control" id="apellido">
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Genero</label>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <input type="radio" id="genero" name="gender" value="0"> </input> &nbsp;&nbsp;
+                        <label for="masculino">Masculino</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" id="genero2" name="gender" value="1">&nbsp;&nbsp;
+                        <label for="femenino">Femenino</label>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Fecha de Nacimiento:</label>
+                        <input type="date" id="fechanacimiento" name="trip-start" value="2020-01-01" min="1940-01-01"
+                            max="2020-01-01" class="form-control">
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>DPI:</label>
+                        <input type="number" id="dpi" name="dpi" placeholder="2201-01669-0101" class="form-control"/>
+                    </div>        
+                    </br>
+                    <div class="form-group">
+                        <label>Teléfono:</label>
+                        <input type="number" id="telefono" name="telefono" class="form-control"/>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Registro Estudiantil:</label>
+                        <input type="number" id="regestudiante" name="regestudiante" class="form-control"/>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <button href="" class="boton_personalizado" id="actualizacion">Actualizacion</button>
+                    </div>
+                    </br>
+                    </br>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <!-- jQuery CDN - Slim version (=without AJAX) -->   
     <script src="vendor/jquery/jquery.min.js"></script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
@@ -155,12 +166,13 @@
             });
         });
     </script>
+
+    <script src="js/alertify.js"></script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
-    <script src="js/bancoPaciente.js"></script>
+    <script src="js/estudianteActualizacion.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>
-
 
 </html>

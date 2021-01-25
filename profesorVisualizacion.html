@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Banco Paciente</title>
+    <title>Visualizacion</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -28,11 +28,6 @@
         integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
         crossorigin="anonymous"></script>
 
-    <!-- Table Paciente -->
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
 </head>
 
 <body onload="loading()">
@@ -48,11 +43,11 @@
                 <li>
                     <a href="#homeSubmenu">Inicio</a>
                 </li>
-                <li>
-                    <a href="#pacientes">Pacientes</a>
-                </li>
                 <li class="active">
-                    <a href="#bancoPacientes">Banco de Pacientes</a>
+                    <a href="#regProfesor">Registro Profesor</a>
+                </li>
+                <li>
+                    <a href="#regEstudiante">Registro Estudiante</a>
                 </li>
             </ul>
         </nav>
@@ -87,42 +82,90 @@
             </nav>
 
             <div class="container border-r1 border-shadow">
-                <h2 style="text-align: center;">Banco Pacientes</h2>
+                <h2 style="text-align: center;">Visualizacion de  Profesor</h2>
                 <div class="line"></div>
-                <div class="table-responsive">
-                    <table id="table1" class="table table-striped no-margin">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>DPI</th>
-                                <th>Perfil|Citas|Editar</th>
-                            </tr>
-                        </thead>
-                        <tbody  id="tablita">
-                            <!-- <tr>
-                                <td>Tiger Nixon</td>
-                                <td>2514789654022</td>
-                                <td><img src="icon/user.png"> <img src="icon/table.png"> </td>
-                            </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>2514789654022</td>
-                                <td><img src="icon/user.png"> <img src="icon/table.png"></td>
-                            </tr>
-                            <tr>
-                                <td>Ashton Cox</td>
-                                <td>2514789654022</td>
-                                <td> <img src="icon/user.png"> <img src="icon/table.png"></td>
-                            </tr> -->
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>DPI</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+
+
+                <div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" disabled>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" disabled>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Genero</label >
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <input type="radio" id="genero" name="gender" value="0" disabled> </input> &nbsp;&nbsp;
+                        <label for="masculino">Masculino</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" id="genero2" name="gender" value="1" disabled>&nbsp;&nbsp;
+                        <label for="femenino">Femenino</label>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Fecha de Nacimiento:</label>
+                        <input type="date" id="fechanacimiento" name="trip-start" value="2020-01-01" min="1940-01-01"
+                            max="2020-01-01" class="form-control" disabled>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>DPI:</label>
+                        <input type="number" id="dpi" name="dpi" placeholder="2201-01669-0101" class="form-control" disabled/>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Teléfono:</label>
+                        <input type="number" id="telefono" name="telefono" class="form-control" disabled/>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Registro Académico:</label>
+                        <input type="number" id="regestudiante" name="regestudiante" class="form-control" disabled/>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Área:&nbsp;&nbsp;</label>
+                        <select name="area" id="area" disabled>
+                            <option>Selecciona una área</option>
+                            <option value="CLINICA">CLINICA</option>
+                            <option value="RESTAURATIVA">RESTAURATIVA</option>
+                            <option value="OPERATORIA DENTA">OPERATORIA DENTAL</option>
+                            <option value="MEDICO QUIRURGICA">MEDICO QUIRURGICA</option>
+                            <option value="PATOLOGIA">PATOLOGÍA</option>
+                            <option value="ODONTOPEDIATRIA">ODONTOPEDIATRIA</option>
+                        </select>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <label>Subdivisión:&nbsp;&nbsp;</label>
+                        <select name="subarea" id="subarea" disabled>
+                            <option>Selecciona una sub área</option>
+                            <option value="DIAGNOSTICO">DIAGNOSTICO</option>
+                            <option value="PROTESIS PARCIAL FIJA">PROTESIS PARCIAL FIJA</option>
+                            <option value="PROTESIS TOTAL">PROTESIS TOTAL</option>
+                            <option value="PROTESIS PARCIAL REMOVIBLE">PROTESIS PARCIAL REMOVIBLE</option>
+                            <option value="OPREATORIA DENTAL">OPREATORIA DENTAL</option>
+                            <option value="ENDODONCIA">ENDODONCIA</option>
+                            <option value="PERIODONCIA">PERIODONCIA</option>
+                            <option value="CIRUGIA">CIRUGIA</option>
+                            <option value="ODONTOPEDIAGRIA">ODONTOPEDIAGRIA</option>
+                            <option value="PATOLOGIA">PATOLOGIA</option>
+                            <option value="CIRUGIA Y EXODONCIA">CIRUGIA Y EXODONCIA</option>
+                        </select>
+
+                    </div>
+                    </br>
+                    <!-- <div class="form-group">
+                        <button href="" class="boton_personalizado" id="registro">Registro</button>
+                    </div> -->
+                    </br>
+                    </br>
                 </div>
             </div>
         </div>
@@ -155,12 +198,13 @@
             });
         });
     </script>
+
+    <script src="js/alertify.js"></script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
-    <script src="js/bancoPaciente.js"></script>
+    <script src="js/profesorActualizacion.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>
-
 
 </html>

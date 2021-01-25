@@ -30,7 +30,7 @@ function registroPaciente () {
       async: false,
       data: data,
       success: function (data) {
-        console.log(data)
+        // console.log(data)
       }
     })
   }
@@ -57,14 +57,14 @@ function registroPacienteTrabSocial () {
   doctor = $('#doctor').val()
   consulta = $('#consulta').val()
 
-  if (password != password2) {
+  if (password !== password2) {
     alertify.warning('La contraseña no coincide')
   } else {
-    data = '{"nombres": "' + nombres + '", "apellidos": "' + apellidos + '", "genero": "' + genero + '", "nacimiento": "' +
-      fechanacimiento + '", "dpi": "' + dpi + '", "contrasenia": "' + password + '", "direccion": "' + direccion + '", "telefono":' +
-      telefono + ', "nohijos": "' + nohijos + ', "escolaridad": "' + escolaridad + ', "nivel": "' + nivel + ', "profesion": "' + trauoficio +
-       ', "nacionalidad": "' + nacionalidad + ', "transporte": "' + transporte + ', "consulta": "' + consulta + ', "doctor": "' + doctor +
-       ', "tipopaciente": "' + tipopaciente + '"}'
+    data = '{"nombres": "' + nombres + '", "apellidos": "' + apellidos + '", "genero": "' + genero + '", "nacimiento": "' + fechanacimiento +
+     '", "dpi": "' + dpi + '", "contrasenia": "' + password + '", "direccion": "' + direccion + '", "telefono":' + telefono +
+      ', "nohijos": ' + nohijos + ', "escolaridad": "' + escolaridad + '", "nivel": ' + nivel + ', "profesion": "' + trauoficio +
+       '", "nacionalidad": "' + nacionalidad + '", "transporte": "' + transporte + '", "consulta": "' + consulta + '", "doctor": "' + doctor +
+       '", "tipopaciente": ' + tipopaciente + '}'
 
     $.ajax({
       type: 'POST',
@@ -75,11 +75,19 @@ function registroPacienteTrabSocial () {
       async: false,
       data: data,
       success: function (data) {
-        console.log(data)
+        // console.log(data)
       }
     })
   }
 }
+
+function isIntegerKey (evt) {
+  // console.log(evt)
+  var charCode = (evt.which) ? evt.which : evt.keyCode
+  if (charCode > 31 &&
+    (charCode < 48 || charCode > 57)) { return false }
+  return true
+};
 
 $('#registro').on('click', function () {
   registroPaciente()

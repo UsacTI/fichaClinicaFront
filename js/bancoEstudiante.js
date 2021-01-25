@@ -5,22 +5,23 @@ $(document).ready(function () {
 function loading () {
   $.ajax({
     type: 'GET',
-    url: dominio + 'patients/state1/',
+    url: dominio + 'users/state3/',
     contentType: 'application/json',
     dataType: 'json',
     crossDomain: true,
     async: false,
     success: function (data) {
       // console.log(data)
-      for (const value of data.pacientes) {
+      for (const value of data.usuarios) {
         // console.log(value)
         var fila = ''
         fila += '<tr>'
         fila += '<td>' + value.nombres + '</td>'
-        fila += '<td>' + value.dpi + '</td>'
-        fila += '<td>' + '<a href="./pacienteVisualizacion.html?usr=' + value.idpaciente + '" target="_blank"> <img src="icon/user.png"></img></a>' + '&nbsp;&nbsp;' +
-                         '<a href="google.com' + value.idpaciente + '" target="_blank"><img src="icon/table.png"></img></a>' + '&nbsp;&nbsp;' +
-                         '<a href="./pacienteActualizacion.html?usr=' + value.idpaciente + '" target="_blank"><img src="icon/edit.png"></img></a>' + '</td>'
+        fila += '<td>' + value.apellidos + '</td>'
+        fila += '<td>' + value.carne + '</td>'
+
+        fila += '<td>' + '<a href="./estudianteVisualizacion.html?usr=' + value.idusuario + '" target="_blank"> <img src="icon/user.png"></img></a>' + '&nbsp;&nbsp;' +
+                         '<a href="./estudianteActualizacion.html?usr=' + value.idusuario + '" target="_blank"><img src="icon/edit.png"></img></a>' + '</td>'
         fila += '</tr>'
         var btn = document.createElement('TR')
         btn.innerHTML = fila

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Registro Profesor </title>
+    <title>Datos </title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -30,7 +30,7 @@
 
 </head>
 
-<body>
+<body onload="loading()">
 
     <div class="wrapper">
 
@@ -40,14 +40,14 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li>
+                <li >
                     <a href="#homeSubmenu">Inicio</a>
                 </li>
-                <li class="active">
-                    <a href="#regProfesor">Registro Profesor</a>
+                <li>
+                    <a href="#ActualizacionPacientes">Actualización Paciente</a>
                 </li>
                 <li>
-                    <a href="#regEstudiante">Registro Estudiante</a>
+                    <a href="#bancoPacientes">Banco Pacientes</a>
                 </li>
             </ul>
         </nav>
@@ -82,19 +82,19 @@
             </nav>
 
             <div class="container border-r1 border-shadow">
-                <h2 style="text-align: center;">Registro Profesor</h2>
+                <h2 style="text-align: center;">Datos Pacientes</h2>
                 <div class="line"></div>
 
 
                 <div>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Nombre</label>
-                        <input type="text" class="form-control" id="nombre">
+                        <input type="text" class="form-control" id="nombre" disabled>
                     </div>
                     </br>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Apellido</label>
-                        <input type="text" class="form-control" id="apellido">
+                        <input type="text" class="form-control" id="apellido" disabled>
                     </div>
                     </br>
                     <div class="form-group">
@@ -102,79 +102,111 @@
                     </div>
                     </br>
                     <div class="form-group">
-                        <input type="radio" id="genero" name="gender" value="0"> </input> &nbsp;&nbsp;
+                        <input type="radio" id="genero" name="gender" value="0" disabled> </input> &nbsp;&nbsp;
                         <label for="masculino">Masculino</label> &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="radio" id="genero" name="gender" value="1">&nbsp;&nbsp;
+                        <input type="radio" id="genero2" name="gender" value="1" disabled>&nbsp;&nbsp;
                         <label for="femenino">Femenino</label>
                     </div>
                     </br>
                     <div class="form-group">
                         <label>Fecha de Nacimiento:</label>
                         <input type="date" id="fechanacimiento" name="trip-start" value="2020-01-01" min="1940-01-01"
-                            max="2020-01-01" class="form-control">
+                            max="2020-01-01" class="form-control" disabled>
                     </div>
                     </br>
                     <div class="form-group">
                         <label>DPI:</label>
-                        <input type="text" id="dpi" name="dpi" placeholder="2201-01669-0101" class="form-control" onkeypress="return isIntegerKey(event)" maxlength="15"  />
+                        <input type="text" id="dpi" name="dpi" placeholder="2201-01669-0101" class="form-control" onkeypress="return isIntegerKey(event)" maxlength="15" disabled/>
                     </div>
                     </br>
                     <div class="form-group">
-                        <label>Contraseña:</label>
-                        <input type="password" id="contrasenia" name="contrasenia" class="form-control" />
+                        <label>Direccion:</label>
+                        <input type="text" id="direccion" name="direccion" class="form-control" disabled/>
                     </div>
-                    </br>
-                    <div class="form-group">
-                        <label>Confirmar contraseña:</label>
-                        <input type="password" id="contrasenia2" name="contrasenia2" class="form-control" />
-                    </div>
-
                     </br>
                     <div class="form-group">
                         <label>Teléfono:</label>
-                        <input type="number" id="telefono" name="telefono" class="form-control" />
+                        <input type="text" id="telefono" name="telefono" class="form-control" disabled/>
                     </div>
                     </br>
                     <div class="form-group">
-                        <label>Registro Académico:</label>
-                        <input type="number" id="regestudiante" name="regestudiante" class="form-control" />
+                        <label>No. Hijos:&nbsp;&nbsp;</label>
+                        <input type="number" id="Nohijos" name="Nohijos" class="form-control"
+                            style="width: 15%;" disabled/>&nbsp;&nbsp;
                     </div>
                     </br>
                     <div class="form-group">
-                        <label>Área:&nbsp;&nbsp;</label>
-                        <select name="area" id="area">
-                            <option>Selecciona una área</option>
-                            <option value="CLINICA">CLINICA</option>
-                            <option value="RESTAURATIVA">RESTAURATIVA</option>
-                            <option value="OPERATORIA DENTA">OPERATORIA DENTAL</option>
-                            <option value="MEDICO QUIRURGICA">MEDICO QUIRURGICA</option>
-                            <option value="PATOLOGIA">PATOLOGÍA</option>
-                            <option value="ODONTOPEDIATRIA">ODONTOPEDIATRIA</option>
+                        <label>Escolaridad:&nbsp;&nbsp;</label>
+                        <select name="escolaridad" id="escolaridad" disabled>
+                            <option>Selecciona una opción</option>
+                            <option value="primario">PRIMARIO</option>
+                            <option value="basico">BASICO</option>
+                            <option value="diversificado">DIVERSIFICADO</option>
+                            <option value="universitario">UNIVERSITARIO</option>
+                         </select>
+                        &nbsp;&nbsp;
+                      </br>
+                      <br>
+                        <select name="nivel" id="nivel" disabled>
+                            <option>Selecciona el nivel</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
                         </select>
-
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-
-                        <label>Subdivisión:&nbsp;&nbsp;</label>
-                        <select name="subarea" id="subarea">
-                            <option>Selecciona una sub área</option>
-                            <option value="DIAGNOSTICO">DIAGNOSTICO</option>
-                            <option value="PROTESIS PARCIAL FIJA">PROTESIS PARCIAL FIJA</option>
-                            <option value="PROTESIS TOTAL">PROTESIS TOTAL</option>
-                            <option value="PROTESIS PARCIAL REMOVIBLE">PROTESIS PARCIAL REMOVIBLE</option>
-                            <option value="OPREATORIA DENTAL">OPREATORIA DENTAL</option>
-                            <option value="ENDODONCIA">ENDODONCIA</option>
-                            <option value="PERIODONCIA">PERIODONCIA</option>
-                            <option value="CIRUGIA">CIRUGIA</option>
-                            <option value="ODONTOPEDIAGRIA">ODONTOPEDIAGRIA</option>
-                            <option value="PATOLOGIA">PATOLOGIA</option>
-                            <option value="CIRUGIA Y EXODONCIA">CIRUGIA Y EXODONCIA</option>
-                        </select>
-
                     </div>
                     </br>
                     <div class="form-group">
-                        <button href="" class="boton_personalizado" id="registro">Registro</button>
+                        <label>Trabajo u Oficio:</label>
+                        <input type="text" id="trauoficio" name="trauoficio" class="form-control" disabled/>
                     </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Nacionalidad:</label>
+                        <input type="text" id="nacionalidad" name="nacionalidad" class="form-control" disabled/>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Transporte:&nbsp;&nbsp;</label>
+                        <select name="transporte" id="transporte" disabled>
+                            <option>Selecciona una opción</option>
+                            <option value="pie">A PIE</option>
+                            <option value="bicicleta">BICICLETA</option>
+                            <option value="bus">BUS</option>
+                            <option value="moto">MOTO</option>
+                            <option value="carro propio">CARRO PROPIO</option>
+                            <option value="carro de la empresa">CARRO DE LA EMPRESA</option>
+                            <option value="uber">UBER</option>
+                            <option value="otro">OTRO</option>
+                        </select>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Tipo de Paciente:&nbsp;&nbsp;</label>
+                        <select name="tipopaciente" id="tipopaciente" disabled>
+                            <option>Selecciona una opción</option>
+                            <option value="1">INTEGRAL</option>
+                            <option value="2">CASO ESPECIAL</option>
+                            <option value="3">PROTESIS TOTAL</option>
+                            <option value="4">ODONTOPEDIATRIA</option>
+                        </select>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Doctor:</label>
+                        <input type="text" id="doctor" name="doctor" class="form-control" disabled/>
+                    </div>
+                    </br>
+                    <div class="form-group">
+                        <label>Consulta:</label>
+                        <input type="text" id="consulta" name="consulta" class="form-control" disabled/>
+                    </div>
+                    </br>
+                    <!-- <div class="form-group">
+                        <button href="" class="boton_personalizado" id="actualizar">Actualizar</button>
+                    </div> -->
                     </br>
                     </br>
                 </div>
@@ -209,11 +241,10 @@
             });
         });
     </script>
-
     <script src="js/alertify.js"></script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
-    <script src="js/registroProfesor.js"></script>
+    <script src="js/pacienteActualizacion.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>
