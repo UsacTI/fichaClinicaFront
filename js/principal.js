@@ -2,43 +2,74 @@ $(document).ready(function () {
   menu(tipoUsuario);
 
 
-  document.getElementById("nombreUsuario").innerHTML = '<a class="nav-link" style="color: white;">'+nombre+ ' '+apellido+'</a>';
+  document.getElementById("nombreUsuario").innerHTML = '<a class="nav-link" style="color: yellow;"><strong>'+nombre+ ', '+apellido+'.</strong></a>';
 });
 
 
 
 function menu(tipoU) {
 
-    if(tipoU == 3){
+  if(tipoU == 3){
 
-    $('#contenido').load("./inicioEstudiante.html");
+  $('#contenido').load("./inicioEstudiante.html");
 
-    data = '{"tipomenu": ' + tipoU + '}'
-    $.ajax({
-      type: 'POST',
-      url: dominio + 'menus',
-      contentType: 'application/json',
-      dataType: 'json',
-      crossDomain: true,
-      async: false,
-      data: data,
-      success: function (data) {
-        console.log(data)
-        html = '';
+  data = '{"tipomenu": ' + tipoU + '}'
+  $.ajax({
+    type: 'POST',
+    url: dominio + 'menus',
+    contentType: 'application/json',
+    dataType: 'json',
+    crossDomain: true,
+    async: false,
+    data: data,
+    success: function (data) {
+      console.log(data)
+      html = '';
 
-        for(i = 0; i < data.Menus.length; i++){
-          console.log(data.Menus[i]);
-          html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].nombre+'</a></li>';
+      for(i = 0; i < data.Menus.length; i++){
+        console.log(data.Menus[i]);
+        html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].nombre+'</a></li>';
+      }
+
+
+      document.getElementById("llenarMenu").innerHTML = html;
+
+    },
+    error: function (response) {
+         window.location.href = "index.html";
         }
+  });
+}
+ else if(tipoU == 4){
+
+$('#contenido').load("./bancoProfesor.html");
+
+data = '{"tipomenu": ' + tipoU + '}'
+$.ajax({
+  type: 'POST',
+  url: dominio + 'menus',
+  contentType: 'application/json',
+  dataType: 'json',
+  crossDomain: true,
+  async: false,
+  data: data,
+  success: function (data) {
+    console.log(data)
+    html = '';
+
+    for(i = 0; i < data.Menus.length; i++){
+      console.log(data.Menus[i]);
+      html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].nombre+'</a></li>';
+    }
 
 
-        document.getElementById("llenarMenu").innerHTML = html;
+    document.getElementById("llenarMenu").innerHTML = html;
 
-      },
-      error: function (response) {
-           window.location.href = "index.html";
-          }
-    });
+  },
+  error: function (response) {
+       window.location.href = "index.html";
+      }
+});
 }
 
 }
