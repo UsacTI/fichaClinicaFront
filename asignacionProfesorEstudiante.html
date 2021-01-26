@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Profesores</title>
+    <title>Asignacion Prof-Estu</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -87,56 +87,25 @@
             </nav>
 
             <div class="container border-r1 border-shadow">
-                <h2 style="text-align: center;">Profesores</h2>
+                <h2 style="text-align: center;">Asignación Profesor Estudiante</h2>
                 <div class="line"></div>
-                <div class="table-responsive">
-                    <table id="table1" class="table table-striped no-margin">
-                        <thead>
-                            <tr>
-                                <th>Nombres</th>
-                                <th>Apellidos</th>
-                                <th>Carnet</th>
-                                <th>Área</th>
-                                <th>Subarea</th>
-                                <th>Perfil|Editar</th>
-                            </tr>
-                        </thead>
-                        <tbody  id="tablita">
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <!-- <tr>
-                                <td>Tiger Nixon</td>
-                                <td>2514789654022</td>
-                                <td><img src="icon/user.png"> <img src="icon/table.png"> </td>
-                            </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>2514789654022</td>
-                                <td><img src="icon/user.png"> <img src="icon/table.png"></td>
-                            </tr>
-                            <tr>
-                                <td>Ashton Cox</td>
-                                <td>2514789654022</td>
-                                <td> <img src="icon/user.png"> <img src="icon/table.png"></td>
-                            </tr> -->
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Apellidos</th>
-                                <th>Carnet</th>
-                                <th>Área</th>
-                                <th>Subarea</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                <div class="row">
+                    <div class="col-md-6" style="text-align: center;">
+                        Profesor:&nbsp&nbsp <select name="prof" id="prof">
+                            <option value="">Escoja un profesor</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6" style="text-align: center;">
+                        Estudiante:&nbsp&nbsp <select name="estu" id="estu">
+                            <option value="">Escoja un estudiante</option>
+                        </select>
+                    </div>
+                    </br>
+                    </br>
+                    </br>
+                    <div class="col-md-11" style="text-align: center;">
+                        <button href="" class="boton_personalizado" id="asignar">Asignar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -171,7 +140,7 @@
     </script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
-    <script src="js/bancoProfesor.js"></script>
+    <script src="js/asignacionProfesorEstudiante.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>

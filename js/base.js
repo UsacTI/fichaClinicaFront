@@ -1,5 +1,5 @@
-//var dominio = 'http://localhost:8080/';
-var dominio = 'http://10.0.0.127:8080/';
+var dominio = 'http://localhost:8080/';
+//var dominio = 'http://10.0.0.127:8080/';
 var dominioUrl = 'http://localhost/fichaClinica/';
 //var baseUrl    = Dominio+ ':4000/';
 var nombre    = getCookie('api-nombreUsuario');
