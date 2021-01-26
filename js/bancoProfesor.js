@@ -23,8 +23,8 @@ function loading () {
         fila += '<td>' + value.area + '</td>'
         fila += '<td>' + value.subarea + '</td>'
 
-        fila += '<td>' + '<a href="./profesorVisualizacion.html?usr=' + value.idusuario + '" target="_blank"> <img src="icon/user.png"></img></a>' + '&nbsp;&nbsp;' +
-                         '<a href="./profesorActualizacion.html?usr=' + value.idusuario + '" target="_blank"><img src="icon/edit.png"></img></a>' + '</td>'
+        fila += '<td>' + '<a href="#" onClick= profesorVisualizacion("'+value.idusuario+'")> <img src="icon/user.png"></img></a>' + '&nbsp;&nbsp;' +
+                         '<a href="#" onClick= profesorActualizacion("'+value.idusuario+'")><img src="icon/edit.png"></img></a>' + '</td>'
         fila += '</tr>'
         var btn = document.createElement('TR')
         btn.innerHTML = fila
@@ -59,4 +59,21 @@ function loading2 () {
       }
     }
   })
+}
+
+
+function profesorVisualizacion(idProfesor) {
+
+//setCookie('api-idPersonal', idestudiante, 1);
+idPersonal = idProfesor;
+$('#contenido').load("profesorVisualizacion.html");
+
+}
+
+function profesorActualizacion(idProfesor) {
+
+//setCookie('api-idPersonal', idestudiante, 1);
+idPersonal = idProfesor;
+$('#contenido').load("profesorActualizacion.html");
+
 }

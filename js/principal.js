@@ -40,35 +40,66 @@ function menu(tipoU) {
         }
   });
 }
- else if(tipoU == 4){
+else if(tipoU == 4){
 
 $('#contenido').load("./bancoEstudiante.html");
 
 data = '{"tipomenu": ' + tipoU + '}'
 $.ajax({
-  type: 'POST',
-  url: dominio + 'menus',
-  contentType: 'application/json',
-  dataType: 'json',
-  crossDomain: true,
-  async: false,
-  data: data,
-  success: function (data) {
-    console.log(data)
-    html = '';
+ type: 'POST',
+ url: dominio + 'menus',
+ contentType: 'application/json',
+ dataType: 'json',
+ crossDomain: true,
+ async: false,
+ data: data,
+ success: function (data) {
+   console.log(data)
+   html = '';
 
-    for(i = 0; i < data.Menus.length; i++){
-      console.log(data.Menus[i]);
-      html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].nombre+'</a></li>';
-    }
+   for(i = 0; i < data.Menus.length; i++){
+     console.log(data.Menus[i]);
+     html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].nombre+'</a></li>';
+   }
 
 
-    document.getElementById("llenarMenu").innerHTML = html;
+   document.getElementById("llenarMenu").innerHTML = html;
 
-  },
-  error: function (response) {
-       window.location.href = "index.html";
-      }
+ },
+ error: function (response) {
+      window.location.href = "index.html";
+     }
+});
+}
+else if(tipoU == 2){
+
+$('#contenido').load("./profesorBancoPaciente.html");
+
+data = '{"tipomenu": ' + tipoU + '}'
+$.ajax({
+ type: 'POST',
+ url: dominio + 'menus',
+ contentType: 'application/json',
+ dataType: 'json',
+ crossDomain: true,
+ async: false,
+ data: data,
+ success: function (data) {
+   console.log(data)
+   html = '';
+
+   for(i = 0; i < data.Menus.length; i++){
+     console.log(data.Menus[i]);
+     html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].nombre+'</a></li>';
+   }
+
+
+   document.getElementById("llenarMenu").innerHTML = html;
+
+ },
+ error: function (response) {
+      window.location.href = "index.html";
+     }
 });
 }
 

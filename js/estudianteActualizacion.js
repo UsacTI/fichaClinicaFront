@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
   loading();
-  console.log(idPersonal);
+  //console.log(idPersonal);
 })
 
 var usuarios = ''
