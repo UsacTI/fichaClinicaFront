@@ -42,7 +42,7 @@ function menu(tipoU) {
 }
  else if(tipoU == 4){
 
-$('#contenido').load("./bancoProfesor.html");
+$('#contenido').load("./bancoEstudiante.html");
 
 data = '{"tipomenu": ' + tipoU + '}'
 $.ajax({

@@ -1,5 +1,6 @@
 $(document).ready(function () {
   $('#table1').DataTable()
+  loading ();
 })
 
 function loading () {

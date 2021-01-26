@@ -1,3 +1,8 @@
+$(document).ready(function () {
+
+  loading();
+})
+
 var usuarios = ''
 function loading () {
   const urlParams = new URLSearchParams(window.location.search)
