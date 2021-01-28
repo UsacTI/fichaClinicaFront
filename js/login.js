@@ -59,6 +59,7 @@ data     = '{"usuario": "' + username + '", "contrasenia": "' + password + '"}';
         var acceso = data.paciente;
       //console.log(acceso);
       if(paciente===null){
+        alertify.set('notifier','position', 'top-right');
         alertify.error("Usuario o Contraseña Incorrecto!");
       }else{
           var nombres = data.paciente.nombre;
@@ -74,7 +75,11 @@ data     = '{"usuario": "' + username + '", "contrasenia": "' + password + '"}';
           window.location.href = "principal.html";
 
       }
-      }
+    },
+    error: function (response) {
+      alertify.set('notifier','position', 'top-right');
+      alertify.error("Usuario o Contraseña Incorrecto!");
+        }
   });
 }
 

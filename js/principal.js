@@ -134,6 +134,38 @@ $.ajax({
 });
 }
 
+else if(tipoU == 5){
+
+$('#contenido').load("./bancoPaciente.html");
+
+data = '{"tipomenu": ' + tipoU + '}'
+$.ajax({
+ type: 'POST',
+ url: dominio + 'menus',
+ contentType: 'application/json',
+ dataType: 'json',
+ crossDomain: true,
+ async: false,
+ data: data,
+ success: function (data) {
+   console.log(data)
+   html = '';
+
+   for(i = 0; i < data.Menus.length; i++){
+     console.log(data.Menus[i]);
+     html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].nombre+'</a></li>';
+   }
+
+
+   document.getElementById("llenarMenu").innerHTML = html;
+
+ },
+ error: function (response) {
+      window.location.href = "index.html";
+     }
+});
+}
+
 }
 
 function contentUrl(url) {

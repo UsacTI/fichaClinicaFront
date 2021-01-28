@@ -21,7 +21,8 @@ function registroProfesor () {
     alertify.error("Existen campos vacios, revise por favor");
   } else {
   if (password != password2) {
-    alertify.alert('La contraseña no coincide')
+    alertify.set('notifier','position', 'top-right');
+    alertify.warning('La contraseña no coincide')
   } else {
     data = JSON.stringify({
       nombres: nombres,

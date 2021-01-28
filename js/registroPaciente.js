@@ -15,7 +15,13 @@ function registroPaciente () {
   telefono = $('#telefono').val()
   consulta = $('#consulta').val()
 
-  if (password != password2) {
+  if(nombres === "" || apellidos === "" || fechanacimiento === "" || dpi === "" || password === "" || password2 === "" || telefono === "" ||
+      direccion === "" || consulta === ""){
+    alertify.set('notifier','position', 'top-right');
+    alertify.error("Existen campos vacios, revise por favor");
+  } else {
+  if (password !== password2) {
+    alertify.set('notifier','position', 'top-right');
     alertify.warning('La contraseña no coincide')
   } else {
     data = '{"nombres": "' + nombres + '", "apellidos": "' + apellidos + '", "genero": "' + genero + '", "nacimiento": "' +
@@ -33,9 +39,11 @@ function registroPaciente () {
         // console.log(data)
         alertify.set('notifier','position', 'top-right');
         alertify.success("Los datos fueron guardados");
+        $('#contenido').load("./registroPacienteOficinaInformacion.html");
       }
     })
   }
+}
 
 }
 
@@ -59,7 +67,9 @@ function registroPacienteTrabSocial () {
   doctor = $('#doctor').val()
   consulta = $('#consulta').val()
 
-  if(nombres === "" || apellidos === "" || fechanacimiento === "" || dpi === "" || password === "" || password2 === "" || telefono === "" || regestudiante === "" || area === "" || subarea === ""){
+  if(nombres === "" || apellidos === "" || fechanacimiento === "" || dpi === "" || password === "" || password2 === "" || telefono === "" ||
+      direccion === "" || nohijos === "" || escolaridad === "" || nivel === "" || trauoficio === "" || nacionalidad === "" || transporte === "" ||
+      doctor === "" || consulta === ""){
     alertify.set('notifier','position', 'top-right');
     alertify.error("Existen campos vacios, revise por favor");
   } else {
@@ -85,7 +95,7 @@ function registroPacienteTrabSocial () {
         // console.log(data)
         alertify.set('notifier','position', 'top-right');
         alertify.success("Los datos fueron guardados");
-        $('#contenido').load("./registroPacienteOficinaInformacion.html");
+        $('#contenido').load("./registroPacienteOficinaTrabaSocial.html");
       }
     })
   }
