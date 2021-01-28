@@ -93,7 +93,8 @@ function actualizarRegistro () {
     async: false,
     data: data,
     success: function (data) {
-      // console.log(data)
+      // console.log(data)}
+      alertify.set('notifier','position', 'top-right');
       alertify.success("Los datos fueron actualizados");
       $('#contenido').load("./bancoPaciente.html");
     }

@@ -31,6 +31,8 @@ function registroPaciente () {
       data: data,
       success: function (data) {
         // console.log(data)
+        alertify.set('notifier','position', 'top-right');
+        alertify.success("Los datos fueron guardados");
       }
     })
   }
@@ -57,7 +59,12 @@ function registroPacienteTrabSocial () {
   doctor = $('#doctor').val()
   consulta = $('#consulta').val()
 
+  if(nombres === "" || apellidos === "" || fechanacimiento === "" || dpi === "" || password === "" || password2 === "" || telefono === "" || regestudiante === "" || area === "" || subarea === ""){
+    alertify.set('notifier','position', 'top-right');
+    alertify.error("Existen campos vacios, revise por favor");
+  } else {
   if (password !== password2) {
+    alertify.set('notifier','position', 'top-right');
     alertify.warning('La contraseña no coincide')
   } else {
     data = '{"nombres": "' + nombres + '", "apellidos": "' + apellidos + '", "genero": "' + genero + '", "nacimiento": "' + fechanacimiento +
@@ -76,9 +83,13 @@ function registroPacienteTrabSocial () {
       data: data,
       success: function (data) {
         // console.log(data)
+        alertify.set('notifier','position', 'top-right');
+        alertify.success("Los datos fueron guardados");
+        $('#contenido').load("./registroPacienteOficinaInformacion.html");
       }
     })
   }
+}
 }
 
 function isIntegerKey (evt) {

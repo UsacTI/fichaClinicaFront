@@ -16,6 +16,10 @@ function registroProfesor () {
   area = $('#area').val()
   subarea = $('#subarea').val()
 
+  if(nombres === "" || apellidos === "" || fechanacimiento === "" || dpi === "" || password === "" || password2 === "" || telefono === "" || regestudiante === "" || area === "" || subarea === ""){
+    alertify.set('notifier','position', 'top-right');
+    alertify.error("Existen campos vacios, revise por favor");
+  } else {
   if (password != password2) {
     alertify.alert('La contraseña no coincide')
   } else {
@@ -41,9 +45,13 @@ function registroProfesor () {
       data: data,
       success: function (data) {
         // console.log(data)
+        alertify.set('notifier','position', 'top-right');
+        alertify.success("Los datos fueron guardados");
+        $('#contenido').load("./profesorRegistro.html");
       }
     })
   }
+}
 }
 
 function isIntegerKey (evt) {
