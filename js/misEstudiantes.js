@@ -2,11 +2,10 @@ $(document).ready(function () {
   $('#table1').DataTable()
 })
 
-function loading () {
-
+function loading (idprofesor = 10) {
   $.ajax({
     type: 'GET',
-    url: dominio + 'misestudiantes/' + 10,
+    url: dominio + 'misestudiantes/' + idprofesor,
     contentType: 'application/json',
     dataType: 'json',
     crossDomain: true,
