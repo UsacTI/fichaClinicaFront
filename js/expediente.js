@@ -363,6 +363,10 @@ function guardarExpediente() {
       })
 }
 
+function goToPlanTratamiento() {
+    location.href = `./planTratamiento.html?id=${idExpediente}`;
+}
+
 $('#registroExpediente').on('click', function () {
     guardarExpediente()
 })
