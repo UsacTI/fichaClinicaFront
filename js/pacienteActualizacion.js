@@ -1,7 +1,12 @@
+$(document).ready(function () {
+
+  loading();
+})
+
 var usuarios = ''
 function loading () {
   const urlParams = new URLSearchParams(window.location.search)
-  const usuario = urlParams.get('usr')
+  const usuario = idPersonal
   // alert(usuario)
 
   data = JSON.stringify({
@@ -59,6 +64,7 @@ function actualizarRegistro () {
   transporte = $('#transporte').val()
   doctor = $('#doctor').val()
   consulta = $('#consulta').val()
+  tipoPaciente = $('#tipopaciente').val();
 
   data = JSON.stringify({
     nombres: nombres,
@@ -69,12 +75,13 @@ function actualizarRegistro () {
     direccion: direccion,
     telefono: telefono,
     nohijos: nohijos,
-    escolaridad: direccion,
+    escolaridad: escolaridad,
     nivel: nivel,
     trauoficio: trauoficio,
     transporte: transporte,
     doctor: doctor,
     consulta: consulta,
+    tipopaciente: tipoPaciente,
     id: usuarios
   })
   $.ajax({
@@ -86,7 +93,10 @@ function actualizarRegistro () {
     async: false,
     data: data,
     success: function (data) {
-      // console.log(data)
+      // console.log(data)}
+      alertify.set('notifier','position', 'top-right');
+      alertify.success("Los datos fueron actualizados");
+      $('#contenido').load("./bancoPaciente.html");
     }
   })
 }
@@ -94,3 +104,12 @@ function actualizarRegistro () {
 $('#actualizar').on('click', function () {
   actualizarRegistro()
 })
+
+
+function isIntegerKey (evt) {
+  // console.log(evt)
+  var charCode = (evt.which) ? evt.which : evt.keyCode
+  if (charCode > 31 &&
+    (charCode < 48 || charCode > 57)) { return false }
+  return true
+};

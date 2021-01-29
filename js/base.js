@@ -8,6 +8,10 @@ var token    = getCookie('api-token');
 var usuario    = getCookie('api-usuario');
 var tipoUsuario = getCookie('api-tipoUsuario');
 
+/////id para Visualizacion de personal
+
+//var idPersonal = getCookie('api-idPersonal');
+var idPersonal = 0;
 
 function get(url, param) {
     var url_string = url;

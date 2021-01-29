@@ -1,5 +1,7 @@
-  
-  
+$(document).ready(function () {
+  document.getElementById("nombreUsuario").innerHTML = '<a class="nav-link" style="color: yellow;"><strong>'+nombre+ ', '+apellido+'.</strong></a>';
+});
+
 function registroAbono() {
     monto = $("#monto").val();
     idpaciente = $("#idpaciente").val();
@@ -21,7 +23,6 @@ function registroAbono() {
 }
 
 $("#registro-abono").on('click', function () {
-    console.log('hola');
+    
     registroAbono();
 });
-  

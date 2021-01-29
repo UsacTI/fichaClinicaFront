@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    document.getElementById("nombreUsuario").innerHTML = '<a class="nav-link" style="color: white;">'+nombre+ ', '+apellido+'.</a>';
+    document.getElementById("nombreUsuario").innerHTML = '<a class="nav-link" style="color: yellow;"><strong>'+nombre+ ', '+apellido+'.</strong></a>';
     $('#table1').DataTable();
 
   } );
