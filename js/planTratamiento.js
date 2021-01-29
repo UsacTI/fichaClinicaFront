@@ -197,3 +197,5 @@ function hideLoader() {
     }, 1000);
     
 }
+
+
