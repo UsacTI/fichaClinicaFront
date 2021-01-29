@@ -175,8 +175,6 @@ function deleteDetalle(e, id) {
         alertify.error('Cancelado');
     }).set('labels', {ok:'Sí', cancel:'Cancelar'});
     
-    
-    
 }
 
 
