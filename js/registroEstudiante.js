@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  document.getElementById("nombreUsuario").innerHTML = '<a class="nav-link" style="color: white;">'+nombre+ ' '+rol+'</a>';
+
   $('#paciente').DataTable();
 });
 
@@ -15,8 +15,14 @@ function registroPaciente () {
   telefono = $('#telefono').val()
   regestudiante = $('#regestudiante').val()
 
+  if(nombres === "" || apellidos === "" || fechanacimiento === "" || dpi === "" || password === "" || password2 === "" || telefono === "" || regestudiante === ""){
+    alertify.set('notifier','position', 'top-right');
+    alertify.error("Existen campos vacios, revise por favor");
+  }
+  else{
   if (password != password2) {
-    alertify.alert('La contraseña no coincide')
+     alertify.set('notifier','position', 'top-right');
+    alertify.warning('La contraseña no coincide')
   } else {
     data = '{"nombres": "' + nombres + '", "apellidos": "' + apellidos + '", "genero": "' + genero +
       '", "contrasenia": "' + password + '", "cui": "' + dpi + '", "telefono": "' + telefono +
@@ -31,9 +37,13 @@ function registroPaciente () {
       data: data,
       success: function (data) {
         // console.log(data)
+        alertify.set('notifier','position', 'top-right');
+        alertify.success("Los datos fueron guardados");
+        $('#contenido').load("./estudianteRegistro.html");
       }
     })
   }
+}
 }
 
 function isIntegerKey (evt) {

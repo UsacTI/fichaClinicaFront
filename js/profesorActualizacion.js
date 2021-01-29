@@ -1,7 +1,13 @@
+$(document).ready(function () {
+
+  loading();
+  //console.log(idPersonal);
+})
+
 var usuarios = ''
 function loading () {
   const urlParams = new URLSearchParams(window.location.search)
-  const profesor = urlParams.get('usr')
+  const profesor = idPersonal
   // alert(usuario)
 
   data = JSON.stringify({
@@ -69,7 +75,11 @@ function actualizarRegistro () {
     data: data,
     success: function (data) {
       // console.log(data)
+      alertify.set('notifier','position', 'top-right');
+      alertify.success("Los datos fueron actualizados");
+      $('#contenido').load("./bancoProfesor.html");
     }
+
   })
 }
 
