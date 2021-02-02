@@ -5,7 +5,6 @@ $(document).ready(function () {
 })
 
 function loading () {
-
   $.ajax({
     type: 'GET',
     url: dominio + 'misestudiantes/' + profesorId,
