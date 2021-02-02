@@ -1,7 +1,8 @@
-function loading () {
-  estudiantes()
-  profesores()
-}
+
+$(document).ready(function () {
+  estudiantes();
+  profesores();
+})
 
 function estudiantes () {
   $.ajax({
@@ -53,7 +54,9 @@ function asignarProfEstudiante () {
     async: false,
     data: data,
     success: function (data) {
-      console.log(data)
+      alertify.set('notifier','position', 'top-right');
+      alertify.success("Se asigno Correctamente");
+      $('#contenido').load("./asignacionProfesorEstudiante.html");
     }
   })
 }

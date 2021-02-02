@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-      
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +37,7 @@
 </head>
 
 <body>
-    <div id="loader" style="width: 100%; height: 100%; position: fixed;  z-index: 1000; background: rgba( 255, 255, 255, .8 ) 
+    <div id="loader" style="width: 100%; height: 100%; position: fixed;  z-index: 1000; background: rgba( 255, 255, 255, .8 )
     url('http://i.stack.imgur.com/FhHRx.gif') 50% 50% no-repeat; display: none;" ></div>
     <div class="wrapper">
 
@@ -94,7 +94,7 @@
                     <button class="btn btn-primary" style="width: 185px;">Plan de tratamiento</button>
                 </div>
                 <hr>
-                
+
                 <div class="table-responsive">
                     <div style="width: 100%; overflow-x: auto;">
                         <table id="table-plan" class="table table-striped no-margin table-bordered table-xs" style="table-layout: fixed; width: 50%;">
@@ -640,7 +640,7 @@
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group">
                             <label>Pieza dental:</label>
-                            <input type="text" id="pieza" name="pieza" class="form-control" />
+                            <input type="number" id="pieza" name="pieza" class="form-control" />
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
@@ -677,19 +677,19 @@
                                 </tr>
                             </thead>
                             <tbody id="table-tratamientos" style="font-size: 0.8em;">
-                                
+
                             </tbody>
                         </table>
                     </div>
                 </div>
-                    
+
             </div>
         </div>
     </div>
 </div>
-    
-    
-      
+
+
+
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -742,19 +742,19 @@
         $('#exampleModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
             var image = button.data('image') // Extract info from data-* attributes
-            var pieza = button.data('pieza') 
+            var pieza = button.data('pieza')
             document.getElementById('modal-image').setAttribute('src', image)
             var modal = $(this)
             modal.find('.modal-title').text('Pieza dental: ' + pieza)
-            
+
         })
-        
+
     </script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
     <script src="js/planTratamiento.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    
+
 </body>
 
 </html>

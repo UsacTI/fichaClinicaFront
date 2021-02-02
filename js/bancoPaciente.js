@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $('#table1').DataTable()
 
-  if(tipoUsuario == 2){
+  if(tipoUsuario == 2 || tipoUsuario == 3){
     loading2();
   }
   else{
@@ -53,6 +53,7 @@ function loading2 () {
         var fila = ''
         fila += '<tr>'
         fila += '<td>' + value.nombres + '</td>'
+        fila += '<td>' + value.apellidos + '</td>'
         fila += '<td>' + value.dpi + '</td>'
         fila += '<td>' + '<a href="#" onClick= pacienteVisualizacion("'+value.idpaciente+'")> <img src="icon/user.png"></img></a>' + '&nbsp;&nbsp;' +
                          '<a href="https://www.w3schools.com" target="_blank"><img src="icon/table.png"></img></a>' + '&nbsp;&nbsp;' + '</td>'

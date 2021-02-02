@@ -1,12 +1,14 @@
 $(document).ready(function () {
   $('#table1').DataTable()
+
+  loading();
 })
 
 function loading () {
 
   $.ajax({
     type: 'GET',
-    url: dominio + 'misestudiantes/' + 10,
+    url: dominio + 'misestudiantes/' + profesorId,
     contentType: 'application/json',
     dataType: 'json',
     crossDomain: true,
@@ -21,7 +23,7 @@ function loading () {
         fila += '<td>' + value.apellidos + '</td>'
         fila += '<td>' + value.carne + '</td>'
 
-        fila += '<td>' + '<a href="./estudianteVisualizacion.html?usr=' + value.idusuario + '" target="_blank"> <img src="icon/user.png"></img></a>' + '&nbsp;&nbsp;'
+        fila += '<td>' + '<a href="#" onClick= estudianteVisualizacion("'+value.idusuario+'")> <img src="icon/user.png"></img></a>'
                           + '</td>'
         fila += '</tr>'
         var btn = document.createElement('TR')
@@ -30,4 +32,12 @@ function loading () {
       }
     }
   })
+}
+
+function estudianteVisualizacion(idestudiante) {
+
+//setCookie('api-idPersonal', idestudiante, 1);
+idPersonal = idestudiante;
+$('#contenido').load("estudianteVisualizacion.html");
+
 }
