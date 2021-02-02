@@ -43,9 +43,12 @@
             var calendar = new FullCalendar.Calendar(calendarEl, {
 
                 headerToolbar: {
+                    // left: 'prevYear,prev,next,nextYear today',
+                    // center: 'title',
+                    // right: 'dayGridMonth,dayGridWeek,dayGridDay'
                     left: 'prev,next',
                     center: 'title',
-                    right: 'dayGridMonth'
+                    right: 'dayGridMonth,dayGridDay'
                 },
                 navLinks: true, // puede hacer clic en los nombres de los días / semanas para navegar por las vistas
                 editable: true,
@@ -58,6 +61,7 @@
 
                 // US Holidays
                 // events: 'en.usa#holiday@group.v.calendar.google.com',
+                
                 // año / mes / día la fecha de date luego T hora minutos y segundos
                 events: [
                     {
