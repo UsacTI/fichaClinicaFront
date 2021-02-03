@@ -1,4 +1,8 @@
+let idpaciente = 0;
+
 function loading () {
+  const urlParams = new URLSearchParams(window.location.search);
+  idpaciente = urlParams.get('idpaciente');
   estudiantes()
   paciente()
 }
@@ -22,17 +26,19 @@ function estudiantes () {
 
 function paciente () {
   $.ajax({
-    type: 'GET',
-    url: dominio + 'patients/state1/',
+    type: 'POST',
+    url: dominio + 'patients/search/',
     contentType: 'application/json',
     dataType: 'json',
     crossDomain: true,
     async: false,
+    data: JSON.stringify({id: idpaciente}),
     success: function (data) {
-      // console.log(data)
-      for (const value of data.pacientes) {
-        document.getElementById('paciente').innerHTML += "<option value='" + value.idpaciente + "'>" + value.nombres + '  ' + value.apellidos + '</option>'
-      }
+      //console.log(data)
+      document.getElementById('nombre').textContent = 'Nombre: '+data.paciente.nombres+' '+data.paciente.apellidos;
+      document.getElementById('dpi').textContent =   'DPI: '+data.paciente.dpi;
+      document.getElementById('direccion').textContent = 'Dirección: '+data.paciente.direccion;
+      document.getElementById('consulta').textContent = 'Motivo de cosulta: '+data.paciente.consulta;
     }
   })
 }
@@ -41,7 +47,7 @@ function asignarEstudiantePaciente () {
   // console.log($('#prof').val())
   // console.log($('#estu').val())
   data = JSON.stringify({
-    idpaciente: $('#paciente').val(),
+    idpaciente: idpaciente,
     idusuario: $('#estu').val()
   })
   $.ajax({
@@ -53,7 +59,8 @@ function asignarEstudiantePaciente () {
     async: false,
     data: data,
     success: function (data) {
-      console.log(data)
+      //console.log(data)
+      location.href = './registroPaciente.html'
     }
   })
 }

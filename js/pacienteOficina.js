@@ -10,84 +10,110 @@ $(document).ready(function() {
   2: rechazado por trabajo social
   3: pendiente de pago de boleta de primera cita
   4: pago boleta de primera cita/listo para asignar a estudiante (aparece en el banco de pacientes)
+  5: paciente asignado
+  6: paciente completado
   */
   
   function getPacientes() {
-    
     $.ajax({
       type: 'GET',
-      url: dominio + `patients/all`,
+      url: dominio + `Comprobacion/boleta`,
       contentType: 'application/json',
       dataType: 'json',
       crossDomain: true,
       async: false,
       //data: data,
       success: function (data) {
-        console.log(data);
-        if (data.pacientes.length > 0) {
-          document.getElementById('tabla-pacientes').getElementsByTagName('tr')[0].remove();
-        }
-        for (const value of data.pacientes) {
-          var fila = '';
-          if (value.aprobacion == 0) {
-            fila = `
-              <tr>
-                <td> ${value.nombres} ${value.apellidos}</td>
-                <td> ${value.dpi}</td>
-                <td title="Pendiente aprobación de Trabajo Social"> Pendiente TS</td>
-                <td></td>
-              </tr>
-              `
-          } else if(value.aprobacion == 1){
-            fila = `
-              <tr>
-                <td> ${value.nombres} ${value.apellidos}</td>
-                <td> ${value.dpi}</td>
-                <td title="Aprobado por Trabajo Social"> Aprobado por TS</td>
-                <td><button class="btn btn-primary btn-sm" onclick="generarBoleta('${value.nombres} ${value.apellidos}', '${value.idpaciente}')">Primera cita</button></td>
-              </tr>
-              `
-          } else if(value.aprobacion == 2){
-            fila = `
-              <tr>
-                <td> ${value.nombres} ${value.apellidos}</td>
-                <td> ${value.dpi}</td>
-                <td> No aprobado</td>
-                <td></td>
-              </tr>
-              `
-          } else if(value.aprobacion == 3){
-            fila = `
-              <tr>
-                <td> ${value.nombres} ${value.apellidos}</td>
-                <td> ${value.dpi}</td>
-                <td title="Pendiente pago de Primera Cita"> Pendiente pago PC</td>
-                <td></td>
-              </tr>
-              `
-          } else if(value.aprobacion == 4){
-            fila = `
-              <tr>
-                <td> ${value.nombres} ${value.apellidos}</td>
-                <td> ${value.dpi}</td>
-                <td> Aprobado</td>
-                <td><a href="#" class="btn btn-primary btn-sm">Aprobado</a></td>
-              </tr>
-              `
+        
+        $.ajax({
+          type: 'GET',
+          url: dominio + `patients/all`,
+          contentType: 'application/json',
+          dataType: 'json',
+          crossDomain: true,
+          async: false,
+          //data: data,
+          success: function (data) {
+            
+            if (data.pacientes.length > 0) {
+              document.getElementById('tabla-pacientes').getElementsByTagName('tr')[0].remove();
+            }
+            for (const value of data.pacientes) {
+              var fila = '';
+              if (value.aprobacion == 0) {
+                fila = `
+                  <tr>
+                    <td> ${value.nombres} ${value.apellidos}</td>
+                    <td> ${value.dpi}</td>
+                    <td title="Pendiente aprobación de Trabajo Social"> Pendiente TS</td>
+                    <td></td>
+                  </tr>
+                  `
+              } else if(value.aprobacion == 1){
+                fila = `
+                  <tr>
+                    <td> ${value.nombres} ${value.apellidos}</td>
+                    <td> ${value.dpi}</td>
+                    <td title="Aprobado por Trabajo Social"> Aprobado por TS</td>
+                    <td><button class="btn btn-primary btn-sm" onclick="generarBoleta('${value.nombres} ${value.apellidos}', '${value.idpaciente}')">Primera cita</button></td>
+                  </tr>
+                  `
+              } else if(value.aprobacion == 2){
+                fila = `
+                  <tr>
+                    <td> ${value.nombres} ${value.apellidos}</td>
+                    <td> ${value.dpi}</td>
+                    <td> No aprobado</td>
+                    <td></td>
+                  </tr>
+                  `
+              } else if(value.aprobacion == 3){
+                fila = `
+                  <tr>
+                    <td> ${value.nombres} ${value.apellidos}</td>
+                    <td> ${value.dpi}</td>
+                    <td title="Pendiente pago de Primera Cita"> Pendiente pago PC</td>
+                    <td></td>
+                  </tr>
+                  `
+              } else if(value.aprobacion == 4){
+                fila = `
+                  <tr>
+                    <td> ${value.nombres} ${value.apellidos}</td>
+                    <td> ${value.dpi}</td>
+                    <td> Aprobado</td>
+                    <td><a href="./asignacionEstudiantePaciente.html?idpaciente=${value.idpaciente}" class="btn btn-success btn-sm">Asignar</a></td>
+                  </tr>
+                  `
+              } else if(value.aprobacion == 5){
+                fila = `
+                  <tr>
+                    <td> ${value.nombres} ${value.apellidos}</td>
+                    <td> ${value.dpi}</td>
+                    <td> Asignado</td>
+                    <td><button  class="btn btn-success btn-sm" disabled>Asignado</a></td>
+                  </tr>
+                  `
+              }
+              
+              var btn = document.createElement('TR')
+              btn.innerHTML = fila
+              document.getElementById('tabla-pacientes').appendChild(btn)
+            }
           }
-          
-          var btn = document.createElement('TR')
-          btn.innerHTML = fila
-          document.getElementById('tabla-pacientes').appendChild(btn)
-        }
+        })
       }
     })
+
+    
+    
+    
   }
 
   function generarBoleta(nombre, idpaciente) {
     
     let dataBoleta = {
-      carnet: '201105846',
+      carnet: idpaciente,
       unidad: '0',
       extension: '0',
       carrera: '0',
@@ -97,8 +123,9 @@ $(document).ready(function() {
       id_rubro: '8',
       id_variante_rubro: '1',
       subotal: '50.00',
+      idpaciente: idpaciente,
     }
-    console.log(dataBoleta);
+    //console.log(dataBoleta);
     
     $.ajax({
       type: 'POST',
@@ -109,8 +136,8 @@ $(document).ready(function() {
       async: false,
       data: JSON.stringify(dataBoleta),
       success: function (data) {
-        let boleta = JSON.parse(data);
-        //console.log(JSON.parse(data));
+        let boleta = JSON.parse(data.pago);
+        //console.log(boleta);
         
         $.ajax({
           type: 'PUT',
@@ -121,12 +148,11 @@ $(document).ready(function() {
           async: false,
           data: JSON.stringify({estado: 3}),
           success: function (data) {
-            console.log(data);
-            console.log(dataBoleta.carnet);
-            console.log(boleta.id_orden_pago);
+            
             location.href = `./boleta-pago.html?carnet=${dataBoleta.carnet}&boleta=${boleta.id_orden_pago}&llave=${boleta.checksum}`;
           }
         })
       }
     })
   }
+
