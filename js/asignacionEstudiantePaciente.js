@@ -1,7 +1,8 @@
-function loading () {
-  estudiantes()
-  paciente()
-}
+$(document).ready(function () {
+  estudiantes();
+  paciente();
+});
+
 
 function estudiantes () {
   $.ajax({
@@ -53,11 +54,14 @@ function asignarEstudiantePaciente () {
     async: false,
     data: data,
     success: function (data) {
-      console.log(data)
+      //console.log(data)
+      alertify.set('notifier','position', 'top-right');
+      alertify.success("Se asigno Correctamente");
+      $('#contenido').load("./asignacionEstudiantePaciente.html");
     }
   })
 }
 
 $('#asignar').on('click', function () {
-  asignarEstudiantePaciente()
-})
+  asignarEstudiantePaciente();
+});

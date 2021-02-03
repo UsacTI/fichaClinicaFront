@@ -11,7 +11,7 @@ function menu(tipoU) {
 
   if(tipoU == 3){
 
-  $('#contenido').load("./inicioEstudiante.html");
+  $('#contenido').load("./profesorBancoPaciente.html");
 
   data = '{"tipomenu": ' + tipoU + '}'
   $.ajax({
@@ -28,7 +28,7 @@ function menu(tipoU) {
 
       for(i = 0; i < data.Menus.length; i++){
         console.log(data.Menus[i]);
-        html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].nombre+'</a></li>';
+        html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].icono+' '+data.Menus[i].nombre+'</a></li>';
       }
 
 
@@ -59,7 +59,7 @@ $.ajax({
 
    for(i = 0; i < data.Menus.length; i++){
      console.log(data.Menus[i]);
-     html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].nombre+'</a></li>';
+     html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].icono+' '+data.Menus[i].nombre+'</a></li>';
    }
 
 
@@ -90,7 +90,7 @@ $.ajax({
 
    for(i = 0; i < data.Menus.length; i++){
      console.log(data.Menus[i]);
-     html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].nombre+'</a></li>';
+     html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].icono+' '+data.Menus[i].nombre+'</a></li>';
    }
 
 
@@ -121,7 +121,7 @@ $.ajax({
 
    for(i = 0; i < data.Menus.length; i++){
      console.log(data.Menus[i]);
-     html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].nombre+'</a></li>';
+    html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].icono+' '+data.Menus[i].nombre+'</a></li>';
    }
 
 
@@ -153,7 +153,7 @@ $.ajax({
 
    for(i = 0; i < data.Menus.length; i++){
      console.log(data.Menus[i]);
-     html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].nombre+'</a></li>';
+     html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].icono+' '+data.Menus[i].nombre+'</a></li>';
    }
 
 
