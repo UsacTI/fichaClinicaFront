@@ -30,7 +30,7 @@ var hoas = [
 function loadHMA() {
     for (let i = 0; i < hmas.length; i++) {
         let columna = `
-        
+
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="hma-${hmas[i]['idhma']}" name="hma">
                 <label class="form-check-label" for="hma-${hmas[i]['idhma']}">
@@ -55,7 +55,7 @@ function loadHMA() {
                 ${hmas[i+3]['descripcion']}
                 </label>
             </div>
-        
+
         `;
         i+=3
         let newDiv = document.createElement('div');
@@ -68,12 +68,12 @@ function loadHMA() {
 function loadHOA() {
     for (let i = 0; i < hoas.length; i++) {
         let item = `
-            
+
                 <input class="form-check-input" type="checkbox" value="" id="hoa-${hoas[i]['idhoa']}" name="hoa">
                 <label class="form-check-label" for="hoa-${hoas[i]['idhoa']}">
                 ${hoas[i]['descripcion']}
                 </label>
-            
+
         `;
         let newDiv = document.createElement('div');
         newDiv.className = "form-check";
@@ -104,10 +104,10 @@ function loadData(id) {
                 listaHma.forEach(item => {
                     let idHMA = String(item.id).replace('hma-','');
                     if (Number(element) == Number(idHMA)) {
-                        //console.log(idHMA); 
-                        item.checked = true;   
+                        //console.log(idHMA);
+                        item.checked = true;
                     }
-                }); 
+                });
             });
             let hoa = String(expediente['hoa']).split(',');
             let listaHoa = document.getElementsByName('hoa');
@@ -116,9 +116,9 @@ function loadData(id) {
                 listaHoa.forEach(item => {
                     let idHMA = String(item.id).replace('hoa-','');
                     if (Number(element) == Number(idHMA)) {
-                        item.checked = true;   
+                        item.checked = true;
                     }
-                }); 
+                });
             });
             let lista_dolor  = expediente['dolor_dentario'];
             let dolor_dentario = [];
@@ -153,9 +153,9 @@ function loadData(id) {
                 listaOclusion.forEach(item => {
                     let idOclusion = String(item.id).replace('oclusion-','');
                     if (Number(element) == Number(idOclusion)) {
-                        item.checked = true;   
+                        item.checked = true;
                     }
-                }); 
+                });
             });
 
             let roentoenogramas = String(expediente['roentoenogramas']).split(',');
@@ -165,9 +165,9 @@ function loadData(id) {
                 lista_ordenes_roen.forEach(item => {
                     let idOrdenes = String(item.id).replace('orden-','');
                     if (Number(element) == Number(idOrdenes)) {
-                        item.checked = true;   
+                        item.checked = true;
                     }
-                }); 
+                });
             });
             let opciones = String(expediente['opciones']).split(',');
             let lista_opciones = document.getElementsByName('opciones');
@@ -176,9 +176,9 @@ function loadData(id) {
                 lista_opciones.forEach(item => {
                     let idOpcion = String(item.id).replace('op-','');
                     if (Number(element) == Number(idOpcion)) {
-                        item.checked = true;   
+                        item.checked = true;
                     }
-                }); 
+                });
             });
             document.getElementById('consulta-descripcion').value = expediente['consulta'];
             if (expediente['consulta'] != '') {
@@ -223,7 +223,7 @@ function addColumn() {
     document.getElementById('id-duracion').appendChild(newTd3);
     document.getElementById('id-inicio').appendChild(newTd4);
     document.getElementById('id-frecuencia').appendChild(newTd5);
-    
+
 }
 
 function guardarExpediente() {
@@ -231,7 +231,7 @@ function guardarExpediente() {
     let hma = '';
     listaHma.forEach(element => {
         if (element.checked) {
-            hma+=element.id.replace('hma-','')+','    
+            hma+=element.id.replace('hma-','')+','
         }
     });
     //console.log(hma);
@@ -240,7 +240,7 @@ function guardarExpediente() {
     let hoa = '';
     listaHoa.forEach(element => {
         if (element.checked) {
-            hoa+=element.id.replace('hoa-','')+','    
+            hoa+=element.id.replace('hoa-','')+','
         }
     });
     //console.log(hoa);
@@ -249,7 +249,7 @@ function guardarExpediente() {
     let oclusion = '';
     listaOclusion.forEach(element => {
         if (element.checked) {
-            oclusion+=element.id.replace('oclusion-','')+','    
+            oclusion+=element.id.replace('oclusion-','')+','
         }
     });
     //console.log(oclusion);
@@ -264,11 +264,11 @@ function guardarExpediente() {
         for (let n = 1; n < tds.length; n++) {
             tabla_hoa[i].push(tds[n].textContent);
             if (n == (tds.length-1)) {
-                dolor_dentario+= tds[n].textContent+';';    
+                dolor_dentario+= tds[n].textContent+';';
             } else {
                 dolor_dentario+= tds[n].textContent+',';
             }
-            
+
         }
     }
     //console.log(tabla_hoa);
@@ -300,7 +300,7 @@ function guardarExpediente() {
     let roentoenogramas = '';
     lista_ordenes_roen.forEach(element => {
         if (element.checked) {
-            roentoenogramas+=element.id.replace('orden-','')+','    
+            roentoenogramas+=element.id.replace('orden-','')+','
         }
     });
     //console.log(ordenes_roen);
@@ -310,7 +310,7 @@ function guardarExpediente() {
     let opciones = '';
     lista_opciones.forEach(element => {
         if (element.checked) {
-            opciones+=element.id.replace('op-','')+','    
+            opciones+=element.id.replace('op-','')+','
         }
     });
     let opciones_descripcion = document.getElementById('opciones-descripcion').value;
@@ -348,7 +348,7 @@ function guardarExpediente() {
     }
     //console.log(JSON.stringify(expediente));
     let data = JSON.stringify(expediente)
-    
+
     $.ajax({
         type: 'PUT',
         url: dominio + `expediente/update/${idExpediente}`,
@@ -365,6 +365,10 @@ function guardarExpediente() {
 
 function goToPlanTratamiento() {
     location.href = `./planTratamiento.html?id=${idExpediente}`;
+}
+
+function goToRadiografia() {
+    location.href = `./radiografia.html?id=${idExpediente}`;
 }
 
 $('#registroExpediente').on('click', function () {

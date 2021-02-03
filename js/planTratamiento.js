@@ -19,7 +19,7 @@ function loadClasificaciones() {
         opcion.value = element.value;
         opcion.textContent = element.text;
         //console.log(opcion);
-        document.getElementById('select-calsificacion').appendChild(opcion);    
+        document.getElementById('select-calsificacion').appendChild(opcion);
     });
 
     $.ajax({
@@ -59,15 +59,19 @@ function loadTratamiento(e){
                 let opcion = document.createElement('option');
                 opcion.value = tratamiento.idtratamiento;
                 opcion.textContent = tratamiento.descripcion;
-                document.getElementById('select-tratamiento').appendChild(opcion);    
+                document.getElementById('select-tratamiento').appendChild(opcion);
             });
-            
+
         }
     });
 }
 
 function goToExpediente() {
     location.href = `./expediente.html?id=${idExpediente}`;
+}
+
+function goToRadiografia() {
+    location.href = `./radiografia.html?id=${idExpediente}`;
 }
 
 function getTratamientos() {
@@ -127,7 +131,7 @@ function agregarDetalle() {
                     t = d;
                 }
             });
-            
+
             let fila = document.createElement('tr');
             fila.innerHTML = `
                 <td>${document.getElementById('table-tratamientos').getElementsByTagName('tr').length+1}</td>
@@ -166,7 +170,7 @@ function deleteDetalle(e, id) {
             success: function (data) {
                 //console.log(data);
                 table.deleteRow(row.rowIndex-1);
-                
+
             }
         })
     },
@@ -174,7 +178,7 @@ function deleteDetalle(e, id) {
         alertify.set('notifier','position', 'top-right');
         alertify.error('Cancelado');
     }).set('labels', {ok:'Sí', cancel:'Cancelar'});
-    
+
 }
 
 
@@ -193,9 +197,7 @@ function showLoader() {
 
 function hideLoader() {
     setTimeout(() => {
-        document.getElementById('loader').style.display = 'none';    
+        document.getElementById('loader').style.display = 'none';
     }, 1000);
-    
+
 }
-
-
