@@ -1,14 +1,14 @@
 $(document).ready(function() {
   $('#table3').DataTable();
   loading();
+
 } );
 
 
 function loading () {
-  document.getElementById('tablita').getElementsByTagName('tr')[0].remove();
   $.ajax({
     type: 'GET',
-    url: dominio + 'buscarPacientesEsutdiantes/13',
+    url: dominio + 'buscarPacientesEsutdiantes/'+ idUsuario,
     contentType: 'application/json',
     dataType: 'json',
     crossDomain: true,

@@ -67,13 +67,15 @@ data     = '{"usuario": "' + username + '", "contrasenia": "' + password + '"}';
           var apellidos = data.paciente.apellidos;
           var tipoUsuario = data.paciente.tipousuario;
           var token = data.token;
-          var idProfesor = data.paciente.idusuario;
-          
+          var idUsuario = data.paciente.idusuario;
+          //var idProfesor = data.paciente.idusuario;
+
+
           setCookie('api-nombreUsuario', nombres, 1);
           setCookie('api-apellidoUsuario', apellidos, 1);
           setCookie('api-token', token, 1);
           setCookie('api-tipoUsuario', tipoUsuario, 1);
-          setCookie('api-idProfesor', idProfesor, 1);
+          setCookie('api-idUsuario', idUsuario, 1);
           //setCookie('api-usuario', usuario, 1);
           window.location.href = "principal.html";
 

@@ -67,11 +67,11 @@ function loadTratamiento(e){
 }
 
 function goToExpediente() {
-    location.href = `./expediente.html?id=${idExpediente}`;
+    $('#contenido').load("expediente.html");
 }
 
 function goToRadiografia() {
-    location.href = `./radiografia.html?id=${idExpediente}`;
+    $('#contenido').load("radiografia.html");
 }
 
 function getTratamientos() {
@@ -187,7 +187,7 @@ $(document).ready(function() {
     const urlParams = new URLSearchParams(window.location.search)
     //idExpediente = urlParams.get('id');
     idExpediente = expedienteId;
-    console.log("el id es"+idExpediente);
+    //console.log("el id expediente en Plan"+idExpediente);
     getTratamientos()
     $('#table-plan').DataTable();
 } )
