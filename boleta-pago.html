@@ -87,9 +87,9 @@
                             <div class="row" >
                                 <div class="boleta-div-1 logo">
                                 <span class="float-right">
-                                    <p style="font-size: 0.7em;">Fecha de impresión: </p>
+                                    <p id="fecha-impresion" style="font-size: 0.7em;">Fecha de impresión: </p>
                                 </span>
-                                <p style="font-size: 0.7em;">Fecha de emisión: </p>
+                                <p id="fecha-emision" style="font-size: 0.7em;">Fecha de emisión: </p>
                                 <div class="row" >
                                     <div class="seccion-total title">
                                     <p>Orden de pago</p>
@@ -98,37 +98,37 @@
                                     <p class="float-right">No.</p>
                                     </div>
                                     <div class="seccion-2">
-
+                                        <p class="p-espacio" id="no"></p>
                                     </div>
                                     <div class="seccion-1">
                                     <p class="float-right">Carné</p>
                                     </div>
                                     <div class="seccion-2">
-
+                                        <p class="p-espacio" id="carnet"></p>
                                     </div>
                                     <div class="seccion-1">
                                     <p class="float-right">Nombre</p>
                                     </div>
                                     <div class="seccion-2">
-
+                                        <p class="p-espacio" id="nombre"></p>
                                     </div>
                                     <div class="seccion-1">
                                     <p class="float-right">Unidad</p>
                                     </div>
                                     <div class="seccion-2">
-
+                                        <p class="p-espacio" id="unidad"></p>
                                     </div>
                                     <div class="seccion-1">
                                     <p class="float-right">Extensión</p>
                                     </div>
                                     <div class="seccion-2">
-
+                                        <p class="p-espacio" id="extension"></p>
                                     </div>
                                     <div class="seccion-1">
                                     <p class="float-right">Carrera</p>
                                     </div>
                                     <div class="seccion-2">
-
+                                        <p class="p-espacio" id="carrera">--</p>
                                     </div>
                                     <div class="seccion-total title">
                                     <p>Detalle de pago</p>
@@ -136,16 +136,16 @@
                                     <div class="seccion-total">
                                     <div class="row">
                                         <div class="seccion-4" style="text-align: center">
-                                        <p class="float-right"></p>
+                                        <p class="float-right">Pago de primera cita</p>
                                         </div>
                                         <div class="seccion-5">
-                                        <p class="float-right"></p>
+                                        <p id="detalle-monto" class="float-right"></p>
                                         </div>
                                         <div class="seccion-4" style="text-align: center">
                                         <p class="float-right"><strong>Total a pagar Q</strong></p>
                                         </div>
                                         <div class="seccion-5">
-                                        <p class="float-right"></p>
+                                        <p id="total" class="float-right"></p>
                                         </div>
                                     </div>
                                     </div>
@@ -158,52 +158,58 @@
                                     <strong>Para uso exclusivo del banco</strong>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-left">Orden de pago</p>
+                                        <p class="float-left">Orden de pago</p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-right"></p>
+                                        <p id="orden" class="float-right"></p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-left">Carné</p>
+                                        <p class="float-left">Carné</p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-right"></p>
+                                        <p id="carnet-banco" class="float-right"></p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-left">Total a pagar Q.</p>
+                                        <p class="float-left">Total a pagar Q.</p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-right"></p>
+                                        <p id="total-banco" class="float-right"></p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-left">Unidad</p>
+                                        <p class="float-left">Unidad</p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-right"></p>
+                                        <p id="unidad-banco" class="float-right"></p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-left">Extensión</p>
+                                        <p class="float-left">Extensión</p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-right"></p>
+                                        <p id="extension-banco" class="float-right"></p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-left">Carrera</p>
+                                        <p class="float-left">Fecha emisión</p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-right"></p>
+                                        <p id="fecha-banco" class="float-right"></p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-left">Rubro de pago</p>
+                                        <p class="float-left">Carrera</p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-right"></p>
+                                        <p id="carrera-banco" class="float-right"></p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-left">Llave</p>
+                                        <p class="float-left">Rubro de pago</p>
                                     </div>
                                     <div class="seccion-midle">
-                                    <p class="float-right"></p>
+                                        <p id="rubro-banco" class="float-right">102</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                        <p class="float-left">Llave</p>
+                                    </div>
+                                    <div class="seccion-midle">
+                                        <p id="llave" class="float-right"></p>
                                     </div>
                                     <div class="seccion-total" style="text-align: center; font-size: 11px">
                                     Puede efectuar su pago en cualquier agencia o banca virtual de BANRURAL (ATX-253) O GyT Continental.
@@ -214,7 +220,7 @@
                             </div>
                         </div>
                         <div style="text-align: justify; font-size: 0.8em;">
-                            <strong >** El documento es válido para su pago únicamente hasta el día .**</strong>
+                            <strong id="limite">** El documento es válido para su pago únicamente hasta el día .**</strong>
                         </div>
                     </div>
                   </div>
@@ -261,7 +267,7 @@
     </script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
-    <script src="js/registroPaciente.js"></script>
+    <script src="js/boletaPago.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>
@@ -328,6 +334,9 @@
         width: 65%;
 
         /*background: red;*/
+    }
+    p.p-espacio{
+        margin: 0;
     }
     .logo{
       background: url("img/logoUSAC2019C-15P.jpg") no-repeat;
