@@ -105,6 +105,10 @@ $('#actualizar').on('click', function () {
   actualizarRegistro()
 })
 
+$('#regresar').on('click', function () {
+  $('#contenido').load("./bancoPaciente.html");
+})
+
 
 function isIntegerKey (evt) {
   // console.log(evt)

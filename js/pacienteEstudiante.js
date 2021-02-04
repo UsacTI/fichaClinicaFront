@@ -5,6 +5,7 @@ $(document).ready(function() {
 
 
 function loading () {
+  document.getElementById('tablita').getElementsByTagName('tr')[0].remove();
   $.ajax({
     type: 'GET',
     url: dominio + 'buscarPacientesEsutdiantes/13',

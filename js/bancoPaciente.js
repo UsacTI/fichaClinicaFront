@@ -10,6 +10,7 @@ $(document).ready(function () {
 })
 
 function loading () {
+  document.getElementById('tablita').getElementsByTagName('tr')[0].remove();
   $.ajax({
     type: 'GET',
     url: dominio + 'patients/state1/',
@@ -39,6 +40,7 @@ function loading () {
 }
 
 function loading2 () {
+  document.getElementById('tablita').getElementsByTagName('tr')[0].remove();
   $.ajax({
     type: 'GET',
     url: dominio + 'patients/state1/',
@@ -82,3 +84,5 @@ idPersonal = idPaciente;
 $('#contenido').load("pacienteActualizacion.html");
 
 }
+
+
