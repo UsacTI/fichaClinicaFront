@@ -23,8 +23,8 @@ function loading () {
         fila += '<td>' + value.apellidos + '</td>'
         fila += '<td>' + value.dpi + '</td>'
 
-        fila += '<td>' + '<a href="#" onClick= estudianteVisualizacion("'+value.idusuario+'")> <img src="icon/ficha.png"></a>' + '&nbsp;&nbsp;' +
-                         '<a href="#" onClick= estudianteActualizacion("'+value.idusuario+'")><img src="icon/calendar.png"></a>' + '</td>'
+        fila += '<td>' + '<a href="#" onClick= goToExpediente("'+value.idpaciente+'")> <img src="icon/ficha.png"></a>' + '&nbsp;&nbsp;' +
+                         '<a href="#" onClick= goToExpediente("'+value.idPaciente+'")><img src="icon/calendar.png"></a>' + '</td>'
         fila += '</tr>'
         var btn = document.createElement('TR')
         btn.innerHTML = fila
@@ -33,6 +33,7 @@ function loading () {
     }
   })
 }
+
 
 function goToExpediente(idPaciente) {
   console.log(idPaciente);
@@ -89,7 +90,10 @@ function goToExpediente(idPaciente) {
           })
       } else if (data['expediente'].length == 1) {
         //console.log('hola 2');
-        location.href = './expediente.html?id='+data['expediente'][0].idexpediente;
+        //location.href = './expediente.html?id='+data['expediente'][0].idexpediente;
+        //console.log(data['expediente'][0].idexpediente);
+        expedienteId = data['expediente'][0].idexpediente;
+        $('#contenido').load("expediente.html");
       } else {
         console.log('hola 3');
       }

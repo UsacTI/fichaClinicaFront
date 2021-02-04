@@ -10,7 +10,7 @@ const clasificaciones = [
 ]
 
 let tratamientos = [];
-let idExpediente = 0;
+//var idExpediente = 0;
 
 
 function loadClasificaciones() {
@@ -182,11 +182,12 @@ function deleteDetalle(e, id) {
 }
 
 
-
 $(document).ready(function() {
     loadClasificaciones();
     const urlParams = new URLSearchParams(window.location.search)
-    idExpediente = urlParams.get('id');
+    //idExpediente = urlParams.get('id');
+    idExpediente = expedienteId;
+    console.log("el id es"+idExpediente);
     getTratamientos()
     $('#table-plan').DataTable();
 } )

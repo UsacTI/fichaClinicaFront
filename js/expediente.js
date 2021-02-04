@@ -192,13 +192,15 @@ function loadData(id) {
             }
         })
 }
-let idExpediente = 0;
+var idExpediente = 0;
 
 $(document).ready(function() {
     loadHMA();
     loadHOA();
     const urlParams = new URLSearchParams(window.location.search)
-    idExpediente = urlParams.get('id');
+    //idExpediente = urlParams.get('id');
+    idExpediente = expedienteId;
+    //console.log("id expediente es" + expedienteId);
     loadData(idExpediente);
 } )
 
@@ -364,11 +366,12 @@ function guardarExpediente() {
 }
 
 function goToPlanTratamiento() {
-    location.href = `./planTratamiento.html?id=${idExpediente}`;
+    //location.href = `./planTratamiento.html?id=${idExpediente}`;
+    $('#contenido').load("planTratamiento.html");
 }
 
 function goToRadiografia() {
-    location.href = `./radiografia.html?id=${idExpediente}`;
+    $('#contenido').load("radiografia.html");
 }
 
 $('#registroExpediente').on('click', function () {
