@@ -13,6 +13,7 @@ var profesorId = getCookie('api-idProfesor');
 
 //var idPersonal = getCookie('api-idPersonal');
 var idPersonal = 0;
+var expedienteId = 0;
 
 function get(url, param) {
     var url_string = url;
