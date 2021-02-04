@@ -1,6 +1,37 @@
 $(document).ready(function() {
-  $('#table3').DataTable()
-} )
+  $('#table3').DataTable();
+  loading();
+} );
+
+
+function loading () {
+  $.ajax({
+    type: 'GET',
+    url: dominio + 'buscarPacientesEsutdiantes/13',
+    contentType: 'application/json',
+    dataType: 'json',
+    crossDomain: true,
+    async: false,
+    success: function (data) {
+       //console.log(data)
+      for (const value of data.pacientes) {
+         //console.log(value)
+        var fila = ''
+        fila += '<tr>'
+        fila += '<td>' + value.nombres + '</td>'
+        fila += '<td>' + value.apellidos + '</td>'
+        fila += '<td>' + value.dpi + '</td>'
+
+        fila += '<td>' + '<a href="#" onClick= estudianteVisualizacion("'+value.idusuario+'")> <img src="icon/ficha.png"></a>' + '&nbsp;&nbsp;' +
+                         '<a href="#" onClick= estudianteActualizacion("'+value.idusuario+'")><img src="icon/calendar.png"></a>' + '</td>'
+        fila += '</tr>'
+        var btn = document.createElement('TR')
+        btn.innerHTML = fila
+        document.getElementById('tablita').appendChild(btn)
+      }
+    }
+  })
+}
 
 function goToExpediente(idPaciente) {
   console.log(idPaciente);
@@ -41,7 +72,7 @@ function goToExpediente(idPaciente) {
           idpaciente:  id,
         }
         let data = JSON.stringify(expediente);
-    
+
         $.ajax({
             type: 'POST',
             url: dominio + 'Expediente/crear',
