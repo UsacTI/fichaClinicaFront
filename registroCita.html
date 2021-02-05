@@ -93,11 +93,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tratamiento</label>
-                            <select id="tratamiento" class="form-control">
-                                <option value="1">tratamiento 1</option>
-                                <option value="2">tratamiento 2</option>
-                                <option value="3">tratamiento 3</option>
-                                <option value="4">tratamiento 4</option>
+                            <select id="tratamiento" name="tratamiento" class="form-control" onchange="setTratamiento(this)">
+                                <option disabled selected value>-- Seleccione un tratamiento --</option>
                             </select>
                         </div>
                         <br>
@@ -105,8 +102,15 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Fecha</label>
-                            <input type="date" id="fecha" name="trip-start" value="2021-01-01" min="1940-01-01"
+                            <input type="date" id="fecha" name="trip-start" value="2021-01-01" min="1940-01-01" readonly
                             max="2030-01-01" class="form-control">
+                        </div>
+                        <br>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Horario</label>
+                            <input type="time" id="horario" name="trip-start" class="form-control">
                         </div>
                         <br>
                     </div>
@@ -126,7 +130,6 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="idpaciente" value="1" hidden>
                             <button class="boton_personalizado" id="registro-cita" style="font-size: 13px;">Crear cita</button>
                         </div>
                     </div>
@@ -140,31 +143,12 @@
                                 <th>Pieza</th>
                                 <th>Costo (Q)</th>
                                 <th>Fecha</th>
-                                <th>Estado</th>
+                                <th>Hora</th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Tratamiento</td>
-                                <td>12</td>
-                                <td>150.00</td>
-                                <td>11/05/2021> </td>
-                                <td><img src="icon/circulo-negro.png" style="color: green"> </td>
-                            </tr>
-                            <tr>
-                                <td>Tratamiento</td>
-                                <td>12</td>
-                                <td>150.00</td>
-                                <td>11/05/2021> </td>
-                                <td><img src="icon/circulo-negro.png" style="color: green"> </td>
-                            </tr>
-                            <tr>
-                                <td>Tratamiento</td>
-                                <td>12</td>
-                                <td>150.00</td>
-                                <td>11/05/2021> </td>
-                                <td><img src="icon/circulo-negro.png" style="color: green"> </td>
-                            </tr>
+                        <tbody id="table-tratamientos">
+                            
                         </tbody>
                         <tfoot>
                             <tr>
@@ -172,7 +156,8 @@
                                 <th>Pieza</th>
                                 <th>Costo (Q)</th>
                                 <th>Fecha</th>
-                                <th>Estado</th>
+                                <th>Hora</th>
+                                <th>Opciones</th>
                             </tr>
                         </tfoot>
                     </table>

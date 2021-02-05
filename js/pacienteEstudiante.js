@@ -36,7 +36,7 @@ function loading () {
 
 
 function goToExpediente(idPaciente) {
-  console.log(idPaciente);
+  //console.log(idPaciente);
   $.ajax({
     type: 'GET',
     url: dominio + `expediente/all/${idPaciente}`,
@@ -46,7 +46,7 @@ function goToExpediente(idPaciente) {
     async: false,
     //data: JSON.stringify({id: id}),
     success: function (data) {
-      console.log(data);
+      //console.log(data);
       if (data['expediente'].length == 0) {
         //console.log('hola 1');
         let expediente = {
