@@ -15,6 +15,13 @@ function registroPaciente () {
   telefono = $('#telefono').val()
   consulta = $('#consulta').val()
 
+  if($('#correo').val() == ""){
+    correo ="";
+  }
+  else{
+    correo = $('#correo').val()
+  }
+
   if(nombres === "" || apellidos === "" || fechanacimiento === "" || dpi === "" || password === "" || password2 === "" || telefono === "" ||
       direccion === "" || consulta === ""){
     alertify.set('notifier','position', 'top-right');
@@ -26,7 +33,7 @@ function registroPaciente () {
   } else {
     data = '{"nombres": "' + nombres + '", "apellidos": "' + apellidos + '", "genero": "' + genero + '", "nacimiento": "' +
       fechanacimiento + '", "dpi": "' + dpi + '", "contrasenia": "' + password + '", "direccion": "' + direccion + '", "telefono":' +
-      telefono + ', "consulta": "' + consulta + '"}'
+      telefono + ', "consulta": "' + consulta + '" , "correo": "' + correo + '"}'
     $.ajax({
       type: 'POST',
       url: dominio + 'patients/createOfiInfo',
@@ -67,6 +74,13 @@ function registroPacienteTrabSocial () {
   doctor = $('#doctor').val()
   consulta = $('#consulta').val()
 
+   if($('#correo').val() == ""){
+     correo ="";
+   }
+   else{
+     correo = $('#correo').val()
+   }
+
   if(nombres === "" || apellidos === "" || fechanacimiento === "" || dpi === "" || password === "" || password2 === "" || telefono === "" ||
       direccion === "" || nohijos === "" || escolaridad === "" || nivel === "" || trauoficio === "" || nacionalidad === "" || transporte === "" ||
       doctor === "" || consulta === ""){
@@ -81,7 +95,7 @@ function registroPacienteTrabSocial () {
      '", "dpi": "' + dpi + '", "contrasenia": "' + password + '", "direccion": "' + direccion + '", "telefono":' + telefono +
       ', "nohijos": ' + nohijos + ', "escolaridad": "' + escolaridad + '", "nivel": ' + nivel + ', "profesion": "' + trauoficio +
        '", "nacionalidad": "' + nacionalidad + '", "transporte": "' + transporte + '", "consulta": "' + consulta + '", "doctor": "' + doctor +
-       '", "tipopaciente": ' + tipopaciente + '}'
+       '", "tipopaciente": ' + tipopaciente + ' , "correo": "' + correo + '"}'
 
     $.ajax({
       type: 'POST',
