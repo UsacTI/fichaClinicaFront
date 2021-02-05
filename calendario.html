@@ -42,6 +42,12 @@
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
 
+                dateClick: function (info) {
+                    alert('Date: ' + info.dateStr + ' ' );
+                    console.log(info.view)
+                    // alert('Resource ID: ' + info.resource.id);
+                    
+                },
                 headerToolbar: {
                     // left: 'prevYear,prev,next,nextYear today',
                     // center: 'title',
@@ -67,6 +73,17 @@
                     {
                         title: 'Cita 2',
                         start: '2021-02-02',
+                        description: 'asdfasdf',
+                        url: 'https://calendar.google.com/calendar/r/eventedit?' +
+                            'text=Citas jeje' +
+                            '&dates=20210222T150000/20210222T163000' +
+                            '&details=algo en la oficina tal a tal hora' +
+                            '&location=Guatemala' +
+                            '&ctz=America/Guatemala (GMT -6)'
+                    },
+                    {
+                        title: 'Cita 2',
+                        start: '2021-02-08',
                         description: 'asdfasdf',
                         url: 'https://calendar.google.com/calendar/r/eventedit?' +
                             'text=Citas jeje' +
