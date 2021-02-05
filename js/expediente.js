@@ -199,6 +199,7 @@ $(document).ready(function() {
     loadHOA();
     const urlParams = new URLSearchParams(window.location.search)
     //idExpediente = urlParams.get('id');
+    //console.log("expedientID expediente" +expedienteId);
     idExpediente = expedienteId;
     //console.log("id expediente es" + expedienteId);
     loadData(idExpediente);

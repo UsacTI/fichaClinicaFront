@@ -1,28 +1,26 @@
 $(document).ready(function () {
 
-if(idPersonal == 2){
+if(tipoUsuario == 2){
 
   $("#cargarRadio").hide();
 }
-else if(idPersonal == 3){
+else if(tipoUsuario == 3){
 
   $("#cargarRadio").show();
 }
-$("#cargarRadio").show();
+//console.log("expedientID radiografia" +idExpediente);
+expedienteId = idExpediente;
 
 });
-
-let tratamientos = [];
-let idExpediente = 0;
 
 
 
 function goToExpediente() {
-    location.href = `./expediente.html?id=${idExpediente}`;
+    $('#contenido').load("expediente.html");
 }
 
 function goToPlanTratamiento() {
-    location.href = `./planTratamiento.html?id=${idExpediente}`;
+    $('#contenido').load("planTratamiento.html");
 }
 
 function mostrar(){

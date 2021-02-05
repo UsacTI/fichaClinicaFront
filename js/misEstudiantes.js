@@ -7,7 +7,7 @@ $(document).ready(function () {
 function loading () {
   $.ajax({
     type: 'GET',
-    url: dominio + 'misestudiantes/' + profesorId,
+    url: dominio + 'misestudiantes/' + idUsuario,
     contentType: 'application/json',
     dataType: 'json',
     crossDomain: true,
