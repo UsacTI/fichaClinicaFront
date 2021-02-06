@@ -66,6 +66,7 @@ function actualizarRegistro () {
   consulta = $('#consulta').val()
   tipoPaciente = $('#tipopaciente').val();
 
+
   data = JSON.stringify({
     nombres: nombres,
     apellidos: apellidos,
@@ -79,6 +80,7 @@ function actualizarRegistro () {
     nivel: nivel,
     trauoficio: trauoficio,
     transporte: transporte,
+    nacionalidad: nacionalidad,
     doctor: doctor,
     consulta: consulta,
     tipopaciente: tipoPaciente,

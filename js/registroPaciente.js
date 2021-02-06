@@ -46,7 +46,7 @@ function registroPaciente () {
         // console.log(data)
         alertify.set('notifier','position', 'top-right');
         alertify.success("Los datos fueron guardados");
-        $('#contenido').load("./registroPacienteOficinaInformacion.html");
+        $('#contenido').load("./registroPaciente.html");
       }
     })
   }

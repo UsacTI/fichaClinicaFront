@@ -24,7 +24,7 @@ function loading () {
         fila += '<td>' + value.dpi + '</td>'
 
         fila += '<td>' + '<a href="#" onClick= goToExpediente("'+value.idpaciente+'")> <img src="icon/ficha.png"></a>' + '&nbsp;&nbsp;' +
-                         '<a href="#" onClick= goToExpediente("'+value.idPaciente+'")><img src="icon/calendar.png"></a>' + '</td>'
+                         '<a href="#" onClick= goToCalendario("'+value.idPaciente+'")><img src="icon/calendar.png"></a>' + '</td>'
         fila += '</tr>'
         var btn = document.createElement('TR')
         btn.innerHTML = fila
@@ -34,6 +34,9 @@ function loading () {
   })
 }
 
+function goToCalendario(idPaciente) {
+$('#contenido').load("calendario.html");
+}
 
 function goToExpediente(idPaciente) {
   //console.log(idPaciente);

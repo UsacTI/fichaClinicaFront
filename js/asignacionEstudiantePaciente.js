@@ -1,6 +1,7 @@
 $(document).ready(function () {
   estudiantes();
   paciente();
+
 });
 
 
@@ -29,7 +30,7 @@ function paciente () {
     dataType: 'json',
     crossDomain: true,
     async: false,
-    data: JSON.stringify({id: idpaciente}),
+    data: JSON.stringify({id: idPersonal}),
     success: function (data) {
       //console.log(data)
       document.getElementById('nombre').textContent = 'Nombre: '+data.paciente.nombres+' '+data.paciente.apellidos;
@@ -44,7 +45,7 @@ function asignarEstudiantePaciente () {
   // console.log($('#prof').val())
   // console.log($('#estu').val())
   data = JSON.stringify({
-    idpaciente: idpaciente,
+    idpaciente: idPersonal,
     idusuario: $('#estu').val()
   })
   $.ajax({
@@ -59,7 +60,7 @@ function asignarEstudiantePaciente () {
       //console.log(data)
       alertify.set('notifier','position', 'top-right');
       alertify.success("Se asigno Correctamente");
-      $('#contenido').load("./asignacionEstudiantePaciente.html");
+      $('#contenido').load("./registroPaciente.html");
     }
   })
 }
