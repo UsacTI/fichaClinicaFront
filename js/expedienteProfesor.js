@@ -134,11 +134,17 @@ function loadData(id) {
                 if (lista_dolor[i] === ',') {
                     columna.push(lista_dolor[i-1])
                 }else if (lista_dolor[i] === ';') {
+                    columna.push(lista_dolor[i-1])
                     dolor_dentario.push(columna);
                     columna = [];
                 }
             }
             //console.log(dolor_dentario);
+            for (let i = 0; i < dolor_dentario[0].length; i++) {
+                if (i >= 4) {
+                    addColumn();
+                }
+            }
             let fila = document.getElementById('tabla-hoa').getElementsByTagName('tr');
             for (let i = 0; i < fila.length; i++) {
                 let tds = fila[i].getElementsByTagName('td');
@@ -385,7 +391,7 @@ $('#registroExpediente').on('click', function () {
     guardarExpediente()
 })
 
-function aprobarExpediente() {
+function cambioEstadoExpediente(estado) {
     $.ajax({
         type: 'PUT',
         url: dominio + `updateExpediente/${idExpediente}`,
@@ -393,11 +399,21 @@ function aprobarExpediente() {
         dataType: 'json',
         crossDomain: true,
         async: false,
-        data: JSON.stringify({estado: 1}),
+        data: JSON.stringify({estado: estado}),
         success: function (data) {
-            console.log(data);
-            document.getElementById('aprobar').setAttribute('hidden','');
-            document.getElementById('aprobarBloqueo').removeAttribute('hidden');
+            //console.log(data);
+            if (estado == 1) {
+                document.getElementById('aprobar').setAttribute('hidden','');
+                document.getElementById('aprobarBloqueo').removeAttribute('hidden');   
+            } else {
+                document.getElementById('aprobarBloqueo').setAttribute('hidden','');
+                document.getElementById('aprobar').removeAttribute('hidden');
+            }
         }
     })
 }
+
+$('#regresar').on('click', function () {
+    location.href = "./profesorAprobacion.html";
+    //$('#contenido').load("./profesorAprobacion.html");
+  })

@@ -1,4 +1,8 @@
-const clasificaciones = [
+
+
+var tratamientos = [];
+//var idExpediente = 0;
+var clasificaciones = [
     {text: 'Diagnóstico', value: 1, tratamientos: []},
     {text: 'Radiología', value: 2, tratamientos: []},
     {text: 'Periodoncia', value: 3, tratamientos: []},
@@ -8,10 +12,6 @@ const clasificaciones = [
     {text: 'Restaurativa', value: 7, tratamientos: []},
     {text: 'Odontopediatría', value: 8, tratamientos: []}
 ]
-
-let tratamientos = [];
-//var idExpediente = 0;
-
 
 function loadClasificaciones() {
     clasificaciones.forEach(element => {
@@ -200,5 +200,4 @@ function hideLoader() {
     setTimeout(() => {
         document.getElementById('loader').style.display = 'none';
     }, 1000);
-
 }

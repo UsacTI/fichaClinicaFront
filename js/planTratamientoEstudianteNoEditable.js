@@ -67,7 +67,8 @@ function loadTratamiento(e){
 }
 
 function goToExpediente() {
-    $('#contenido').load("expediente.html");
+    location.href = './expedienteEstudianteNoEditable.html?id='+idExpediente;
+    //$('#contenido').load("expediente.html");
 }
 
 function goToRadiografia() {
@@ -215,11 +216,10 @@ function comprobarPlan() {
         async: false,
         //data: data,
         success: function (data) {
-            console.log(data.expediente.aprobar_plan);
-            if (data.expediente.aprobar_plan == 0) {
+            //console.log(data.expediente.aprobar_plan);
+            //console.log(data);
+            if (data.expediente.aprobar_plan == 1) {
                 document.getElementById('aprobar').removeAttribute('hidden');
-            } else {
-                document.getElementById('aprobarBloqueo').removeAttribute('hidden');
             }
         }
     })
@@ -248,6 +248,6 @@ function cambioEstadoPlan(estado) {
 }
 
 $('#regresar').on('click', function () {
-    location.href = "./profesorPlanTratamiento.html";
-    //$('#contenido').load("./profesorPlanTratamiento.html");
+    location.href = "./pacienteEstudiante.html";
+    //$('#contenido').load("./pacienteEstudiante.html");
   })

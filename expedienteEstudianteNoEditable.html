@@ -91,16 +91,18 @@
             </nav>
             <div class="container border-r1 border-shadow">
                 <span style="float: left;"><a href="#" id="regresar"><i class="fas fa-arrow-left" style="font-size: 35px;"></i></a></span>
+
                 <div style="text-align: center;">
-                    <h2>EXPEDIENTE</h2>
+                    <button type="button" class="btn btn-primary" style="width: 185px;">Expediente</button>
+                    <button class="btn btn-light" onclick="goToPlanTratamiento()"
+                        style="width: 185px; border: 1px solid #007bff;">Plan de tratamiento</button>
+                    <button class="btn btn-light" onclick="goToRadiografia()"
+                        style="width: 185px; border: 1px solid #007bff;">Radiografia</button>
                 </div>
                 <hr>
                 <div style="text-align: center;">
-                    <button class="btn btn-success" id="aprobar" hidden onclick="cambioEstadoExpediente(1)">Aprobar expediente</button>
-                    <div id="aprobarBloqueo"hidden >
-                        <strong>Expediente aprobado</strong><br>
-                        <button class="btn btn-danger"  onclick="cambioEstadoExpediente(0)">Desaprobar</button>
-                    </div>
+                    <button class="btn btn-success" id="aprobar" hidden disabled>Aprobado</button>
+                    <br>
                     <br>
                 </div>
                 <div class="row">
@@ -342,7 +344,7 @@
     </script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
-    <script src="js/expedienteProfesor.js"></script>
+    <script src="js/expedienteEstudianteNoEditable.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>

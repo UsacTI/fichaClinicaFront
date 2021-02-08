@@ -32,25 +32,25 @@ function loadHMA() {
         let columna = `
 
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="hma-${hmas[i]['idhma']}" name="hma">
+                <input class="form-check-input" type="checkbox" value="" id="hma-${hmas[i]['idhma']}" name="hma" onclick="return false;">
                 <label class="form-check-label" for="hma-${hmas[i]['idhma']}">
-                ${hmas[i]['descripcion']}
+                ${hmas[i]['descripcion']} 
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="hma-${hmas[i+1]['idhma']}" name="hma">
+                <input class="form-check-input" type="checkbox" value="" id="hma-${hmas[i+1]['idhma']}" name="hma" onclick="return false;">
                 <label class="form-check-label" for="hma-${hmas[i+1]['idhma']}">
                 ${hmas[i+1]['descripcion']}
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="hma-${hmas[i+2]['idhma']}" name="hma">
+                <input class="form-check-input" type="checkbox" value="" id="hma-${hmas[i+2]['idhma']}" name="hma" onclick="return false;">
                 <label class="form-check-label" for="hma-${hmas[i+2]['idhma']}">
                 ${hmas[i+2]['descripcion']}
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="hma-${hmas[i+3]['idhma']}" name="hma">
+                <input class="form-check-input" type="checkbox" value="" id="hma-${hmas[i+3]['idhma']}" name="hma" onclick="return false;">
                 <label class="form-check-label" for="hma-${hmas[i+3]['idhma']}">
                 ${hmas[i+3]['descripcion']}
                 </label>
@@ -69,7 +69,7 @@ function loadHOA() {
     for (let i = 0; i < hoas.length; i++) {
         let item = `
 
-                <input class="form-check-input" type="checkbox" value="" id="hoa-${hoas[i]['idhoa']}" name="hoa">
+                <input class="form-check-input" type="checkbox" value="" id="hoa-${hoas[i]['idhoa']}" name="hoa" onclick="return false;">
                 <label class="form-check-label" for="hoa-${hoas[i]['idhoa']}">
                 ${hoas[i]['descripcion']}
                 </label>
@@ -92,8 +92,12 @@ function loadData(id) {
         async: false,
         //data: data,
         success: function (data) {
-            //console.log(data)
+            //console.log(data);
             let expediente = data['expediente'];
+            if (expediente.aprobar_expediente == 1) {
+                document.getElementById('aprobar').removeAttribute('hidden');
+            }
+
             document.getElementById('mc').value = expediente['mc'];
             document.getElementById('hpe').value = expediente['hpe'];
             let hma = String(expediente['hma']).split(',');
@@ -204,9 +208,9 @@ $(document).ready(function() {
     loadHMA();
     loadHOA();
     const urlParams = new URLSearchParams(window.location.search)
-    //idExpediente = urlParams.get('id');
+    idExpediente = urlParams.get('id');
     //console.log("expedientID expediente" +expedienteId);
-    idExpediente = expedienteId;
+    //idExpediente = expedienteId;
     //console.log("id expediente es" + expedienteId);
     loadData(idExpediente);
 } )
@@ -264,8 +268,7 @@ function guardarExpediente() {
     //console.log(oclusion);
 
     let fila = document.getElementById('tabla-hoa').getElementsByTagName('tr');
-    //console.log(fila[0]);
-    let tabla_hoa = [[],[],[],[],[]];
+    let tabla_hoa = [[],[],[],[],[],];
     let dolor_dentario = '';
     for (let i = 0; i < fila.length; i++) {
         let tds = fila[i].getElementsByTagName('td');
@@ -368,14 +371,14 @@ function guardarExpediente() {
         async: false,
         data: data,
         success: function (data) {
-           //console.log(data)
+           console.log(data)
         }
       })
 }
 
 function goToPlanTratamiento() {
-    //location.href = `./planTratamiento.html?id=${idExpediente}`;
-    $('#contenido').load("planTratamiento.html");
+    location.href = `./planTratamientoEstudianteNoEditable.html?id=${idExpediente}`;
+    //$('#contenido').load("planTratamiento.html");
 }
 
 function goToRadiografia() {
@@ -385,3 +388,30 @@ function goToRadiografia() {
 $('#registroExpediente').on('click', function () {
     guardarExpediente()
 })
+
+function cambioEstadoExpediente(estado) {
+    $.ajax({
+        type: 'PUT',
+        url: dominio + `updateExpediente/${idExpediente}`,
+        contentType: 'application/json',
+        dataType: 'json',
+        crossDomain: true,
+        async: false,
+        data: JSON.stringify({estado: estado}),
+        success: function (data) {
+            //console.log(data);
+            if (estado == 1) {
+                document.getElementById('aprobar').setAttribute('hidden','');
+                document.getElementById('aprobarBloqueo').removeAttribute('hidden');   
+            } else {
+                document.getElementById('aprobarBloqueo').setAttribute('hidden','');
+                document.getElementById('aprobar').removeAttribute('hidden');
+            }
+        }
+    })
+}
+
+$('#regresar').on('click', function () {
+    //location.href = "./pacienteEstudiante.html";
+    $('#contenido').load("./pacienteEstudiante.html");
+  })
