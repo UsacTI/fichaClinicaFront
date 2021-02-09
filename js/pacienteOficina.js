@@ -2,8 +2,8 @@ $(document).ready(function() {
     $('#paciente').DataTable()
     getPacientes();
   } )
-  
-  
+
+
   /*Estados paciente
   0: paciente registrado por oficina de información
   1: aprobado por trabajo social
@@ -13,7 +13,7 @@ $(document).ready(function() {
   5: paciente asignado
   6: paciente completado
   */
-  
+
   function getPacientes() {
     $.ajax({
       type: 'GET',
@@ -24,7 +24,7 @@ $(document).ready(function() {
       async: false,
       //data: data,
       success: function (data) {
-        
+
         $.ajax({
           type: 'GET',
           url: dominio + `patients/all`,
@@ -34,7 +34,7 @@ $(document).ready(function() {
           async: false,
           //data: data,
           success: function (data) {
-            
+
             if (data.pacientes.length > 0) {
               document.getElementById('tabla-pacientes').getElementsByTagName('tr')[0].remove();
             }
@@ -82,7 +82,7 @@ $(document).ready(function() {
                     <td> ${value.nombres} ${value.apellidos}</td>
                     <td> ${value.dpi}</td>
                     <td> Aprobado</td>
-                    <td><a href="./asignacionEstudiantePaciente.html?idpaciente=${value.idpaciente}" class="btn btn-success btn-sm">Asignar</a></td>
+                    <td><a href="#" onClick= AsignarEstudiante("${value.idpaciente}") class="btn btn-success btn-sm">Asignar</a></td>
                   </tr>
                   `
               } else if(value.aprobacion == 5){
@@ -95,7 +95,7 @@ $(document).ready(function() {
                   </tr>
                   `
               }
-              
+
               var btn = document.createElement('TR')
               btn.innerHTML = fila
               document.getElementById('tabla-pacientes').appendChild(btn)
@@ -105,13 +105,17 @@ $(document).ready(function() {
       }
     })
 
-    
-    
-    
+  }
+
+  function AsignarEstudiante(idPaciente){
+    //alert(idPaciente);
+    idPersonal = idPaciente;
+    $('#contenido').load("./asignacionEstudiantePaciente.html");
+
   }
 
   function generarBoleta(nombre, idpaciente) {
-    
+
     let dataBoleta = {
       carnet: idpaciente,
       unidad: '0',
@@ -126,7 +130,7 @@ $(document).ready(function() {
       idpaciente: idpaciente,
     }
     //console.log(dataBoleta);
-    
+
     $.ajax({
       type: 'POST',
       url: dominio + `boleta/crear`,
@@ -138,7 +142,7 @@ $(document).ready(function() {
       success: function (data) {
         let boleta = JSON.parse(data.pago);
         //console.log(boleta);
-        
+
         $.ajax({
           type: 'PUT',
           url: dominio + `paciente/estadoactualizacion/${idpaciente}`,
@@ -148,7 +152,7 @@ $(document).ready(function() {
           async: false,
           data: JSON.stringify({estado: 3}),
           success: function (data) {
-            
+
             location.href = `./boleta-pago.html?carnet=${dataBoleta.carnet}&boleta=${boleta.id_orden_pago}&llave=${boleta.checksum}`;
           }
         })
@@ -156,3 +160,7 @@ $(document).ready(function() {
     })
   }
 
+  $("#registroPaciente").on('click', function () {
+          //login(tipoCuenta);
+          $('#contenido').load("./registroPacienteOficinaInformacion.html");
+  });

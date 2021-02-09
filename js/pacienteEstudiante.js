@@ -35,6 +35,9 @@ function loading () {
   })
 }
 
+function goToCalendario(idPaciente) {
+$('#contenido').load("calendario.html");
+}
 
 function goToExpediente(idPaciente, estadoExpediente) {
   //console.log(idPaciente);

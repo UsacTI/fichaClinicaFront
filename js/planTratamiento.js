@@ -191,13 +191,3 @@ $(document).ready(function() {
     getTratamientos()
     $('#table-plan').DataTable();
 } )
-
-function showLoader() {
-    document.getElementById('loader').style.display = 'block';
-}
-
-function hideLoader() {
-    setTimeout(() => {
-        document.getElementById('loader').style.display = 'none';
-    }, 1000);
-}
