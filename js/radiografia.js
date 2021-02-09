@@ -50,21 +50,21 @@ function mostrar(){
 function obtenerBase(base){
 
   console.log(base.length);
-  testCompression(base, 'deflate');
+  guardarRadiografia(base, 'deflate');
 
 }
 
 
-function compress(string, encoding) {
+/*function compress(string, encoding) {
   const byteArray = new TextEncoder().encode(string);
   const cs = new CompressionStream(encoding);
   const writer = cs.writable.getWriter();
   writer.write(byteArray);
   writer.close();
   return new Response(cs.readable).arrayBuffer();
-}
+}*/
 
-function decompress(byteArray, encoding) {
+/*function decompress(byteArray, encoding) {
   const cs = new DecompressionStream(encoding);
   const writer = cs.writable.getWriter();
   writer.write(byteArray);
@@ -72,12 +72,13 @@ function decompress(byteArray, encoding) {
   return new Response(cs.readable).arrayBuffer().then(function (arrayBuffer) {
     return new TextDecoder().decode(arrayBuffer);
   });
-}
+}*/
 
-async function testCompression(text, encoding = 'deflate') {
+/*async function testCompression(text, encoding = 'deflate') {
   console.log(encoding + ':');
   console.time('compress');
   const compressedData = await compress(text, encoding);
+  guardarRadiografia(compressedData);
   console.timeEnd('compress');
   console.log('compressed length:', compressedData.byteLength, 'bytes');
   console.time('decompress');
@@ -85,4 +86,21 @@ async function testCompression(text, encoding = 'deflate') {
   console.timeEnd('decompress');
   console.log('decompressed length:', decompressedText.length, 'characters');
   console.assert(text === decompressedText);
+}*/
+
+
+function guardarRadiografia(comprimido) {
+  console.log("com´primiodo es: " + comprimido.length);
+/*  $.ajax({
+      type: 'PUT',
+      url: dominio + `insertarRadiografia/${expedienteId}`,
+      contentType: 'application/json',
+      dataType: 'json',
+      crossDomain: true,
+      async: false,
+      data: data,
+      success: function (data) {
+         console.log(data)
+      }
+    }):*/
 }

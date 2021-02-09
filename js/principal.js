@@ -180,3 +180,13 @@ $('#contenido').load("./"+url);
     setCookie('api-token', 'null', 1);
     window.location.href = "index.html";
   });
+
+  function showLoader() {
+    document.getElementById('loader').style.display = 'block';
+}
+
+function hideLoader() {
+    setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+    }, 1000);
+}
