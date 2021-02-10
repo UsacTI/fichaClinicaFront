@@ -1,4 +1,4 @@
-const clasificaciones = [
+ clasificaciones = [
     {text: 'Diagnóstico', value: 1, tratamientos: []},
     {text: 'Radiología', value: 2, tratamientos: []},
     {text: 'Periodoncia', value: 3, tratamientos: []},
@@ -67,12 +67,12 @@ function loadTratamiento(e){
 }
 
 function goToExpediente() {
-    location.href = './expedienteEstudianteNoEditable.html?id='+idExpediente;
-    //$('#contenido').load("expediente.html");
+    //location.href = './expedienteEstudianteNoEditable.html?id='+idExpediente;
+    $('#contenido').load("expedienteEstudianteNoEditable.html");
 }
 
 function goToRadiografia() {
-    $('#contenido').load("radiografia.html");
+    $('#contenido').load("radiografiaNoEditable.html");
 }
 
 function getTratamientos() {
@@ -186,13 +186,14 @@ function deleteDetalle(e, id) {
 $(document).ready(function() {
     loadClasificaciones();
     const urlParams = new URLSearchParams(window.location.search)
-    idExpediente = urlParams.get('id');
+    //idExpediente = urlParams.get('id');
+    idExpediente = expedienteId;
     //idExpediente = expedienteId;
     //console.log("el id expediente en Plan"+idExpediente);
     getTratamientos()
     comprobarPlan();
     $('#table-plan').DataTable();
-    
+
 } )
 
 function showLoader() {
@@ -238,7 +239,7 @@ function cambioEstadoPlan(estado) {
             //console.log(data);
             if (estado == 1) {
                 document.getElementById('aprobar').setAttribute('hidden','');
-                document.getElementById('aprobarBloqueo').removeAttribute('hidden');   
+                document.getElementById('aprobarBloqueo').removeAttribute('hidden');
             } else {
                 document.getElementById('aprobarBloqueo').setAttribute('hidden','');
                 document.getElementById('aprobar').removeAttribute('hidden');

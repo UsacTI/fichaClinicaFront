@@ -16,14 +16,14 @@ expedienteId = idExpediente;
 
 
 function goToExpediente() {
-    $('#contenido').load("expediente.html");
+    $('#contenido').load("expedienteEstudianteNoEditable.html");
 }
 
 function goToPlanTratamiento() {
-    $('#contenido').load("planTratamiento.html");
+    $('#contenido').load("planTratamientoEstudianteNoEditable.html");
 }
 
-/*function mostrar(){
+function mostrar(){
   var archivo = document.getElementById("file").files[0];
   var reader = new FileReader();
 
@@ -38,14 +38,7 @@ function goToPlanTratamiento() {
 
     }
   }
-}*/
-
-function mostrar(){
-  var formData = new FormData();
-  formData.append('prueba', document.getElementById("file").files[0]);
- console.log(document.getElementById("file").files[0]);
 }
-
 
 function obtenerBase(base){
 

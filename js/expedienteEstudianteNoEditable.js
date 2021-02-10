@@ -34,7 +34,7 @@ function loadHMA() {
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="hma-${hmas[i]['idhma']}" name="hma" onclick="return false;">
                 <label class="form-check-label" for="hma-${hmas[i]['idhma']}">
-                ${hmas[i]['descripcion']} 
+                ${hmas[i]['descripcion']}
                 </label>
             </div>
             <div class="form-check">
@@ -208,10 +208,9 @@ $(document).ready(function() {
     loadHMA();
     loadHOA();
     const urlParams = new URLSearchParams(window.location.search)
-    idExpediente = urlParams.get('id');
-    //console.log("expedientID expediente" +expedienteId);
-    //idExpediente = expedienteId;
-    //console.log("id expediente es" + expedienteId);
+    //idExpediente = urlParams.get('id');
+    idExpediente = expedienteId;
+
     loadData(idExpediente);
 } )
 
@@ -377,8 +376,10 @@ function guardarExpediente() {
 }
 
 function goToPlanTratamiento() {
-    location.href = `./planTratamientoEstudianteNoEditable.html?id=${idExpediente}`;
-    //$('#contenido').load("planTratamiento.html");
+    //location.href = `./planTratamientoEstudianteNoEditable.html?id=${idExpediente}`;
+    //expedienteId = idExpediente;
+    $('#contenido').load("planTratamientoEstudianteNoEditable.html");
+
 }
 
 function goToRadiografia() {
@@ -402,7 +403,7 @@ function cambioEstadoExpediente(estado) {
             //console.log(data);
             if (estado == 1) {
                 document.getElementById('aprobar').setAttribute('hidden','');
-                document.getElementById('aprobarBloqueo').removeAttribute('hidden');   
+                document.getElementById('aprobarBloqueo').removeAttribute('hidden');
             } else {
                 document.getElementById('aprobarBloqueo').setAttribute('hidden','');
                 document.getElementById('aprobar').removeAttribute('hidden');

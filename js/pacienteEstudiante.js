@@ -97,12 +97,14 @@ function goToExpediente(idPaciente, estadoExpediente) {
         //location.href = './expediente.html?id='+data['expediente'][0].idexpediente;
         //console.log(data['expediente'][0].idexpediente);
         if (estadoExpediente) {
-          location.href = './expedienteEstudianteNoEditable.html?id='+data['expediente'][0].idexpediente;
+          expedienteId = data['expediente'][0].idexpediente;
+          $('#contenido').load("expedienteEstudianteNoEditable.html");
+          //location.href = './expedienteEstudianteNoEditable.html?id='+data['expediente'][0].idexpediente;
         } else {
           expedienteId = data['expediente'][0].idexpediente;
-          $('#contenido').load("expediente.html");  
+          $('#contenido').load("expediente.html");
         }
-        
+
       } else {
         console.log('hola 3');
       }
