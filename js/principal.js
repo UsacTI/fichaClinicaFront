@@ -73,7 +73,7 @@ $.ajax({
 }
 else if(tipoU == 2){
 
-$('#contenido').load("./profesorBancoPaciente.html");
+$('#contenido').load("./profesorAprobacion.html");
 
 data = '{"tipomenu": ' + tipoU + '}'
 $.ajax({
@@ -189,4 +189,8 @@ function hideLoader() {
     setTimeout(() => {
         document.getElementById('loader').style.display = 'none';
     }, 1000);
+}
+
+function hideLoaderWTimer() {
+        document.getElementById('loader').style.display = 'none';
 }

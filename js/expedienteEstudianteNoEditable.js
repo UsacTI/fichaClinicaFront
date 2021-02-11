@@ -383,7 +383,7 @@ function goToPlanTratamiento() {
 }
 
 function goToRadiografia() {
-    $('#contenido').load("radiografia.html");
+    $('#contenido').load("radiografiaNoEditable.html");
 }
 
 $('#registroExpediente').on('click', function () {

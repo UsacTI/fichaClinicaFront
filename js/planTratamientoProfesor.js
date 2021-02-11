@@ -75,6 +75,7 @@ function goToRadiografia() {
 }
 
 function getTratamientos() {
+  showLoader();
     $.ajax({
         type: 'GET',
         url: dominio + `buscardetalleProcedimiento/${idExpediente}`,
@@ -100,6 +101,7 @@ function getTratamientos() {
                document.getElementById('table-tratamientos').appendChild(fila)
                n++;
            });
+           hideLoader();
         }
       })
 }
@@ -185,13 +187,13 @@ function deleteDetalle(e, id) {
 $(document).ready(function() {
     loadClasificaciones();
     const urlParams = new URLSearchParams(window.location.search)
-    idExpediente = urlParams.get('id');
-    //idExpediente = expedienteId;
+    //idExpediente = urlParams.get('id');
+    idExpediente = expedienteId;
     //console.log("el id expediente en Plan"+idExpediente);
     getTratamientos()
     comprobarPlan();
     $('#table-plan').DataTable();
-    
+
 } )
 
 function showLoader() {
@@ -226,6 +228,7 @@ function comprobarPlan() {
 }
 
 function cambioEstadoPlan(estado) {
+    showLoader();
     $.ajax({
         type: 'PUT',
         url: dominio + `updateExpedientePlan/${idExpediente}`,
@@ -235,19 +238,24 @@ function cambioEstadoPlan(estado) {
         async: false,
         data: JSON.stringify({estado: estado}),
         success: function (data) {
+          hideLoaderWTimer();
             //console.log(data);
             if (estado == 1) {
                 document.getElementById('aprobar').setAttribute('hidden','');
-                document.getElementById('aprobarBloqueo').removeAttribute('hidden');   
+                document.getElementById('aprobarBloqueo').removeAttribute('hidden');
+                alertify.set('notifier','position', 'top-right');
+                alertify.success("Se Aprobo el Plan de Tratamiento");
             } else {
                 document.getElementById('aprobarBloqueo').setAttribute('hidden','');
                 document.getElementById('aprobar').removeAttribute('hidden');
+                alertify.set('notifier','position', 'top-right');
+                alertify.success("Se Desaprobo el Plan de Tratamiento");
             }
         }
     })
 }
 
 $('#regresar').on('click', function () {
-    location.href = "./profesorPlanTratamiento.html";
-    //$('#contenido').load("./profesorPlanTratamiento.html");
+    //location.href = "./profesorPlanTratamiento.html";
+    $('#contenido').load("./profesorPlanTratamiento.html");
   })

@@ -34,7 +34,7 @@ function loadHMA() {
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="hma-${hmas[i]['idhma']}" name="hma" onclick="return false;">
                 <label class="form-check-label" for="hma-${hmas[i]['idhma']}">
-                ${hmas[i]['descripcion']} 
+                ${hmas[i]['descripcion']}
                 </label>
             </div>
             <div class="form-check">
@@ -83,6 +83,7 @@ function loadHOA() {
 }
 
 function loadData(id) {
+    showLoader();
     $.ajax({
         type: 'GET',
         url: dominio + `expediente/search/${id}`,
@@ -201,6 +202,7 @@ function loadData(id) {
                 document.getElementById('estudios').checked = true;
             }
             document.getElementById('equipo-diagnostico').value = expediente['equipo_diagnostico'];
+            hideLoader();
             }
         })
 }
@@ -210,7 +212,8 @@ $(document).ready(function() {
     loadHMA();
     loadHOA();
     const urlParams = new URLSearchParams(window.location.search)
-    idExpediente = urlParams.get('id');
+    //idExpediente = urlParams.get('id');
+    idExpediente = expedienteId;
     //console.log("expedientID expediente" +expedienteId);
     //idExpediente = expedienteId;
     //console.log("id expediente es" + expedienteId);
@@ -392,6 +395,7 @@ $('#registroExpediente').on('click', function () {
 })
 
 function cambioEstadoExpediente(estado) {
+  showLoader();
     $.ajax({
         type: 'PUT',
         url: dominio + `updateExpediente/${idExpediente}`,
@@ -401,19 +405,24 @@ function cambioEstadoExpediente(estado) {
         async: false,
         data: JSON.stringify({estado: estado}),
         success: function (data) {
+          hideLoaderWTimer();
             //console.log(data);
             if (estado == 1) {
                 document.getElementById('aprobar').setAttribute('hidden','');
-                document.getElementById('aprobarBloqueo').removeAttribute('hidden');   
+                document.getElementById('aprobarBloqueo').removeAttribute('hidden');
+                alertify.set('notifier','position', 'top-right');
+                alertify.success("Se Aprobo el Expediente");
             } else {
                 document.getElementById('aprobarBloqueo').setAttribute('hidden','');
                 document.getElementById('aprobar').removeAttribute('hidden');
+                alertify.set('notifier','position', 'top-right');
+                alertify.success("Se Desaprobo el Expediente");
             }
         }
     })
 }
 
 $('#regresar').on('click', function () {
-    location.href = "./profesorAprobacion.html";
-    //$('#contenido').load("./profesorAprobacion.html");
+    //location.href = "./profesorAprobacion.html";
+    $('#contenido').load("./profesorAprobacion.html");
   })

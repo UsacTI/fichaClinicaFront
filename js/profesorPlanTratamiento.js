@@ -5,10 +5,10 @@ $(document).ready(function() {
 
 function getEstudiantes() {
   document.getElementById('tabla-plan').getElementsByTagName('tr')[0].remove();
-  
+
   $.ajax({
     type: 'GET',
-    url: dominio + 'BuscarDetallePacienteUsuario/'+12,
+    url: dominio + 'BuscarDetallePacienteUsuario/'+idUsuario,
     contentType: 'application/json',
     dataType: 'json',
     crossDomain: true,
@@ -21,11 +21,17 @@ function getEstudiantes() {
           <td>${element.nombresUs} ${element.apellidoUs}</td>
           <td>${element.nombres} ${element.apellidos}</td>
           <td>${(element.aprobar_plan == 1)?'<button class="btn btn-success btn-sm" disabled>Aprobado</button>':'<button class="btn btn-danger btn-sm" disabled>Revisar</button>'}</td>
-          <td> <a href="./planTratamientoProfesor.html?id=${element.idexpediente}"><img src="icon/check-list.png"></> </td>
+          <td> <a href="#" onClick= planTratamientoProfesor("${element.idexpediente}")><img src="icon/check-list.png"></a></td>
         `
-        document.getElementById('tabla-plan').appendChild(fila);  
+        document.getElementById('tabla-plan').appendChild(fila);
       });
-      
+
     }
   })
+}
+
+
+function planTratamientoProfesor(idExpediente) {
+  expedienteId = idExpediente;
+$('#contenido').load("planTratamientoProfesor.html");
 }

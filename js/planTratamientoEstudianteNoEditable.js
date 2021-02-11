@@ -1,15 +1,19 @@
- clasificaciones = [
-    {text: 'Diagnóstico', value: 1, tratamientos: []},
-    {text: 'Radiología', value: 2, tratamientos: []},
-    {text: 'Periodoncia', value: 3, tratamientos: []},
-    {text: 'Cirugía', value: 4, tratamientos: []},
-    {text: 'Endodoncia', value: 5, tratamientos: []},
-    {text: 'Operatoria', value: 6, tratamientos: []},
-    {text: 'Restaurativa', value: 7, tratamientos: []},
-    {text: 'Odontopediatría', value: 8, tratamientos: []}
-]
 
-let tratamientos = [];
+
+  var clasificaciones = [
+     {text: 'Diagnóstico', value: 1, tratamientos: []},
+     {text: 'Radiología', value: 2, tratamientos: []},
+     {text: 'Periodoncia', value: 3, tratamientos: []},
+     {text: 'Cirugía', value: 4, tratamientos: []},
+     {text: 'Endodoncia', value: 5, tratamientos: []},
+     {text: 'Operatoria', value: 6, tratamientos: []},
+     {text: 'Restaurativa', value: 7, tratamientos: []},
+     {text: 'Odontopediatría', value: 8, tratamientos: []}
+   ];
+
+
+
+var tratamientos = [];
 //var idExpediente = 0;
 
 
