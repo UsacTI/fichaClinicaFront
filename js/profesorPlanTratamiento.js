@@ -21,7 +21,8 @@ function getEstudiantes() {
           <td>${element.nombresUs} ${element.apellidoUs}</td>
           <td>${element.nombres} ${element.apellidos}</td>
           <td>${(element.aprobar_plan == 1)?'<button class="btn btn-success btn-sm" disabled>Aprobado</button>':'<button class="btn btn-danger btn-sm" disabled>Revisar</button>'}</td>
-          <td> <a href="#" onClick= planTratamientoProfesor("${element.idexpediente}")><img src="icon/check-list.png"></a></td>
+          <td> <a href="#" onClick= planTratamientoProfesor("${element.idexpediente}")><img src="icon/check-list.png"></a> |
+          <a href="#" onClick= goToRadiografia("${element.idexpediente}")><i class="fas fa-images"></i></a></td>
         `
         document.getElementById('tabla-plan').appendChild(fila);
       });
@@ -34,4 +35,10 @@ function getEstudiantes() {
 function planTratamientoProfesor(idExpediente) {
   expedienteId = idExpediente;
 $('#contenido').load("planTratamientoProfesor.html");
+}
+
+function goToRadiografia(idExpediente) {
+  expedienteId = idExpediente;
+  alert(expedienteId);
+    $('#contenido').load("radiografiaNoEditableProfesor.html");
 }
