@@ -10,19 +10,19 @@ $(document).ready(function() {
     getTratamientos(idpaciente);
     getCitas(1,fecha);
 } )
-  
+
 function registroCita() {
     let idtratamiento = $("#tratamiento").val();
     //tratamiento = $('select[name="tratamiento"] option:selected').text();
     let fecha = $("#fecha").val();
     let hora = $("#horario").val();
-    let data = {idpaciente: Number(idpaciente), 
-        id_detalle_procedimiento_tratamiento: Number(idtratamiento), 
+    let data = {idpaciente: Number(idpaciente),
+        id_detalle_procedimiento_tratamiento: Number(idtratamiento),
         fecha: fecha,
         doctor: 'alguno jeje',
         hora: hora
     };
-    
+
     $.ajax({
         type: 'POST',
         url:  dominio + "citas/crear",
@@ -94,7 +94,7 @@ function getTratamientos(idpaciente) {
         success: function (data) {
             //console.log(data);
             tratamientos = data.tratamientos;
-            
+
             tratamientos.forEach(element => {
                 let opcion = document.createElement('option');
                 opcion.value = element.id_detalle_procedimiento_tratamiento;
@@ -120,7 +120,3 @@ function setTratamiento(e) {
         document.getElementById('valor').value = tratamiento.valor;
     }
 }
-
-
-
-  
