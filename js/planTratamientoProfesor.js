@@ -1,4 +1,4 @@
-const clasificaciones = [
+var clasificaciones = [
     {text: 'Diagnóstico', value: 1, tratamientos: []},
     {text: 'Radiología', value: 2, tratamientos: []},
     {text: 'Periodoncia', value: 3, tratamientos: []},
@@ -9,8 +9,8 @@ const clasificaciones = [
     {text: 'Odontopediatría', value: 8, tratamientos: []}
 ]
 
-let tratamientos = [];
-//var idExpediente = 0;
+var tratamientos = [];
+var idExpediente = 0;
 
 
 function loadClasificaciones() {
@@ -95,7 +95,15 @@ function getTratamientos() {
                     <td>${element.pieza}</td>
                     <td>${element.descripcion}</td>
                     <td>${element.valor}</td>
-                    <td hidden><button class="btn btn-danger btn-sm" onclick="deleteDetalle(this, ${element.id_detalle_procedimiento_tratamiento})">Eliminar</button></td>
+                    <td>${(element.estado == 0)?
+                        `<button class="btn btn-warning btn-sm" disabled>Pendiente</button>`
+                        :   
+                        (element.estado == 1)?
+                            `<button class="btn btn-primary btn-sm" onclick="changeEstadoTratamiento('${element.id_detalle_procedimiento_tratamiento}','2')">Aprobar</button>`
+                        :
+                            '<button class="btn btn-success btn-sm" disabled>Aprobado</button>'
+                    }
+                    </td>
                `
                document.getElementById('table-tratamientos').appendChild(fila)
                n++;
@@ -251,3 +259,21 @@ $('#regresar').on('click', function () {
     location.href = "./profesorPlanTratamiento.html";
     //$('#contenido').load("./profesorPlanTratamiento.html");
   })
+
+function changeEstadoTratamiento(id, estado) {
+    $.ajax({
+        type: 'PUT',
+        url: dominio + `detalleProcedimientoTratamiento/update/${id}/${estado}`,
+        contentType: 'application/json',
+        dataType: 'json',
+        crossDomain: true,
+        async: false,
+        success: function (data) {
+            console.log(data);
+            location.reload();
+            //$('#contenido').load("./planTratamientoProfesor.html");
+            alertify.set('notifier','position', 'top-right');
+            alertify.success("Tratamiento aprobado");
+        }
+    })
+}

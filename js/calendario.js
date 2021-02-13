@@ -4,7 +4,7 @@ function onReady() {
   let citas = []
   $.ajax({
       type: 'GET',
-      url:  dominio + "citas/consultarTodasIdusuario/1",
+      url:  dominio + "citas/consultarTodasIdusuario/"+idUsuario,
       contentType: "application/json",
       dataType: 'json',
       crossDomain: true,
@@ -42,7 +42,7 @@ function onReady() {
       dateClick: function (info) {
           //console.log(info);
           //alert('Date: ' + info.dateStr);
-          location.href = `./registroCita.html?fecha=${info.dateStr}&idpaciente=4`;
+          location.href = `./registroCita.html?fecha=${info.dateStr}&idpaciente=${idPersonal}`;
       },
       headerToolbar: {
           // left: 'prevYear,prev,next,nextYear today',

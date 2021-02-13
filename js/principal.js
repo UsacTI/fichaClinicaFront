@@ -190,3 +190,30 @@ function hideLoader() {
         document.getElementById('loader').style.display = 'none';
     }, 1000);
 }
+
+
+function getFecha(f) {
+  let fecha = new Date(f);
+  let dia = fecha.getUTCDate();
+  let mes = fecha.getMonth();
+  if (fecha.getUTCDate() < 10) {
+      dia = `0${fecha.getUTCDate()}`
+  }
+  if (fecha.getMonth() < 10) {
+      mes = `0${fecha.getMonth()}`
+  }
+  return `${dia}/${mes}/${fecha.getUTCFullYear()}`
+}
+
+function getHora(f) {
+  let fecha = new Date(f);
+  let hora = fecha.getUTCHours();
+  if (fecha.getUTCHours() < 10) {
+      hora = `0${fecha.getUTCHours()}`
+  }
+  let min = fecha.getUTCMinutes()
+  if (fecha.getUTCMinutes() < 10) {
+      min = `0${fecha.getUTCMinutes()}`
+  }
+  return `${hora}:${min}`
+}
