@@ -593,7 +593,7 @@
                                     <th>Pieza</th>
                                     <th>Tratamiento</th>
                                     <th>Valor</th>
-                                    <th hidden>Opcion</th>
+                                    <th >Opcion</th>
                                 </tr>
                             </thead>
                             <tbody id="table-tratamientos" style="font-size: 0.8em;">
@@ -604,26 +604,77 @@
                     </div>
                 </div>
 
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+
+
+
+
+        <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body" style="text-align: center;">
+                            <div style="margin: 0 auto;"><img id="modal-image" width="80"></div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body" style="text-align: center;">
-                <div style="margin: 0 auto;"><img id="modal-image" width="80"></div>
+
+            <div class="modal fade" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" >Detalle del tratamiento</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" >
+                            <div class="row">
+                                <div class="col-sm-4" style="text-align: right;">
+                                    <strong>Tratamiento:</strong>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label id="tratamiento"></label>
+                                </div>
+                                <div class="col-sm-4" style="text-align: right;">
+                                    <strong>Fecha:</strong>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label id="fecha"></label>
+                                </div>
+                                <div class="col-sm-4" style="text-align: right;">
+                                    <strong>Horario:</strong>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label id="horario"></label>
+                                </div>
+                                <div class="col-sm-4" style="text-align: right;">
+                                    <strong>Estado de cuenta:</strong>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label id="cuenta">Q</label>
+                                </div>
+                                <div class="col-sm-12" style="text-align: center;">
+                                    <button class="btn btn-primary">Cobrar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-    </div>
 
 
 

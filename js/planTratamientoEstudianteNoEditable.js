@@ -100,7 +100,23 @@ function getTratamientos() {
                     <td>${element.pieza}</td>
                     <td>${element.descripcion}</td>
                     <td>${element.valor}</td>
-                    <td hidden><button class="btn btn-danger btn-sm" onclick="deleteDetalle(this, ${element.id_detalle_procedimiento_tratamiento})">Eliminar</button></td>
+                    <td>${(element.estado == 0)?
+                        `<button class="btn btn-primary btn-sm" onclick="changeEstadoTratamiento('${element.id_detalle_procedimiento_tratamiento}','1')">Solicitar aprobación</button>`
+                        :   
+                        (element.estado == 1)?
+                            '<button class="btn btn-danger btn-sm" disabled>Pendiente de aprobación</button>'
+                        :
+                        (element.estado == 2)?
+                            '<button class="btn btn-info btn-sm" onclick="goToCalendario()">Programar cita</button>'
+                        :
+                        (element.estado == 3)?
+                            '<button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#detalleModal">Ver detalles</button>'
+                        :
+                        'mundo'
+                    }
+                    </td>
+                    
+                    
                `
                document.getElementById('table-tratamientos').appendChild(fila)
                n++;
@@ -222,7 +238,8 @@ function comprobarPlan() {
         //data: data,
         success: function (data) {
             //console.log(data.expediente.aprobar_plan);
-            //console.log(data);
+            console.log(data);
+            idPaciente = data.expediente.idpaciente
             if (data.expediente.aprobar_plan == 1) {
                 document.getElementById('aprobar').removeAttribute('hidden');
             }
@@ -256,3 +273,31 @@ $('#regresar').on('click', function () {
     location.href = "./pacienteEstudiante.html";
     //$('#contenido').load("./pacienteEstudiante.html");
   })
+
+
+function changeEstadoTratamiento(id, estado) {
+    $.ajax({
+        type: 'PUT',
+        url: dominio + `detalleProcedimientoTratamiento/update/${id}/${estado}`,
+        contentType: 'application/json',
+        dataType: 'json',
+        crossDomain: true,
+        async: false,
+        success: function (data) {
+            //console.log(data);
+            location.reload();
+            //$('#contenido').load("./planTratamientoEstudianteNoEditable.html");
+            alertify.set('notifier','position', 'top-right');
+            if (Number(estado) == 1) {
+                alertify.success("Solicitud enviada");    
+            }
+            
+        }
+    })
+}
+
+function goToCalendario(){
+    idPersonal = idPaciente;
+    idUsuario = 1;
+    location.href = "./calendario.html";
+}

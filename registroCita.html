@@ -6,7 +6,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tratamiento</label>
-                            <select id="tratamiento" name="tratamiento" class="form-control" onchange="setTratamiento(this)">
+                            <select id="tratamiento" name="tratamiento" class="form-control" onchange="setTratamiento(this)" required>
                                 <option disabled selected value>-- Seleccione un tratamiento --</option>
                             </select>
                         </div>
@@ -22,8 +22,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Horario</label>
-                            <input type="time" id="horario" name="trip-start" class="form-control">
+                            <label for="formGroupExampleInput" >Horario</label>
+                            <input type="time" id="horario" name="trip-start" class="form-control" required>
                         </div>
                         <br>
                     </div>

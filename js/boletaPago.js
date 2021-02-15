@@ -18,6 +18,7 @@ function getBoleta(carnet, idboleta, llave) {
         async: false,
         //data: JSON.stringify({estado: 3}),
         success: function (data) {
+            //console.log(data);
             let boleta = JSON.parse(data);
           console.log(JSON.parse(data));
           document.getElementById('no').textContent = idboleta;
@@ -28,6 +29,7 @@ function getBoleta(carnet, idboleta, llave) {
           document.getElementById('carrera').textContent = boleta.CARRERA;
           document.getElementById('detalle-monto').textContent = boleta.monto+'.00';
           document.getElementById('total').textContent = boleta.monto+'.00';
+          document.getElementById('descripcion').textContent = boleta.DESCRIPCION;
 
           document.getElementById('orden').textContent = idboleta;
           document.getElementById('carnet-banco').textContent = carnet;
