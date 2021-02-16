@@ -92,7 +92,7 @@ function loadData(id) {
         async: false,
         //data: data,
         success: function (data) {
-            //console.log(data)
+            console.log(data)
             let expediente = data['expediente'];
             document.getElementById('mc').value = expediente['mc'];
             document.getElementById('hpe').value = expediente['hpe'];
@@ -133,19 +133,23 @@ function loadData(id) {
                     columna = [];
                 }
             }
-            //console.log(dolor_dentario);
-            for (let i = 0; i < dolor_dentario[0].length; i++) {
-                if (i >= 4) {
-                    addColumn();
+            //console.log(dolor_dentario[0]);
+            if (dolor_dentario[0] != undefined) {
+                for (let i = 0; i < dolor_dentario[0].length; i++) {
+                    if (i >= 4) {
+                        addColumn();
+                    }
+                }
+                let fila = document.getElementById('tabla-hoa').getElementsByTagName('tr');
+                for (let i = 0; i < fila.length; i++) {
+                    let tds = fila[i].getElementsByTagName('td');
+                    for (let n = 1; n < tds.length; n++) {
+                        tds[n].textContent = dolor_dentario[i][n-1];
+                    }
                 }
             }
-            let fila = document.getElementById('tabla-hoa').getElementsByTagName('tr');
-            for (let i = 0; i < fila.length; i++) {
-                let tds = fila[i].getElementsByTagName('td');
-                for (let n = 1; n < tds.length; n++) {
-                    tds[n].textContent = dolor_dentario[i][n-1];
-                }
-            }
+            
+            
 
             document.getElementById('habitos').value = expediente['habitos'];
             document.getElementById('roentgenologica').value = expediente['roentgenologia'];
@@ -385,3 +389,8 @@ function goToRadiografia() {
 $('#registroExpediente').on('click', function () {
     guardarExpediente()
 })
+
+$('#regresar').on('click', function () {
+    //location.href = "./pacienteEstudiante.html";
+    $('#contenido').load("./pacienteEstudiante.html");
+  })

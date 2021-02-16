@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+  showLoader();
     getPacientes();
     $('#paciente').DataTable({
 
@@ -115,6 +115,7 @@ $(document).ready(function() {
               btn.innerHTML = fila
               document.getElementById('tabla-pacientes').appendChild(btn)
             }
+            hideLoader();
           }
         })
       }

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+  
   loading();
 
   $('#table1').DataTable({
@@ -40,9 +40,9 @@ function loading () {
           <td>${value.nombres}</td>
           <td>${value.apellidos}</td>
           <td>${value.dpi}</td>
-          <td>${(value.aprobar_expediente == 1)?'<button class="btn btn-success btn-sm" disabled>Aprobado</button>':'<button class="btn btn-danger btn-sm" disabled>Revisar</button>'}</td>
-          <td>${(value.aprobar_plan == 1)?'<button class="btn btn-success btn-sm" disabled>Aprobado</button>':'<button class="btn btn-danger btn-sm" disabled>Revisar</button>'} </td>
-          <td><a href="#" onClick= goToExpediente("${value.idpaciente}","${value.aprobar_expediente == 1}")> <img src="icon/ficha.png"></a>&nbsp;&nbsp;
+          <td>${(value.aprobar_expediente != null && value.aprobar_expediente == 1)?'<button class="btn btn-success btn-sm" disabled>Aprobado</button>':'<button class="btn btn-danger btn-sm" disabled>Revisar</button>'}</td>
+          <td>${(value.aprobar_plan != null && value.aprobar_plan == 1)?'<button class="btn btn-success btn-sm" disabled>Aprobado</button>':'<button class="btn btn-danger btn-sm" disabled>Revisar</button>'} </td>
+          <td><a href="#" onClick= goToExpediente("${value.idpaciente}","${value.aprobar_expediente}")> <img src="icon/ficha.png"></a>&nbsp;&nbsp;
               <a href="#" onClick= goToCalendario("${value.idexpediente}","${value.idpaciente}")><img src="icon/calendar.png"></a></td>
         </tr>`
         var btn = document.createElement('TR')
@@ -98,7 +98,7 @@ function goToExpediente(idPaciente, estadoExpediente) {
           estudios_especiales: '',
           equipo_diagnostico: '',
           diagnostico:  '',
-          idpaciente:  id,
+          idpaciente:  idPaciente,
         }
         let data = JSON.stringify(expediente);
 
@@ -112,18 +112,21 @@ function goToExpediente(idPaciente, estadoExpediente) {
             data: data,
             success: function (data) {
               //console.log(data)
-              location.href = './expediente.html'
+              //location.href = './expediente.html'
+              $('#contenido').load("expediente.html");
             }
           })
       } else if (data['expediente'].length == 1) {
         //console.log('hola 2');
         //location.href = './expediente.html?id='+data['expediente'][0].idexpediente;
         //console.log(data['expediente'][0].idexpediente);
-        if (estadoExpediente) {
+        console.log(estadoExpediente);
+        if (Number(estadoExpediente) == 1) {
           expedienteId = data['expediente'][0].idexpediente;
           $('#contenido').load("expedienteEstudianteNoEditable.html");
           //location.href = './expedienteEstudianteNoEditable.html?id='+data['expediente'][0].idexpediente;
         } else {
+          //console.log('vamos al expediente editable');
           expedienteId = data['expediente'][0].idexpediente;
           $('#contenido').load("expediente.html");
         }

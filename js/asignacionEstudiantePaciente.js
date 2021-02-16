@@ -1,7 +1,8 @@
 $(document).ready(function () {
+  showLoader();
   estudiantes();
   paciente();
-
+  hideLoader();
 });
 
 
@@ -44,6 +45,7 @@ function paciente () {
 function asignarEstudiantePaciente () {
   // console.log($('#prof').val())
   // console.log($('#estu').val())
+  showLoader()
   data = JSON.stringify({
     idpaciente: idPersonal,
     idusuario: $('#estu').val()
@@ -60,6 +62,7 @@ function asignarEstudiantePaciente () {
       //console.log(data)
       alertify.set('notifier','position', 'top-right');
       alertify.success("Se asigno Correctamente");
+      hideLoader();
       $('#contenido').load("./registroPaciente.html");
     }
   })
