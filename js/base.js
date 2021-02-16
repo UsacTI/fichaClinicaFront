@@ -18,6 +18,11 @@ var idPersonal = 0;
 var expedienteId = 0;
 var fechaNuevaCita = "";
 
+///////////para genera la boleta en primera cita
+var carnetBoleta = 0;
+var id_orden_pago = 0;
+var checksum = 0;
+
 function get(url, param) {
     var url_string = url;
     var url = new URL(url_string);
