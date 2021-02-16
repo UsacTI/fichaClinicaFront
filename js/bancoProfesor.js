@@ -1,6 +1,22 @@
 $(document).ready(function () {
-  $('#table1').DataTable()
   loading ();
+  $('#table1').DataTable({
+
+         language: {
+             search: "Buscar:",
+           "info": "Mostrando del _START_ a _END_ de _TOTAL_ registros",
+           "lengthMenu":     "Mostrar _MENU_ registros",
+           "zeroRecords":    "No se encontro ningun registro",
+           "infoEmpty":      "0 registros",
+         "infoFiltered":   "(filtrados de _MAX_ registros)",
+             paginate: {
+                 first:      "Primero",
+                 previous:   "Anterior",
+                 next:       "Siguiente",
+                 last:       "Ultimo"
+             }
+           }
+       });
 })
 
 function loading () {
