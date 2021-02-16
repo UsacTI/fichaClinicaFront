@@ -28,11 +28,19 @@ $(document).ready(function() {
             fila.innerHTML = `
                 <td>${paciente.nombres} ${paciente.apellidos}</td>
                 <td>${paciente.dpi}</td>
-                <td><a href="./abonoHistorial.html?id=${paciente.idpaciente}"><img src="icon/check-list.png"></a></td>
+                <td><a href="#" onClick= abonoHistorial(${paciente.idpaciente})><img src="icon/check-list.png"></a></td>
             `
             document.getElementById('tabla-abonos').appendChild(fila);
           });
         }
       }
     })
+  }
+
+  function abonoHistorial(idPaciente) {
+
+  //setCookie('api-idPersonal', idestudiante, 1);
+  idPersonal = idPaciente;
+  $('#contenido').load("abonoHistorial.html");
+
   }

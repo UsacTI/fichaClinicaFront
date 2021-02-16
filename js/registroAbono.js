@@ -2,7 +2,8 @@ var personalId = 0;
 $(document).ready(function () {
     document.getElementById("nombreUsuario").innerHTML = '<a class="nav-link" style="color: yellow;"><strong>'+nombre+ ', '+apellido+'.</strong></a>';
     const urlParams = new URLSearchParams(window.location.search)
-    personalId = urlParams.get('id');
+    //personalId = urlParams.get('id');
+    personalId = idPersonal
     getPaciente(personalId);
 });
 
@@ -11,7 +12,7 @@ $(document).ready(function () {
 function registroAbono() {
     let monto = $("#monto").val();
     let nombre = $("#nombre").val()+' '+$("#apellido").val();
-    
+
     let dataBoleta = {
       carnet: personalId,
       unidad: '0',
@@ -39,20 +40,11 @@ function registroAbono() {
       success: function (data) {
         let boleta = JSON.parse(data.pago);
         //console.log(boleta);
+        carnetBoleta = dataBoleta.carnet;
+        id_orden_pago = boleta.id_orden_pago;
+        checksum = boleta.checksum;
 
-        $.ajax({
-          type: 'PUT',
-          url: dominio + `paciente/estadoactualizacion/${personalId}`,
-          contentType: 'application/json',
-          dataType: 'json',
-          crossDomain: true,
-          async: false,
-          data: JSON.stringify({estado: 3}),
-          success: function (data) {
-
-            location.href = `./boleta-pago.html?carnet=${dataBoleta.carnet}&boleta=${boleta.id_orden_pago}&llave=${boleta.checksum}`;
-          }
-        })
+        $('#contenido').load("./boletaCita.html");
       }
     })
   }
@@ -71,12 +63,12 @@ function getPaciente(id) {
             document.getElementById('nombre').value = data.paciente.nombres;
             document.getElementById('apellido').value = data.paciente.apellidos;
             document.getElementById('dpi').value = data.paciente.dpi;
-            
+
         }
     })
 }
 
 $("#registro-abono").on('click', function () {
-    
+
     registroAbono();
 });

@@ -1,12 +1,30 @@
-var personalId = 0;
+  var personalId = 0;
 $(document).ready(function() {
-    $('#table1').DataTable()
-    const urlParams = new URLSearchParams(window.location.search)
-    personalId = urlParams.get('id');
+
+    //personalId = urlParams.get('id');
+    personalId = idPersonal;
     //idExpediente = expedienteId;
-    
+
     loadAbonos();
     getEstadoCuent();
+
+    $('#table1').DataTable({
+
+           language: {
+               search: "Buscar:",
+             "info": "Mostrando del _START_ a _END_ de _TOTAL_ registros",
+             "lengthMenu":     "Mostrar _MENU_ registros",
+             "zeroRecords":    "No se encontro ningun registro",
+             "infoEmpty":      "0 registros",
+           "infoFiltered":   "(filtrados de _MAX_ registros)",
+               paginate: {
+                   first:      "Primero",
+                   previous:   "Anterior",
+                   next:       "Siguiente",
+                   last:       "Ultimo"
+               }
+             }
+         });
     //getImagen();
 } );
 
@@ -21,19 +39,18 @@ function loadAbonos() {
         success: function (data) {
             //console.log(data);
             if (data.pago.length > 0) {
-                document.getElementById('tabla-historial').getElementsByTagName('tr')[0].remove();
                 data.pago.forEach(pago => {
                     let fila = document.createElement('tr');
                     fila.innerHTML = `
-                        <td>${pago.idboleta}</td>    
+                        <td>${pago.idboleta}</td>
                         <td>${pago.descripcion}</td>
                         <td>${getFecha(pago.fecha)}</td>
                         <td>${(pago.tipo == 1)?'+Q'+pago.monto:'-Q'+pago.monto}</td>
                     `;
                     document.getElementById('tabla-historial').appendChild(fila);
-                });    
+                });
             }
-            
+
         }
     })
 }
@@ -47,7 +64,7 @@ function getEstadoCuent() {
         crossDomain: true,
         async: false,
         success: function (data) {
-            //console.log(data);
+            console.log(data);
             document.getElementById('estado-cuenta').innerHTML = `<strong>Estado de cuenta: </strong>Q${data.pago.credito}`;
         }
     })
@@ -64,7 +81,7 @@ function cargarImagen() {
         data: new FormData(document.getElementById('imagen')),
         success: function (data) {
             console.log(data);
-            
+
         }
     })
 }
@@ -93,10 +110,10 @@ $("#imagen").change(function() {
         data: formdata,
         success: function (data) {
             console.log(data);
-            
+
         }
     })
-    
+
 });
 
 function getImagen(){
@@ -119,5 +136,6 @@ function getImagen(){
 }
 
 function goToFijarAbono(){
-    location.href = `./fijar-abono.html?id=${personalId}`
+  //  location.href = `./fijar-abono.html?id=${personalId}`
+      $('#contenido').load("fijar-abono.html");
 }

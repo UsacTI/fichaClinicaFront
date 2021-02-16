@@ -39,7 +39,11 @@ function login(cuenta) {
             window.location.href = "abono.html";
 
         }
-        }
+        },
+        error: function (response) {
+          alertify.set('notifier','position', 'top-right');
+          alertify.error("Usuario o Contraseña Incorrecto!");
+            }
     });
 }
 else if(cuenta==1){

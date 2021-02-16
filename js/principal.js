@@ -104,7 +104,7 @@ $.ajax({
 }
 else if(tipoU == 1){
 
-$('#contenido').load("./asignacionProfesorEstudiante.html");
+$('#contenido').load("./abono.html");
 
 data = '{"tipomenu": ' + tipoU + '}'
 $.ajax({
