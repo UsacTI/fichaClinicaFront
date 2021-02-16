@@ -169,7 +169,12 @@ $(document).ready(function() {
           data: JSON.stringify({estado: 3}),
           success: function (data) {
 
-            location.href = `./boleta-pago.html?carnet=${dataBoleta.carnet}&boleta=${boleta.id_orden_pago}&llave=${boleta.checksum}`;
+            //location.href = `./boletaCita.html?carnet=${dataBoleta.carnet}&boleta=${boleta.id_orden_pago}&llave=${boleta.checksum}`;
+            carnetBoleta = dataBoleta.carnet;
+            id_orden_pago = boleta.id_orden_pago;
+            checksum = boleta.checksum;
+
+            $('#contenido').load("./boletaCita.html");
           }
         })
       }

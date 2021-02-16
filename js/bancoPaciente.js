@@ -49,7 +49,6 @@ function loading () {
         fila += '<td>' + value.apellidos + '</td>'
         fila += '<td>' + value.dpi + '</td>'
         fila += '<td style="text-align: center;">' + '<a href="#" onClick= pacienteVisualizacion("'+value.idpaciente+'")> <img src="icon/user.png"></img></a>' + '&nbsp;&nbsp;' +
-                         // '<a href="google.com' + value.idpaciente + '" target="_blank"><img src="icon/table.png"></img></a>' + '&nbsp;&nbsp;' +
                          '<a href="#" onClick= pacienteActualizacion("'+value.idpaciente+'")><img src="icon/edit.png"></img></a>' + '</td>'
         fila += '</tr>'
         var btn = document.createElement('TR')
@@ -78,7 +77,6 @@ function loadingTS () {
         fila += '<td>' + value.apellidos + '</td>'
         fila += '<td>' + value.dpi + '</td>'
         fila += '<td style="text-align: center;">' + '<a href="#" onClick= pacienteVisualizacion("'+value.idpaciente+'")> <img src="icon/user.png"></img></a>' + '&nbsp;&nbsp;' +
-                         //'<a href="google.com' + value.idpaciente + '" target="_blank"><img src="icon/table.png"></img></a>' + '&nbsp;&nbsp;' +
                          '<a href="#" onClick= pacienteActualizacion("'+value.idpaciente+'")><img src="icon/edit.png"></img></a>' + '</td>'
         fila += '</tr>'
         var btn = document.createElement('TR')
