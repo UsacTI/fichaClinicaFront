@@ -1,6 +1,23 @@
 $(document).ready(function() {
-    $('#paciente').DataTable()
+
     getPacientes();
+    $('#paciente').DataTable({
+
+           language: {
+               search: "Buscar:",
+             "info": "Mostrando del _START_ a _END_ de _TOTAL_ registros",
+             "lengthMenu":     "Mostrar _MENU_ registros",
+             "zeroRecords":    "No se encontro ningun registro",
+             "infoEmpty":      "0 registros",
+           "infoFiltered":   "(filtrados de _MAX_ registros)",
+               paginate: {
+                   first:      "Primero",
+                   previous:   "Anterior",
+                   next:       "Siguiente",
+                   last:       "Ultimo"
+               }
+             }
+         });
   } )
 
 
@@ -36,7 +53,6 @@ $(document).ready(function() {
           success: function (data) {
 
             if (data.pacientes.length > 0) {
-              document.getElementById('tabla-pacientes').getElementsByTagName('tr')[0].remove();
             }
             for (const value of data.pacientes) {
               var fila = '';

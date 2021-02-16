@@ -11,7 +11,7 @@ $(document).ready(function () {
    loading();
  }
 
- $('#bancoPaciente').DataTable({
+ $('#table1').DataTable({
 
         language: {
             search: "Buscar:",
@@ -31,7 +31,6 @@ $(document).ready(function () {
 })
 
 function loading () {
-  document.getElementById('tablita').getElementsByTagName('tr')[0].remove();
   $.ajax({
     type: 'GET',
     url: dominio + 'patients/state1/',
@@ -61,7 +60,6 @@ function loading () {
 }
 
 function loadingTS () {
-  document.getElementById('tablita').getElementsByTagName('tr')[0].remove();
   $.ajax({
     type: 'GET',
     url: dominio + 'patients/state0/',
@@ -91,7 +89,6 @@ function loadingTS () {
 }
 
 function loading2 () {
-  document.getElementById('tablita').getElementsByTagName('tr')[0].remove();
   $.ajax({
     type: 'GET',
     url: dominio + 'patients/state5/',
