@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    $('#paciente').DataTable()
     getPacientes();
+    $('#paciente').DataTable()
   } )
 
 
@@ -35,9 +35,7 @@ $(document).ready(function() {
           //data: data,
           success: function (data) {
 
-            if (data.pacientes.length > 0) {
-              document.getElementById('tabla-pacientes').getElementsByTagName('tr')[0].remove();
-            }
+            
             for (const value of data.pacientes) {
               var fila = '';
               if (value.aprobacion == 0) {

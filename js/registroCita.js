@@ -1,25 +1,45 @@
-let idpaciente = '';
-let tratamientos = [];
+var idExpediente = '';
+var tratamientos = [];
 
 $(document).ready(function() {
-    const urlParams = new URLSearchParams(window.location.search)
-    idpaciente = urlParams.get('idpaciente');
-    let fecha = String(urlParams.get('fecha'));
+    //const urlParams = new URLSearchParams(window.location.search)
+    idExpediente = expedienteId;
+    //console.log(expedienteId);
+    //console.log(idPersonal);
+    //let fecha = String(urlParams.get('fecha'));
+    let fecha = fechaNuevaCita;
     //console.log(fecha);
-    document.getElementById('fecha').value = urlParams.get('fecha');
-    getTratamientos(idpaciente);
-    getCitas(1,fecha);
+    document.getElementById('fecha').value = fecha;
+    getTratamientos(idExpediente);
+    getCitas(idUsuario,fecha);
+
+    $('#table4').DataTable({
+        language: {
+            search: "Buscar:",
+          "info": "Mostrando del _START_ a _END_ de _TOTAL_ registros",
+          "lengthMenu":     "Mostrar _MENU_ registros",
+          "zeroRecords":    "No se encontro ningun registro",
+          "infoEmpty":      "0 registros",
+        "infoFiltered":   "(filtrados de _MAX_ registros)",
+            paginate: {
+                first:      "Primero",
+                previous:   "Anterior",
+                next:       "Siguiente",
+                last:       "Ultimo"
+            }
+          }
+      });
 } )
 
 function registroCita() {
     let tra = document.getElementById('tratamiento');
 
-    console.log(tra);
+    //console.log(tra);
     let idtratamiento = $("#tratamiento").val();
     //tratamiento = $('select[name="tratamiento"] option:selected').text();
     let fecha = $("#fecha").val();
     let hora = $("#horario").val();
-    let data = {idpaciente: Number(idpaciente),
+    let data = {idpaciente: Number(idPersonal),
         id_detalle_procedimiento_tratamiento: Number(idtratamiento),
         fecha: fecha,
         doctor: 'alguno jeje',
@@ -50,10 +70,11 @@ function registroCita() {
             $('#tratamiento').prop('selectedIndex',0);
             document.getElementById('pieza').value = '';
             document.getElementById('valor').value = '';*/
-            location.reload();
-            //$('#contenido').load("./planTratamientoEstudianteNoEditable.html");
+            //location.reload();
+            $('#contenido').load("./registroCita.html");
+            //console.log(data);
             alertify.set('notifier','position', 'top-right');
-            if (Number(estado) == 1) {
+            if (Number(data.estado) == 3) {
                 alertify.success("Cita registrada");    
             }
         }
@@ -71,7 +92,7 @@ function getCitas(idusuario, fecha) {
         success: function (data) {
             let citas = data.citas;
             //console.log(data.citas);
-            document.getElementById('table-tratamientos').getElementsByTagName('tr')[0].remove();
+            //document.getElementById('table-tratamientos').getElementsByTagName('tr')[0].remove();
             citas.forEach(element => {
                 let fila = document.createElement('tr');
                 fila.innerHTML = `
@@ -93,11 +114,11 @@ $("#registro-cita").on('click', function () {
     registroCita();
 });
 
-function getTratamientos(idpaciente) {
+function getTratamientos(idExpediente) {
     //console.log('hola');
     $.ajax({
         type: 'GET',
-        url:  dominio + `buscardetalleProcedimiento/${idpaciente}`,
+        url:  dominio + `buscardetalleProcedimientoEstado2/${idExpediente}`,
         contentType: "application/json",
         dataType: 'json',
         crossDomain: true,
@@ -129,12 +150,10 @@ function eliminarCita(e, iddetalle, idcita) {
         data: JSON.stringify({iddetalle: iddetalle}),
         success: function (data) {
             //console.log(data);
-            location.reload();
-            //$('#contenido').load("./planTratamientoEstudianteNoEditable.html");
+            //location.reload();
+            $('#contenido').load("./registroCita.html");
             alertify.set('notifier','position', 'top-right');
-            if (Number(estado) == 1) {
-                alertify.success("Cita eliminada");    
-            }
+            alertify.success("Cita eliminada");
         }
     });
 }
@@ -148,3 +167,8 @@ function setTratamiento(e) {
         document.getElementById('valor').value = tratamiento.valor;
     }
 }
+
+$('#regresar').on('click', function () {
+    //location.href = "./pacienteEstudiante.html";
+    $('#contenido').load("./calendario.html");
+  })

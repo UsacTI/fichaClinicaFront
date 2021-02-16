@@ -270,8 +270,8 @@ function cambioEstadoPlan(estado) {
 }
 
 $('#regresar').on('click', function () {
-    location.href = "./pacienteEstudiante.html";
-    //$('#contenido').load("./pacienteEstudiante.html");
+    //location.href = "./pacienteEstudiante.html";
+    $('#contenido').load("./pacienteEstudiante.html");
   })
 
 
@@ -285,8 +285,8 @@ function changeEstadoTratamiento(id, estado) {
         async: false,
         success: function (data) {
             //console.log(data);
-            location.reload();
-            //$('#contenido').load("./planTratamientoEstudianteNoEditable.html");
+            //location.reload();
+            $('#contenido').load("./planTratamientoEstudianteNoEditable.html");
             alertify.set('notifier','position', 'top-right');
             if (Number(estado) == 1) {
                 alertify.success("Solicitud enviada");    
@@ -298,6 +298,7 @@ function changeEstadoTratamiento(id, estado) {
 
 function goToCalendario(){
     idPersonal = idPaciente;
-    idUsuario = 1;
-    location.href = "./calendario.html";
+    //idUsuario = 1;
+    //location.href = "./calendario.html";
+    $('#contenido').load("./calendario.html");
 }

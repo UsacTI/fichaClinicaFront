@@ -33,9 +33,9 @@ function loading () {
     crossDomain: true,
     async: false,
     success: function (data) {
-       console.log(data)
+       //console.log(data)
       for (const value of data.pacientes) {
-         console.log(value)
+        //console.log(value)
         var fila = `<tr>
           <td>${value.nombres}</td>
           <td>${value.apellidos}</td>
@@ -43,7 +43,7 @@ function loading () {
           <td>${(value.aprobar_expediente == 1)?'<button class="btn btn-success btn-sm" disabled>Aprobado</button>':'<button class="btn btn-danger btn-sm" disabled>Revisar</button>'}</td>
           <td>${(value.aprobar_plan == 1)?'<button class="btn btn-success btn-sm" disabled>Aprobado</button>':'<button class="btn btn-danger btn-sm" disabled>Revisar</button>'} </td>
           <td><a href="#" onClick= goToExpediente("${value.idpaciente}","${value.aprobar_expediente == 1}")> <img src="icon/ficha.png"></a>&nbsp;&nbsp;
-              <a href="#" onClick= goToCalendario("${value.idpaciente}")><img src="icon/calendar.png"></a></td>
+              <a href="#" onClick= goToCalendario("${value.idexpediente}","${value.idpaciente}")><img src="icon/calendar.png"></a></td>
         </tr>`
         var btn = document.createElement('TR')
         btn.innerHTML = fila
@@ -53,8 +53,12 @@ function loading () {
   })
 }
 
-function goToCalendario(idPaciente) {
+function goToCalendario(idExpediente, idPaciente) {
+  //console.log(idExpediente);
   idPersonal = idPaciente;
+  expedienteId = idExpediente;
+  //console.log(expedienteId);
+
 $('#contenido').load("calendario.html");
 }
 

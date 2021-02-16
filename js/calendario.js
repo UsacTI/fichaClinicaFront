@@ -2,6 +2,7 @@
 function onReady() {
   var calendarEl = document.getElementById('calendar');
   let citas = []
+  //console.log(idUsuario);
   $.ajax({
       type: 'GET',
       url:  dominio + "citas/consultarTodasIdusuario/"+ idUsuario,
@@ -12,6 +13,7 @@ function onReady() {
       success: function (data) {
           //console.log(data);
           data.citas.forEach(element => {
+              //console.log(element.fecha);
               let fecha = String(element.fecha).replaceAll('-','');
               let hh = Number(String(element.hora).substring(0,2));
               let min = String(element.hora).substring(3,5);
@@ -21,7 +23,7 @@ function onReady() {
               if (hh < 10) {
                   horaF = `0${hh}${min}00`;
               }
-
+              //console.log(fecha);
               citas.push({
                   title: element.descripcion,
                   start: element.fecha,
@@ -92,3 +94,8 @@ onReady();
 } else {
 document.addEventListener("DOMContentLoaded", onReady);
 }
+
+$('#regresar').on('click', function () {
+    //location.href = "./pacienteEstudiante.html";
+    $('#contenido').load("./pacienteEstudiante.html");
+  })

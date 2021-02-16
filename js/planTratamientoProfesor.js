@@ -278,8 +278,8 @@ function changeEstadoTratamiento(id, estado) {
         async: false,
         success: function (data) {
             console.log(data);
-            location.reload();
-            //$('#contenido').load("./planTratamientoProfesor.html");
+            //location.reload();
+            $('#contenido').load("./planTratamientoProfesor.html");
             alertify.set('notifier','position', 'top-right');
             alertify.success("Tratamiento aprobado");
         }

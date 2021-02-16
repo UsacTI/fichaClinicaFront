@@ -23,11 +23,11 @@ function menu(tipoU) {
     async: false,
     data: data,
     success: function (data) {
-      console.log(data)
+      //console.log(data)
       html = '';
 
       for(i = 0; i < data.Menus.length; i++){
-        console.log(data.Menus[i]);
+        //console.log(data.Menus[i]);
         html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].icono+' '+data.Menus[i].nombre+'</a></li>';
       }
 
@@ -54,11 +54,11 @@ $.ajax({
  async: false,
  data: data,
  success: function (data) {
-   console.log(data)
+   //console.log(data)
    html = '';
 
    for(i = 0; i < data.Menus.length; i++){
-     console.log(data.Menus[i]);
+     //console.log(data.Menus[i]);
      html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].icono+' '+data.Menus[i].nombre+'</a></li>';
    }
 
@@ -85,11 +85,11 @@ $.ajax({
  async: false,
  data: data,
  success: function (data) {
-   console.log(data)
+   //console.log(data)
    html = '';
 
    for(i = 0; i < data.Menus.length; i++){
-     console.log(data.Menus[i]);
+     //console.log(data.Menus[i]);
      html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].icono+' '+data.Menus[i].nombre+'</a></li>';
    }
 
@@ -116,11 +116,11 @@ $.ajax({
  async: false,
  data: data,
  success: function (data) {
-   console.log(data)
+   //console.log(data)
    html = '';
 
    for(i = 0; i < data.Menus.length; i++){
-     console.log(data.Menus[i]);
+     //console.log(data.Menus[i]);
     html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].icono+' '+data.Menus[i].nombre+'</a></li>';
    }
 
@@ -148,11 +148,11 @@ $.ajax({
  async: false,
  data: data,
  success: function (data) {
-   console.log(data)
+   //console.log(data)
    html = '';
 
    for(i = 0; i < data.Menus.length; i++){
-     console.log(data.Menus[i]);
+     //console.log(data.Menus[i]);
      html += '<li><a href="#" onClick= contentUrl("'+data.Menus[i].url+'")>'+data.Menus[i].icono+' '+data.Menus[i].nombre+'</a></li>';
    }
 

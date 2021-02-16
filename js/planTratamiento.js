@@ -109,7 +109,7 @@ function agregarDetalle() {
     let tratamiento = {
         idtratamiento: document.getElementById('select-tratamiento').value,
         idexpediente: idExpediente,
-        idusuario: 1,
+        idusuario: idUsuario,
         pieza: document.getElementById('pieza').value
     }
 
