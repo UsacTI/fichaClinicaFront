@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  showLoader();
+  
     getPacientes();
     $('#paciente').DataTable({
 
@@ -126,6 +126,7 @@ $(document).ready(function() {
   function AsignarEstudiante(idPaciente){
     //alert(idPaciente);
     idPersonal = idPaciente;
+    showLoader();
     $('#contenido').load("./asignacionEstudiantePaciente.html");
 
   }

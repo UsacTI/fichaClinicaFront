@@ -46,6 +46,7 @@ function loading () {
         btn.innerHTML = fila
         document.getElementById('tablita').appendChild(btn)
       }
+      hideLoader();
     }
   })
 }

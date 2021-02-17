@@ -63,7 +63,7 @@ function getPaciente(id) {
             document.getElementById('nombre').value = data.paciente.nombres;
             document.getElementById('apellido').value = data.paciente.apellidos;
             document.getElementById('dpi').value = data.paciente.dpi;
-
+            hideLoader();
         }
     })
 }

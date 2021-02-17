@@ -2,6 +2,7 @@ $(document).ready(function () {
 
 
   $('#paciente').DataTable();
+  hideLoader();
 });
 
 function registroPaciente () {

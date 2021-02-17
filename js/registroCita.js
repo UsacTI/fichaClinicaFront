@@ -96,6 +96,7 @@ function getCitas(idusuario, fecha) {
             citas.forEach(element => {
                 let fila = document.createElement('tr');
                 fila.innerHTML = `
+                    <td>${element.nombres} ${element.apellidos}</td>
                     <td>${element.descripcion}</td>
                     <td>${element.pieza}</td>
                     <td>${element.valor}</td>
@@ -125,15 +126,18 @@ function getTratamientos(idExpediente) {
         async: false,
         success: function (data) {
             //console.log(data);
-            tratamientos = data.tratamientos;
+            if (data.tratamientos != undefined) {
+                tratamientos = data.tratamientos;
 
-            tratamientos.forEach(element => {
-                let opcion = document.createElement('option');
-                opcion.value = element.id_detalle_procedimiento_tratamiento;
-                opcion.textContent = element.descripcion;
-                //console.log(opcion);
-                document.getElementById('tratamiento').appendChild(opcion);
-            });
+                tratamientos.forEach(element => {
+                    let opcion = document.createElement('option');
+                    opcion.value = element.id_detalle_procedimiento_tratamiento;
+                    opcion.textContent = element.descripcion;
+                    //console.log(opcion);
+                    document.getElementById('tratamiento').appendChild(opcion);
+                });
+            }
+            hideLoader();
         }
     });
 }

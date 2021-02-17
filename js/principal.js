@@ -169,9 +169,9 @@ $.ajax({
 }
 
 function contentUrl(url) {
-
-$('#contenido').load("./"+url);
-
+  showLoader();
+  $('#contenido').load("./"+url);
+  
 }
 
 

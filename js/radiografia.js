@@ -10,7 +10,8 @@ else if(tipoUsuario == 3){
 }
 //console.log("expedientID radiografia" +idExpediente);
 expedienteId = idExpediente;
-
+mostrarRadiografia();
+hideLoader();
 });
 
 
@@ -67,4 +68,28 @@ function guardarRadiografia() {
 
               }
           });
+}
+
+function mostrarRadiografia() {
+
+  let img = document.getElementById('in-image');
+  $.ajax({
+      type: 'GET',
+      url: dominio + `consultarRadiografia/${idExpediente}`,
+      contentType: false,
+      processData: false,
+      cache: false,
+      //dataType: false,
+      //crossDomain: true,
+      //async: false,
+      success: function (data) {
+          
+          if (data.expediente.radiografia != null) {
+            document.getElementById("img").src= `data:image/jpg;base64,${data.expediente.radiografia}`;
+            hideLoaderWTimer();
+          }
+          
+      }
+  })
+
 }

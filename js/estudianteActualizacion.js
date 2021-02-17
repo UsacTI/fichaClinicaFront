@@ -36,6 +36,7 @@ function loading () {
       }
       document.getElementById('regestudiante').value = data.paciente.carne
       usuarios = data.paciente.idusuario
+      hideLoader();
     }
   })
 }

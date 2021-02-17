@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
   estudiantes();
-  profesores();
+  
 })
 
 function estudiantes () {
@@ -17,6 +17,7 @@ function estudiantes () {
       for (const value of data.usuarios) {
         document.getElementById('estu').innerHTML += "<option value='" + value.idusuario + "'>" + value.nombres + '  ' + value.apellidos + '</option>'
       }
+      profesores();
     }
   })
 }
@@ -34,6 +35,7 @@ function profesores () {
       for (const value of data.usuarios) {
         document.getElementById('prof').innerHTML += "<option value='" + value.idusuario + "'>" + value.nombres + '  ' + value.apellidos + '</option>'
       }
+      hideLoader();
     }
   })
 }

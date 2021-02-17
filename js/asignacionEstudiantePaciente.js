@@ -1,8 +1,7 @@
 $(document).ready(function () {
-  showLoader();
   estudiantes();
-  paciente();
-  hideLoader();
+  
+  
 });
 
 
@@ -19,6 +18,7 @@ function estudiantes () {
       for (const value of data.usuarios) {
         document.getElementById('estu').innerHTML += "<option value='" + value.idusuario + "'>" + value.nombres + '  ' + value.apellidos + '</option>'
       }
+      paciente();
     }
   })
 }
@@ -38,6 +38,7 @@ function paciente () {
       document.getElementById('dpi').textContent =   'DPI: '+data.paciente.dpi;
       document.getElementById('direccion').textContent = 'Dirección: '+data.paciente.direccion;
       document.getElementById('consulta').textContent = 'Motivo de cosulta: '+data.paciente.consulta;
+      hideLoader();
     }
   })
 }
@@ -45,7 +46,7 @@ function paciente () {
 function asignarEstudiantePaciente () {
   // console.log($('#prof').val())
   // console.log($('#estu').val())
-  showLoader()
+  
   data = JSON.stringify({
     idpaciente: idPersonal,
     idusuario: $('#estu').val()
@@ -62,12 +63,13 @@ function asignarEstudiantePaciente () {
       //console.log(data)
       alertify.set('notifier','position', 'top-right');
       alertify.success("Se asigno Correctamente");
-      hideLoader();
+      //hideLoader();
       $('#contenido').load("./registroPaciente.html");
     }
   })
 }
 
 $('#asignar').on('click', function () {
+  showLoader()
   asignarEstudiantePaciente();
 });

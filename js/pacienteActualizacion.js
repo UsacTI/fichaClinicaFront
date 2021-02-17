@@ -44,6 +44,7 @@ function loading () {
       document.getElementById('tipopaciente').value = data.paciente.tipopaciente
       document.getElementById('nivel').value = data.paciente.nivel
       usuarios = data.paciente.idpaciente
+      hideLoader();
     }
   })
 }

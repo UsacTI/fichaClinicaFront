@@ -26,6 +26,7 @@ $(document).ready(function() {
              }
          });
     //getImagen();
+    hideLoader();
 } );
 
 function loadAbonos() {
@@ -139,3 +140,9 @@ function goToFijarAbono(){
   //  location.href = `./fijar-abono.html?id=${personalId}`
       $('#contenido').load("fijar-abono.html");
 }
+
+$('#regresar').on('click', function () {
+    //location.href = "./pacienteEstudiante.html";
+    showLoader();
+    $('#contenido').load("./abono.html");
+  })

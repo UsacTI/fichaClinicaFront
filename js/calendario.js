@@ -25,7 +25,7 @@ function onReady() {
               }
               //console.log(fecha);
               citas.push({
-                  title: element.descripcion,
+                  title: element.descripcion+' ---- Horario: '+element.hora+' Hrs. a '+hh+':'+min+':00 Hrs.',
                   start: element.fecha,
                   description: '',
                   url: 'https://calendar.google.com/calendar/r/eventedit?' +
@@ -33,8 +33,8 @@ function onReady() {
                       '&dates='+fecha+'T'+horaI+'/'+fecha+'T'+horaF+
                       '&details=Cita para realizar ' +element.descripcion+
                       '&location=Guatemala' +
-                      '&ctz=America/Guatemala (GMT -6)'+
-                      '&add=bryan.moga95@gmail.com&add=javierhc22@gmail.com&add=benjamin@profesor.usac.edu.gt'
+                      '&ctz=America/Guatemala (GMT -6)'
+                      
               })
           });
       }

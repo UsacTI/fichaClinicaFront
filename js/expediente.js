@@ -92,7 +92,7 @@ function loadData(id) {
         async: false,
         //data: data,
         success: function (data) {
-            console.log(data)
+            //console.log(data)
             let expediente = data['expediente'];
             document.getElementById('mc').value = expediente['mc'];
             document.getElementById('hpe').value = expediente['hpe'];

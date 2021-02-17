@@ -38,6 +38,7 @@ function loading () {
       document.getElementById('subarea').value = data.paciente.subarea
       document.getElementById('regestudiante').value = data.paciente.carne
       usuarios = data.paciente.idusuario
+      hideLoader();
     }
   })
 }

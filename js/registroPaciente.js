@@ -1,7 +1,8 @@
 $(document).ready(function () {
   // document.getElementById("nombreUsuario").innerHTML = '<a class="nav-link" style="color: white;">'+nombre+ ' '+rol+'</a>';
-  showLoader();
+  
   $('#paciente').DataTable()
+  hideLoader();
 })
 
 function registroPaciente () {

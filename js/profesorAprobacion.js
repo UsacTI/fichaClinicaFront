@@ -42,7 +42,7 @@ function getEstudiantes() {
         `
         document.getElementById('tabla-aprobacion').appendChild(fila);
       });
-
+      hideLoader();
     }
   })
 }

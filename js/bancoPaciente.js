@@ -28,7 +28,7 @@ $(document).ready(function () {
             }
           }
       });
-      hideLoader();
+      
 })
 
 function loading () {
@@ -55,6 +55,7 @@ function loading () {
         btn.innerHTML = fila
         document.getElementById('tablita').appendChild(btn)
       }
+      hideLoader();
     }
   })
 }
@@ -83,6 +84,7 @@ function loadingTS () {
         btn.innerHTML = fila
         document.getElementById('tablita').appendChild(btn)
       }
+      hideLoader();
     }
   })
 }
@@ -104,13 +106,14 @@ function loading2 () {
         fila += '<td>' + value.nombres + '</td>'
         fila += '<td>' + value.apellidos + '</td>'
         fila += '<td>' + value.dpi + '</td>'
-        fila += '<td>' + '<a href="#" onClick= pacienteVisualizacion("'+value.idpaciente+'")> <img src="icon/user.png"></img></a>' + '&nbsp;&nbsp;' +
-                         '<a href="https://www.w3schools.com" target="_blank"><img src="icon/table.png"></img></a>' + '&nbsp;&nbsp;' + '</td>'
+        fila += '<td>' + '<a href="#" onClick= pacienteVisualizacion("'+value.idpaciente+'")> <img src="icon/user.png"></img></a>' + '&nbsp;&nbsp;' //+
+                         //'<a href="https://www.w3schools.com" target="_blank"><img src="icon/table.png"></img></a>' + '&nbsp;&nbsp;' + '</td>'
         fila += '</tr>'
         var btn = document.createElement('TR')
         btn.innerHTML = fila
         document.getElementById('tablita').appendChild(btn)
       }
+      hideLoader();
     }
   })
 }
