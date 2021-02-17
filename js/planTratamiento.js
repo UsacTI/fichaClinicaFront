@@ -13,6 +13,8 @@ var clasificaciones = [
     {text: 'Odontopediatría', value: 8, tratamientos: []}
 ]
 
+var estadoExpediente = 0;
+
 function loadClasificaciones() {
     clasificaciones.forEach(element => {
         let opcion = document.createElement('option');
@@ -67,7 +69,12 @@ function loadTratamiento(e){
 }
 
 function goToExpediente() {
-    $('#contenido').load("expediente.html");
+    if (estadoExpediente == 1) {
+        $('#contenido').load("expedienteEstudianteNoEditable.html");
+    } else {
+        $('#contenido').load("expediente.html");    
+    }
+    
 }
 
 function goToRadiografia() {
@@ -181,6 +188,27 @@ function deleteDetalle(e, id) {
 
 }
 
+function comprobarPlan() {
+    $.ajax({
+        type: 'GET',
+        url: dominio + `expediente/search/${idExpediente}`,
+        contentType: 'application/json',
+        dataType: 'json',
+        crossDomain: true,
+        async: false,
+        //data: data,
+        success: function (data) {
+            //console.log(data.expediente.aprobar_plan);
+            console.log(data);
+            estadoExpediente = data.expediente.aprobar_expediente;
+            idPaciente = data.expediente.idpaciente;
+            if (data.expediente.aprobar_plan == 1) {
+                document.getElementById('aprobar').removeAttribute('hidden');
+            }
+        }
+    })
+}
+
 
 $(document).ready(function() {
     loadClasificaciones();
@@ -189,5 +217,11 @@ $(document).ready(function() {
     idExpediente = expedienteId;
     //console.log("el id expediente en Plan"+idExpediente);
     getTratamientos()
+    comprobarPlan();
     $('#table-plan').DataTable();
 } )
+
+$('#regresar').on('click', function () {
+    //location.href = "./pacienteEstudiante.html";
+    $('#contenido').load("./pacienteEstudiante.html");
+  })

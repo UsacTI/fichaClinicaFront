@@ -26,6 +26,7 @@ var hoas = [
     {idhoa: 6, descripcion: "Otros"},
 ]
 
+var estadoPlan = 0;
 
 function loadHMA() {
     for (let i = 0; i < hmas.length; i++) {
@@ -93,6 +94,7 @@ function loadData(id) {
         //data: data,
         success: function (data) {
             //console.log(data)
+            estadoPlan = data.expediente.aprobar_plan;
             let expediente = data['expediente'];
             document.getElementById('mc').value = expediente['mc'];
             document.getElementById('hpe').value = expediente['hpe'];
@@ -379,7 +381,12 @@ function guardarExpediente() {
 
 function goToPlanTratamiento() {
     //location.href = `./planTratamiento.html?id=${idExpediente}`;
-    $('#contenido').load("planTratamiento.html");
+    if (estadoPlan == 1) {
+        $('#contenido').load("planTratamientoEstudianteNoEditable.html");
+    }else{
+        $('#contenido').load("planTratamiento.html");
+    }
+    
 }
 
 function goToRadiografia() {

@@ -26,6 +26,8 @@ var hoas = [
     {idhoa: 6, descripcion: "Otros"},
 ]
 
+var aprobar_plan = 0;
+
 
 function loadHMA() {
     for (let i = 0; i < hmas.length; i++) {
@@ -93,6 +95,7 @@ function loadData(id) {
         //data: data,
         success: function (data) {
             //console.log(data);
+            estadoPlan = data.expediente.aprobar_plan;
             let expediente = data['expediente'];
             if (expediente.aprobar_expediente == 1) {
                 document.getElementById('aprobar').removeAttribute('hidden');
@@ -138,19 +141,20 @@ function loadData(id) {
                 }
             }
             //console.log(dolor_dentario);
-            for (let i = 0; i < dolor_dentario[0].length; i++) {
-                if (i >= 4) {
-                    addColumn();
+            if (dolor_dentario[0] != undefined) {
+                for (let i = 0; i < dolor_dentario[0].length; i++) {
+                    if (i >= 4) {
+                        addColumn();
+                    }
+                }
+                let fila = document.getElementById('tabla-hoa').getElementsByTagName('tr');
+                for (let i = 0; i < fila.length; i++) {
+                    let tds = fila[i].getElementsByTagName('td');
+                    for (let n = 1; n < tds.length; n++) {
+                        tds[n].textContent = dolor_dentario[i][n-1];
+                    }
                 }
             }
-            let fila = document.getElementById('tabla-hoa').getElementsByTagName('tr');
-            for (let i = 0; i < fila.length; i++) {
-                let tds = fila[i].getElementsByTagName('td');
-                for (let n = 1; n < tds.length; n++) {
-                    tds[n].textContent = dolor_dentario[i][n-1];
-                }
-            }
-
             document.getElementById('habitos').value = expediente['habitos'];
             document.getElementById('roentgenologica').value = expediente['roentgenologia'];
             document.getElementById('precauciones').value = expediente['precauciones'];
@@ -378,7 +382,12 @@ function guardarExpediente() {
 function goToPlanTratamiento() {
     //location.href = `./planTratamientoEstudianteNoEditable.html?id=${idExpediente}`;
     //expedienteId = idExpediente;
-    $('#contenido').load("planTratamientoEstudianteNoEditable.html");
+    if (aprobar_plan == 1) {
+        $('#contenido').load("planTratamientoEstudianteNoEditable.html");    
+    } else {
+        $('#contenido').load("planTratamiento.html");
+    }
+    
 
 }
 

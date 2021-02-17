@@ -30,7 +30,7 @@ function getEstudiantes() {
     crossDomain: true,
     async: false,
     success: function (data) {
-      console.log(data)
+      //console.log(data)
       data.detalle.forEach(element => {
         let fila = document.createElement('tr');
         fila.innerHTML = `
@@ -42,7 +42,7 @@ function getEstudiantes() {
         `
         document.getElementById('tabla-plan').appendChild(fila);
       });
-
+      hideLoader();
     }
   })
 }

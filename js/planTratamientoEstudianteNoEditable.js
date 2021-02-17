@@ -14,6 +14,7 @@
 
 
 var tratamientos = [];
+var estadoExpediente = 0;
 //var idExpediente = 0;
 
 
@@ -72,7 +73,12 @@ function loadTratamiento(e){
 
 function goToExpediente() {
     //location.href = './expedienteEstudianteNoEditable.html?id='+idExpediente;
-    $('#contenido').load("expedienteEstudianteNoEditable.html");
+    if (estadoExpediente == 1) {
+        $('#contenido').load("expedienteEstudianteNoEditable.html");
+    } else {
+        $('#contenido').load("expediente.html");    
+    }
+    
 }
 
 function goToRadiografia() {
@@ -239,7 +245,8 @@ function comprobarPlan() {
         success: function (data) {
             //console.log(data.expediente.aprobar_plan);
             console.log(data);
-            idPaciente = data.expediente.idpaciente
+            estadoExpediente = data.expediente.aprobar_expediente;
+            idPaciente = data.expediente.idpaciente;
             if (data.expediente.aprobar_plan == 1) {
                 document.getElementById('aprobar').removeAttribute('hidden');
             }
