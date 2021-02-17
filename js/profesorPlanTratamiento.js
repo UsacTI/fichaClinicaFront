@@ -55,6 +55,6 @@ $('#contenido').load("planTratamientoProfesor.html");
 
 function goToRadiografia(idExpediente) {
   expedienteId = idExpediente;
-  alert(expedienteId);
+  //alert(expedienteId);
     $('#contenido').load("radiografiaNoEditableProfesor.html");
 }
