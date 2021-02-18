@@ -43,7 +43,7 @@
             let citas = []
             $.ajax({
                 type: 'GET',
-                url:  dominio + "citas/consultarTodasIdpaciente/4",
+                url:  dominio + "citas/consultarTodasIdpaciente/3",
                 contentType: "application/json",
                 dataType: 'json',
                 crossDomain: true,
@@ -118,10 +118,10 @@
                     //console.log(arg.event._def.title);
                     //console.log(arg.event._instance.range.start);
                     //console.log(getHora(arg.event._instance.range.start));
-                    
+                    arg.jsEvent.preventDefault() // don't navigate in main tab
                     showModal(arg.event._def.title, getFecha(arg.event._instance.range.start),getFecha(arg.event._instance.range.end), getHora(arg.event._instance.range.start), getHora(arg.event._instance.range.end));
 
-                    arg.jsEvent.preventDefault() // don't navigate in main tab
+                  //  arg.jsEvent.preventDefault() // don't navigate in main tab
                 },
 
                 loading: function (bool) {
@@ -133,7 +133,7 @@
             calendar.render();
         });
 
-        
+
 
     </script>
     <style>
@@ -293,11 +293,11 @@
                 document.getElementById('horario').textContent = hI+' - '+hF;
             }, 100);
         }
-        
+
     </script>
     <script src="js/cookie.js"></script>
     <script src="js/base.js"></script>
-    <script src="js/calendario.js"></script>
+    <script src="js/principal.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>
