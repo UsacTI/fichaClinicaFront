@@ -36,7 +36,7 @@ function login(cuenta) {
             setCookie('api-apellidoUsuario', apellidos, 1);
             setCookie('api-token', token, 1);
             setCookie('api-usuario', usuario, 1);
-            window.location.href = "abono.html";
+            window.location.href = "calendarioPaciente.html";
 
         }
         },
