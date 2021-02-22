@@ -116,9 +116,12 @@ function getTratamientos() {
                             '<button class="btn btn-info btn-sm" onclick="goToCalendario()">Programar cita</button>'
                         :
                         (element.estado == 3)?
-                            '<button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#detalleModal">Ver detalles</button>'
+                            `<button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#detalleModal" data-id="${element.id_detalle_procedimiento_tratamiento}" data-tratamiento="${element.descripcion}" data-costo="${element.valor}" data-estado="${element.estado}">Ver detalles</button>`
                         :
-                        'mundo'
+                        (element.estado == 4 || element.estado == 5)?
+                            `<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#detalleModal" data-id="${element.id_detalle_procedimiento_tratamiento}" data-tratamiento="${element.descripcion}" data-costo="${element.valor}" data-estado="${element.estado}">Ver detalles</button>`
+                        :
+                            `<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#detalleModal" data-id="${element.id_detalle_procedimiento_tratamiento}" data-tratamiento="${element.descripcion}" data-costo="${element.valor}" data-estado="${element.estado}">Ver detalles</button>`
                     }
                     </td>
                     
@@ -293,10 +296,14 @@ function changeEstadoTratamiento(id, estado) {
         success: function (data) {
             //console.log(data);
             //location.reload();
-            $('#contenido').load("./planTratamientoEstudianteNoEditable.html");
             alertify.set('notifier','position', 'top-right');
             if (Number(estado) == 1) {
+                $('#contenido').load("./planTratamientoEstudianteNoEditable.html");
                 alertify.success("Solicitud enviada");    
+            }else if(Number(estado) == 5){
+                alertify.success("Solicitud enviada");
+                document.getElementById('boton-solicitud').setAttribute('hidden', "");
+                document.getElementById('boton-pendiente').removeAttribute('hidden');
             }
             
         }
@@ -308,4 +315,91 @@ function goToCalendario(){
     //idUsuario = 1;
     //location.href = "./calendario.html";
     $('#contenido').load("./calendario.html");
+}
+
+
+$('#detalleModal').on('show.bs.modal', function (event) {
+    showLoader();
+    var data_modal = $(event.relatedTarget) // Button that triggered the modal
+    //console.log(data_modal);
+    if (Number(data_modal.data('estado')) == 4) {
+        document.getElementById('boton-cobrar').setAttribute('hidden', "");
+        document.getElementById('boton-pagado').removeAttribute('hidden');
+        document.getElementById('boton-solicitud').removeAttribute('hidden');
+        document.getElementById('boton-solicitud').setAttribute('onclick', `changeEstadoTratamiento('${data_modal.data('id')}', '5')`);
+    }else if (Number(data_modal.data('estado')) == 5)  {
+        document.getElementById('boton-cobrar').setAttribute('hidden', "");
+        document.getElementById('boton-pagado').removeAttribute('hidden');
+        document.getElementById('boton-solicitud').setAttribute('hidden', "");
+        document.getElementById('boton-pendiente').removeAttribute('hidden');
+    }else if (Number(data_modal.data('estado')) == 6)  {
+        document.getElementById('boton-cobrar').setAttribute('hidden', "");
+        document.getElementById('boton-pagado').removeAttribute('hidden');
+        document.getElementById('boton-solicitud').setAttribute('hidden', "");
+        document.getElementById('boton-pendiente').setAttribute('hidden', "");
+        document.getElementById('boton-avalado').removeAttribute('hidden');
+    }
+    let id_tratamiento = data_modal.data('id');
+    document.getElementById('tratamiento').textContent = data_modal.data('tratamiento');
+    document.getElementById('costo').textContent = 'Q'+data_modal.data('costo');
+    $.ajax({
+        type: 'GET',
+        url: dominio + `citas/consultarDPT/${id_tratamiento}`,
+        contentType: 'application/json',
+        dataType: 'json',
+        crossDomain: true,
+        async: false,
+        success: function (data) {
+            //console.log(data.cita);
+            document.getElementById('fecha').textContent = getFecha(data.cita.fecha);
+            document.getElementById('horario').textContent = String(data.cita.hora).substring(0,5) + ' Hrs.';
+            
+            $.ajax({
+                type: 'GET',
+                url: dominio + `boleta/consultaCreditoTotal/${idPaciente}`,
+                contentType: 'application/json',
+                dataType: 'json',
+                crossDomain: true,
+                async: false,
+                success: function (data) {
+                    //console.log(data);
+                    document.getElementById('cuenta').textContent = 'Q'+data.pago.credito;
+                    document.getElementById('boton-cobrar').setAttribute('onclick', `postCobro("${data_modal.data('tratamiento')}", "${data_modal.data('costo')}", "${data.pago.credito}","${id_tratamiento}")`);
+                    hideLoaderWTimer();
+                }
+            })
+        }
+    })
+    /**/
+    //document.getElementById('').textContent = ;
+    
+})
+
+function postCobro(tratamiento, monto, credito, id_tratamiento) {
+    if (Number(credito) >= Number(monto)) {
+        showLoader();
+        let data = {idpaciente: idPaciente, monto: monto, descripcion: 'Debito por tratamiento '+tratamiento, id_detalle_procedimiento_tratamiento: id_tratamiento};
+        $.ajax({
+            type: 'POST',
+            url: dominio + `pagos`,
+            contentType: 'application/json',
+            dataType: 'json',
+            crossDomain: true,
+            async: false,
+            data: JSON.stringify(data),
+            success: function (data) {
+                //console.log(data);
+                document.getElementById('cuenta').textContent = 'Q'+(Number(credito) - Number(monto));
+                $('#detalleModal').modal('hide');
+                hideLoader();
+                $('#contenido').load("./planTratamientoEstudianteNoEditable.html");
+            }
+        })    
+    } else {
+        document.getElementById('alert_form').style.display = 'block';
+    }
+    
+
+
+    
 }

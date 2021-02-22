@@ -639,6 +639,11 @@
                             </button>
                         </div>
                         <div class="modal-body" >
+                            <div id="alert_form" class="alert alert-danger" role="alert" style="display: none;">
+                                <span onclick="this.parentElement.style.display='none';" style="float: right; cursor: pointer;">&times;</span> 
+                                <strong>¡El costro del tratamiento supera el monto en el estado de cuenta!</strong> Se debe realizar un abono a la cuenta.
+                            </div>
+                            
                             <div class="row">
                                 <div class="col-sm-4" style="text-align: right;">
                                     <strong>Tratamiento:</strong>
@@ -659,13 +664,23 @@
                                     <label id="horario"></label>
                                 </div>
                                 <div class="col-sm-4" style="text-align: right;">
+                                    <strong>Costo:</strong>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label id="costo"></label>
+                                </div>
+                                <div class="col-sm-4" style="text-align: right;">
                                     <strong>Estado de cuenta:</strong>
                                 </div>
                                 <div class="col-sm-6">
                                     <label id="cuenta">Q</label>
                                 </div>
-                                <div class="col-sm-12" style="text-align: center;">
-                                    <button class="btn btn-primary">Cobrar</button>
+                                <div class="col-sm-12" style="text-align: center;" >
+                                    <button class="btn btn-primary" id="boton-cobrar">Cobrar</button>
+                                    <button class="btn btn-success" id="boton-pagado" disabled hidden>Pagado</button>
+                                    <button class="btn btn-primary" id="boton-solicitud"  hidden>Solicitar aval</button>
+                                    <button class="btn btn-danger" id="boton-pendiente" disabled hidden>Pendiente de aval</button>
+                                    <button class="btn btn-success" id="boton-avalado" disabled hidden>Avalado</button>
                                 </div>
                             </div>
                         </div>

@@ -102,7 +102,13 @@ function getTratamientos() {
                         (element.estado == 1)?
                             `<button class="btn btn-primary btn-sm" onclick="changeEstadoTratamiento('${element.id_detalle_procedimiento_tratamiento}','2')">Aprobar</button>`
                         :
+                        (element.estado == 2 || element.estado == 3 || element.estado == 4)?
                             '<button class="btn btn-success btn-sm" disabled>Aprobado</button>'
+                        :
+                        (element.estado == 5)?
+                            `<button class="btn btn-info btn-sm" onclick="changeEstadoTratamiento('${element.id_detalle_procedimiento_tratamiento}','6')">Avalar tratamiento</button>`
+                        :
+                            '<button class="btn btn-danger btn-sm" disabled>Tratamiento finalizado</button>'
                     }
                     </td>
                `
@@ -281,7 +287,12 @@ function changeEstadoTratamiento(id, estado) {
             //location.reload();
             $('#contenido').load("./planTratamientoProfesor.html");
             alertify.set('notifier','position', 'top-right');
-            alertify.success("Tratamiento aprobado");
+            if (Number(estado) == 2) {
+                alertify.success("Tratamiento aprobado");    
+            } else {
+                alertify.success("Tratamiento avalado");
+            }
+            
         }
     })
 }

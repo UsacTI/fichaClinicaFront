@@ -188,7 +188,7 @@ function contentUrl(url) {
 function hideLoader() {
     setTimeout(() => {
         document.getElementById('loader').style.display = 'none';
-    }, 1000);
+    }, 500);
 }
 
 function hideLoaderWTimer() {
