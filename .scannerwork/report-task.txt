@@ -2,5 +2,5 @@ projectKey=proyectoSA
 serverUrl=http://localhost:9090
 serverVersion=8.6.1.40680
 dashboardUrl=http://localhost:9090/dashboard?id=proyectoSA
-ceTaskId=AXeYaUOiJ_ILvLT5XJ3Q
-ceTaskUrl=http://localhost:9090/api/ce/task?id=AXeYaUOiJ_ILvLT5XJ3Q
+ceTaskId=AXfGJWeXgheUcTFUBLEz
+ceTaskUrl=http://localhost:9090/api/ce/task?id=AXfGJWeXgheUcTFUBLEz
