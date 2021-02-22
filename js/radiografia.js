@@ -17,11 +17,44 @@ hideLoader();
 
 
 function goToExpediente() {
-    $('#contenido').load("expediente.html");
+  $.ajax({
+    type: 'GET',
+    url: dominio + `expediente/search/${idExpediente}`,
+    contentType: 'application/json',
+    dataType: 'json',
+    crossDomain: true,
+    async: false,
+    //data: data,
+    success: function (data) {
+        
+        if (data.expediente.aprobar_expediente == 1) {
+          $('#contenido').load("expedienteEstudianteNoEditable.html");
+        }else{
+          $('#contenido').load("expediente.html");
+        }
+    }
+  })
+    
 }
 
 function goToPlanTratamiento() {
-    $('#contenido').load("planTratamiento.html");
+  $.ajax({
+    type: 'GET',
+    url: dominio + `expediente/search/${idExpediente}`,
+    contentType: 'application/json',
+    dataType: 'json',
+    crossDomain: true,
+    async: false,
+    //data: data,
+    success: function (data) {
+        if (data.expediente.aprobar_plan == 1) {
+          $('#contenido').load("planTratamientoEstudianteNoEditable.html");
+        }else{
+          $('#contenido').load("planTratamiento.html");
+        }
+    }
+  })
+    
 }
 
 
