@@ -10,7 +10,7 @@ $(document).ready(function () {
 function menu(tipoU) {
 
   if(tipoU == 3){
-
+    document.getElementById('rol-name').textContent = "Estudiante";
   $('#contenido').load("./profesorBancoPaciente.html");
 
   data = '{"tipomenu": ' + tipoU + '}'
@@ -41,7 +41,7 @@ function menu(tipoU) {
   });
 }
 else if(tipoU == 4){
-
+  document.getElementById('rol-name').textContent = "Administrador";
 $('#contenido').load("./bancoEstudiante.html");
 
 data = '{"tipomenu": ' + tipoU + '}'
@@ -72,7 +72,7 @@ $.ajax({
 });
 }
 else if(tipoU == 2){
-
+  document.getElementById('rol-name').textContent = "Profesor";
 $('#contenido').load("./profesorAprobacion.html");
 
 data = '{"tipomenu": ' + tipoU + '}'
@@ -103,7 +103,7 @@ $.ajax({
 });
 }
 else if(tipoU == 1){
-
+  document.getElementById('rol-name').textContent = "Gestor Oficina";
 $('#contenido').load("./abono.html");
 
 data = '{"tipomenu": ' + tipoU + '}'
@@ -135,7 +135,7 @@ $.ajax({
 }
 
 else if(tipoU == 5){
-
+  document.getElementById('rol-name').textContent = "Trabajo Social";
 $('#contenido').load("./bancoPaciente.html");
 
 data = '{"tipomenu": ' + tipoU + '}'

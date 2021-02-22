@@ -62,6 +62,7 @@ data     = '{"usuario": "' + username + '", "contrasenia": "' + password + '"}';
       success: function (data) {
         console.log(data);
         var acceso = data.paciente;
+        
       //console.log(acceso);
       if(paciente===null){
         alertify.set('notifier','position', 'top-right');
