@@ -94,8 +94,8 @@ function loadData(id) {
         async: false,
         //data: data,
         success: function (data) {
-            //console.log(data);
-            estadoPlan = data.expediente.aprobar_plan;
+            console.log(data);
+            aprobar_plan = data.expediente.aprobar_plan;
             let expediente = data['expediente'];
             if (expediente.aprobar_expediente == 1) {
                 document.getElementById('aprobar').removeAttribute('hidden');
@@ -382,6 +382,7 @@ function guardarExpediente() {
 function goToPlanTratamiento() {
     //location.href = `./planTratamientoEstudianteNoEditable.html?id=${idExpediente}`;
     //expedienteId = idExpediente;
+    console.log(aprobar_plan);
     if (aprobar_plan == 1) {
         $('#contenido').load("planTratamientoEstudianteNoEditable.html");    
     } else {

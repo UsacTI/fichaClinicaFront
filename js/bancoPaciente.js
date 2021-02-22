@@ -34,7 +34,7 @@ $(document).ready(function () {
 function loading () {
   $.ajax({
     type: 'GET',
-    url: dominio + 'patients/state1/',
+    url: dominio + 'patients/all/',
     contentType: 'application/json',
     dataType: 'json',
     crossDomain: true,
