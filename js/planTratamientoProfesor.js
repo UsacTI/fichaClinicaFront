@@ -232,6 +232,7 @@ function comprobarPlan() {
         //data: data,
         success: function (data) {
             console.log(data.expediente.aprobar_plan);
+            document.getElementById('diagnostico').value = data.expediente.diagnostico;
             if (data.expediente.aprobar_plan == 0) {
                 document.getElementById('aprobar').removeAttribute('hidden');
             } else {

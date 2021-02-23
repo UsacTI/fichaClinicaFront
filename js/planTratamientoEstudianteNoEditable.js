@@ -248,6 +248,7 @@ function comprobarPlan() {
         success: function (data) {
             //console.log(data.expediente.aprobar_plan);
             console.log(data);
+            document.getElementById('diagnostico').value = data.expediente.diagnostico;
             estadoExpediente = data.expediente.aprobar_expediente;
             idPaciente = data.expediente.idpaciente;
             if (data.expediente.aprobar_plan == 1) {
@@ -403,3 +404,4 @@ function postCobro(tratamiento, monto, credito, id_tratamiento) {
 
     
 }
+

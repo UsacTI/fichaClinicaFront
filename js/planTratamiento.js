@@ -152,6 +152,8 @@ function agregarDetalle() {
             document.getElementById('pieza').value = '';
             document.getElementById('select-calsificacion').value = '';
             document.getElementById('select-tratamiento').value = '';
+            alertify.set('notifier','position', 'top-right');
+            alertify.success("Tratamiento guardado");
             hideLoader();
         }
       })
@@ -177,6 +179,8 @@ function deleteDetalle(e, id) {
             success: function (data) {
                 //console.log(data);
                 table.deleteRow(row.rowIndex-1);
+                alertify.set('notifier','position', 'top-right');
+                alertify.success("Tratamiento eliminado");
 
             }
         })
@@ -200,6 +204,7 @@ function comprobarPlan() {
         success: function (data) {
             //console.log(data.expediente.aprobar_plan);
             console.log(data);
+            document.getElementById('diagnostico').value = data.expediente.diagnostico;
             estadoExpediente = data.expediente.aprobar_expediente;
             idPaciente = data.expediente.idpaciente;
             if (data.expediente.aprobar_plan == 1) {
@@ -225,3 +230,21 @@ $('#regresar').on('click', function () {
     //location.href = "./pacienteEstudiante.html";
     $('#contenido').load("./pacienteEstudiante.html");
   })
+
+
+function guardarDiagnostico() {
+    $.ajax({
+        type: 'PUT',
+        url: dominio + `createDiagnostico/${idExpediente}`,
+        contentType: 'application/json',
+        dataType: 'json',
+        crossDomain: true,
+        async: false,
+        data: JSON.stringify({diagnostico: document.getElementById('diagnostico').value}),
+        success: function (data) {
+            //console.log(data);
+            alertify.set('notifier','position', 'top-right');
+            alertify.success("Diagnostico guardado");
+        }
+    })
+}
