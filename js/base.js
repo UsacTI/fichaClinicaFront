@@ -18,6 +18,13 @@ var idPersonal = 0;
 var expedienteId = 0;
 var fechaNuevaCita = "";
 
+/////////////////para la info del paciente en expediente
+var nombrePaciente = "";
+var apellidoPaciente = "";
+var dpiPaciente = "";
+var fotoPaciente = "";
+var idPa = 0;
+
 ///////////para genera la boleta en primera cita
 var carnetBoleta = 0;
 var id_orden_pago = 0;
