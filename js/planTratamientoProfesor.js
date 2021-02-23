@@ -98,7 +98,7 @@ function getTratamientos() {
                     <td>${element.valor}</td>
                     <td>${(element.estado == 0)?
                         `<button class="btn btn-warning btn-sm" disabled>Pendiente</button>`
-                        :   
+                        :
                         (element.estado == 1)?
                             `<button class="btn btn-primary btn-sm" onclick="changeEstadoTratamiento('${element.id_detalle_procedimiento_tratamiento}','2')">Aprobar</button>`
                         :
@@ -193,6 +193,7 @@ function deleteDetalle(e, id) {
 
 
 $(document).ready(function() {
+  mostrarfoto(idPa);
     loadClasificaciones();
     const urlParams = new URLSearchParams(window.location.search)
     //idExpediente = urlParams.get('id');
@@ -202,7 +203,56 @@ $(document).ready(function() {
     comprobarPlan();
     $('#table-plan').DataTable();
 
-} )
+} );
+
+function mostrarfoto(idpaciente) {
+
+  $.ajax({
+      type: 'GET',
+      url: dominio + `patients/buscarfotografia/${idpaciente}`,
+      contentType: false,
+      processData: false,
+      cache: false,
+      //dataType: false,
+      //crossDomain: true,
+      //async: false,
+      success: function (data) {
+        console.log(data);
+
+         if (data.expediente.fotografia != null) {
+
+            hideLoaderWTimer();
+            document.getElementById("datosPaciente").innerHTML = `<div class="col-xs-12 col-md-6">
+                            <div class="row">
+
+                                <div class="col-xs-4">
+                                    <p style="font-size: 1.2em"><img width="100px" height="125px" src="data:image/jpg;base64,${data.expediente.fotografia}" alt=""></p>
+                                </div>
+                                <div class="col-xs-4" style="text-align: left; padding-left: 10px;">
+                                <p style="font-size: 1em"><strong>Nombres: ${nombrePaciente} </strong></p>
+                                <p style="font-size: 1em"><strong>Apellidos: ${apellidoPaciente}</strong></p>
+                                <p style="font-size: 1em"><strong>DPI: ${dpiPaciente} </strong></p>
+                                </div>
+                            </div>`;
+          } else {
+            document.getElementById("datosPaciente").innerHTML = `<div class="col-xs-12 col-md-6">
+                            <div class="row">
+
+                                <div class="col-xs-4">
+                                    <p style="font-size: 1.2em"><img width="100px" height="125px" src="img/fotoperfil.jpg" alt=""></p>
+                                </div>
+                                <div class="col-xs-4" style="text-align: left; padding-left: 10px;">
+                                <p style="font-size: 1em"><strong>Nombres: ${nombrePaciente} </strong></p>
+                                <p style="font-size: 1em"><strong>Apellidos: ${apellidoPaciente}</strong></p>
+                                <p style="font-size: 1em"><strong>DPI: ${dpiPaciente} </strong></p>
+                                </div>
+                            </div>`;
+          }
+
+      }
+  })
+
+}
 
 function showLoader() {
     document.getElementById('loader').style.display = 'block';

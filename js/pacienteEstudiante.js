@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  
+
   loading();
 
   $('#table1').DataTable({
@@ -42,12 +42,12 @@ function loading () {
           <td>${value.dpi}</td>
           <td>${(value.aprobar_expediente != null && value.aprobar_expediente == 1)?'<button class="btn btn-success btn-sm" disabled>Aprobado</button>':'<button class="btn btn-danger btn-sm" disabled>Revisar</button>'}</td>
           <td>${(value.aprobar_plan != null && value.aprobar_plan == 1)?'<button class="btn btn-success btn-sm" disabled>Aprobado</button>':'<button class="btn btn-danger btn-sm" disabled>Revisar</button>'} </td>
-          <td><a href="#" onClick= goToExpediente("${value.idpaciente}","${value.aprobar_expediente}")> <img src="icon/ficha.png"></a>&nbsp;&nbsp;
+          <td><a href="#" onClick= goToExpediente("${value.idpaciente}","${value.aprobar_expediente}","${value.nombres}","${value.apellidos}","${value.dpi}","${value.idpaciente}")> <img src="icon/ficha.png"></a>&nbsp;&nbsp;
               ${(value.idexpediente != null)?`<a href="#" onClick= goToCalendario("${value.idexpediente}","${value.idpaciente}")><img src="icon/calendar.png"></a></td>`
               :
                 ``
             }
-              
+
         </tr>`
         var btn = document.createElement('TR')
         btn.innerHTML = fila
@@ -67,8 +67,13 @@ function goToCalendario(idExpediente, idPaciente) {
 $('#contenido').load("calendario.html");
 }
 
-function goToExpediente(idPaciente, estadoExpediente) {
+function goToExpediente(idPaciente, estadoExpediente, nombres, apellidos, dpi, idPaciente) {
   //console.log(idPaciente);
+  idPa = idPaciente;
+  nombrePaciente = nombres;
+  apellidoPaciente = apellidos;
+  dpiPaciente = dpi;
+
   $.ajax({
     type: 'GET',
     url: dominio + `expediente/all/${idPaciente}`,

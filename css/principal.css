@@ -237,7 +237,9 @@ a.article:hover {
       padding-right: 13px;
     }
 
-
+    #datosPaciente {
+        text-align: center;
+    }
 
 }
 

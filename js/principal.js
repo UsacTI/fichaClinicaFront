@@ -171,13 +171,33 @@ $.ajax({
 function contentUrl(url) {
   showLoader();
   $('#contenido').load("./"+url);
-  
+
 }
 
 
 ///////////////cerrar sesion
   $("#cerrarSesion").on('click', function () {
     setCookie('api-token', 'null', 1);
+    setCookie('api-nombreUsuario', 'null', 1);
+    setCookie('api-apellidoUsuario', 'null', 1);
+    setCookie('api-usuario', 'null', 1);
+    setCookie('api-tipoUsuario', 'null', 1);
+    setCookie('api-idUsuario', 'null', 1);
+    var idPersonal = 0;
+    var expedienteId = 0;
+    var fechaNuevaCita = "";
+
+    /////////////////para la info del paciente en expediente
+    var nombrePaciente = "";
+    var apellidoPaciente = "";
+    var dpiPaciente = "";
+    var fotoPaciente = "";
+
+    ///////////para genera la boleta en primera cita
+    var carnetBoleta = 0;
+    var id_orden_pago = 0;
+    var checksum = 0;
+
     window.location.href = "index.html";
   });
 

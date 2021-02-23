@@ -76,9 +76,9 @@ function goToExpediente() {
     if (estadoExpediente == 1) {
         $('#contenido').load("expedienteEstudianteNoEditable.html");
     } else {
-        $('#contenido').load("expediente.html");    
+        $('#contenido').load("expediente.html");
     }
-    
+
 }
 
 function goToRadiografia() {
@@ -108,7 +108,7 @@ function getTratamientos() {
                     <td>${element.valor}</td>
                     <td>${(element.estado == 0)?
                         `<button class="btn btn-primary btn-sm" onclick="changeEstadoTratamiento('${element.id_detalle_procedimiento_tratamiento}','1')">Solicitar aprobación</button>`
-                        :   
+                        :
                         (element.estado == 1)?
                             '<button class="btn btn-danger btn-sm" disabled>Pendiente de aprobación</button>'
                         :
@@ -121,8 +121,8 @@ function getTratamientos() {
                         'mundo'
                     }
                     </td>
-                    
-                    
+
+
                `
                document.getElementById('table-tratamientos').appendChild(fila)
                n++;
@@ -210,6 +210,18 @@ function deleteDetalle(e, id) {
 
 
 $(document).ready(function() {
+  document.getElementById("datosPaciente").innerHTML = `<div class="col-xs-12 col-md-6">
+                  <div class="row">
+
+                      <div class="col-xs-4">
+                          <p style="font-size: 1.2em"><img width="100px" height="125px" src="https://www.ashoka.org/sites/default/files/styles/medium_1600x1000/public/thumbnails/images/daniela-kreimer.jpg" alt=""></p>
+                      </div>
+                      <div class="col-xs-4" style="text-align: left; padding-left: 10px;">
+                      <p style="font-size: 1em"><strong>Nombres: ${nombrePaciente} </strong></p>
+                      <p style="font-size: 1em"><strong>Apellidos: ${apellidoPaciente}</strong></p>
+                      <p style="font-size: 1em"><strong>DPI: ${dpiPaciente} </strong></p>
+                      </div>
+                  </div>`;
     loadClasificaciones();
     const urlParams = new URLSearchParams(window.location.search)
     //idExpediente = urlParams.get('id');
@@ -296,9 +308,9 @@ function changeEstadoTratamiento(id, estado) {
             $('#contenido').load("./planTratamientoEstudianteNoEditable.html");
             alertify.set('notifier','position', 'top-right');
             if (Number(estado) == 1) {
-                alertify.success("Solicitud enviada");    
+                alertify.success("Solicitud enviada");
             }
-            
+
         }
     })
 }

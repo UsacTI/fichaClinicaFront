@@ -1,6 +1,6 @@
 $(document).ready(function () {
   // document.getElementById("nombreUsuario").innerHTML = '<a class="nav-link" style="color: white;">'+nombre+ ' '+rol+'</a>';
-  
+
   $('#paciente').DataTable()
   hideLoader();
 })
@@ -45,7 +45,8 @@ function registroPaciente () {
       async: false,
       data: data,
       success: function (data) {
-        // console.log(data)
+        //console.log(data.paciente.idpaciente);
+        guardarFotoPaciente(data.paciente.idpaciente);
         alertify.set('notifier','position', 'top-right');
         alertify.success("Los datos fueron guardados");
         $('#contenido').load("./registroPaciente.html");
@@ -109,6 +110,7 @@ function registroPacienteTrabSocial () {
       data: data,
       success: function (data) {
         // console.log(data)
+        guardarFotoPaciente(data.paciente.idpaciente);
         alertify.set('notifier','position', 'top-right');
         alertify.success("Los datos fueron guardados");
         $('#contenido').load("./registroPacienteOficinaTrabaSocial.html");
@@ -116,6 +118,36 @@ function registroPacienteTrabSocial () {
     })
   }
 }
+}
+
+function guardarFotoPaciente(idP){
+
+  var file = document.getElementById("file").files[0];
+      var imagefile = file.type;
+      var match= ["image/jpeg","image/png","image/jpg"];
+      if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]))){
+          alert('Please select a valid image file (JPEG/JPG/PNG).');
+          $("#file").val('');
+          return false;
+      }
+      let formdata = new FormData();
+      formdata.append("images", file);
+
+      $.ajax({
+              type: 'PUT',
+              url: dominio + `patients/insertarfotografia/${idP}`,
+              contentType: false,
+              processData: false,
+              cache: false,
+              //dataType: false,
+              //crossDomain: true,
+              //async: false,
+              data: formdata,
+              success: function (data) {
+                  console.log(data);
+
+              }
+          });
 }
 
 function isIntegerKey (evt) {
