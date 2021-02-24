@@ -45,7 +45,8 @@ function loading () {
         fila += '<td>' + value.carne + '</td>'
 
         fila += '<td>' + '<a href="#" onClick= estudianteVisualizacion("'+value.idusuario+'")> <img src="icon/user.png"></img></a>' + '&nbsp;&nbsp;' +
-                         '<a href="#" onClick= estudianteActualizacion("'+value.idusuario+'")>><img src="icon/edit.png"></img></a>' + '</td>'
+                         '<a href="#" onClick= estudianteActualizacion("'+value.idusuario+'")><img src="icon/edit.png"></img></a>' + 
+                         '<a href="#" onClick= showModalPass("'+value.idusuario+'")> <i class="fas fa-key" style="font-size: 20px"></i></a>'+'</td>'
         fila += '</tr>'
         var btn = document.createElement('TR')
         btn.innerHTML = fila
@@ -102,6 +103,7 @@ function loadingProfesor () {
         fila += '<td>' + value.carne + '</td>'
 
         fila += '<td>' + '<a href="#" onClick= estudianteVisualizacion("'+value.idusuario+'")> <img src="icon/user.png"></img></a>'
+        
         fila += '</tr>'
         var btn = document.createElement('TR')
         btn.innerHTML = fila
@@ -128,4 +130,35 @@ function estudianteActualizacion(idestudiante) {
 idPersonal = idestudiante;
 $('#contenido').load("estudianteActualizacion.html");
 
+}
+
+function showModalPass(idusuarip) {
+  $('#exampleModal').modal('show');
+  document.getElementById('change-pass').setAttribute('onclick',`updatePass(${idusuarip})`)
+}
+
+function updatePass(idusuarip) {
+  let pass = document.getElementById('pass').value;
+  let pass_v = document.getElementById('pass_v').value;
+  if (pass != '' && pass != null && pass_v != '' && pass_v != null && pass === pass_v) {
+    $.ajax({
+      type: 'PUT',
+      url: dominio + `user/updateContrasenia/${idusuarip}/${pass_v}`,
+      contentType: 'application/json',
+      dataType: 'json',
+      crossDomain: true,
+      async: false,
+      success: function (data) {
+        console.log(data);
+        document.getElementById('pass').value = '';
+        document.getElementById('pass_v').value = '';
+        alertify.set('notifier','position', 'top-right');
+        alertify.success("Contraseña actualizada");
+      }
+    })  
+  } else {
+    alertify.set('notifier','position', 'top-right');
+    alertify.error("La contraseñas no coinciden");
+  }
+  
 }
