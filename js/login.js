@@ -31,11 +31,13 @@ function login(cuenta) {
             var apellidos = data.paciente.apellidos;
             var token = data.token;
             var usuario = data.paciente.usuario;
+            var idUsuario = data.paciente.idusuario;
 
             setCookie('api-nombreUsuario', nombres, 1);
             setCookie('api-apellidoUsuario', apellidos, 1);
             setCookie('api-token', token, 1);
             setCookie('api-usuario', usuario, 1);
+            setCookie('api-idUsuario', idUsuario, 1);
             window.location.href = "calendarioPaciente.html";
 
         }
@@ -62,7 +64,7 @@ data     = '{"usuario": "' + username + '", "contrasenia": "' + password + '"}';
       success: function (data) {
         console.log(data);
         var acceso = data.paciente;
-        
+
       //console.log(acceso);
       if(paciente===null){
         alertify.set('notifier','position', 'top-right');

@@ -72,7 +72,7 @@ $.ajax({
 });
 }
 else if(tipoU == 2){
-  document.getElementById('rol-name').textContent = "Profesor";
+  document.getElementById('rol-name').textContent = "Catedrático";
 $('#contenido').load("./profesorAprobacion.html");
 
 data = '{"tipomenu": ' + tipoU + '}'
@@ -164,6 +164,9 @@ $.ajax({
       window.location.href = "index.html";
      }
 });
+} else {
+
+        window.location.href = "index.html";
 }
 
 }
