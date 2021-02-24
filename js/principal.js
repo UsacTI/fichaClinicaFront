@@ -166,7 +166,10 @@ $.ajax({
 });
 } else {
 
+    if(token === 'null'){
+
         window.location.href = "index.html";
+      }
 }
 
 }
