@@ -226,6 +226,8 @@ $(document).ready(function() {
     getTratamientos()
     comprobarPlan();
     $('#table-plan').DataTable();
+    $('#periodontograma').load("./odontograma.html");
+
 } )
 
 $('#regresar').on('click', function () {
@@ -300,3 +302,56 @@ function guardarDiagnostico() {
     })
 
   }
+
+    function guardarOdontograma() {
+        let piezas = [];
+        for (let i = 18; i >= 11; i--) {
+            let caracteristicas = [];
+            if (document.getElementById(`tooth_line_${i}_b`).style.display === 'block') {
+                
+            }else{
+                console.log(document.getElementById(`beweglichkeit_${i}_txt`).value);
+                caracteristicas.push(document.getElementById(`beweglichkeit_${i}_txt`).value);
+                if (document.getElementById(`implantat_${i}_tab`).style.display === 'block') {
+                    caracteristicas.push(1);
+                }
+                caracteristicas.push(getFurkation(i));
+                if(document.getElementById(`BOP_${i}_db_rectangle`).style.display === 'block'){caracteristicas.push(1);}else{caracteristicas.push(0);}
+                if(document.getElementById(`BOP_${i}_b_rectangle`).style.display === 'block'){caracteristicas.push(1);}else{caracteristicas.push(0);} 
+                if(document.getElementById(`BOP_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.push(1);}else{caracteristicas.push(0);}
+
+                if(document.getElementById(`PI_${i}_db_rectangle`).style.display === 'block'){caracteristicas.push(1);}else{caracteristicas.push(0);}
+                if(document.getElementById(`PI_${i}_b_rectangle`).style.display === 'block'){caracteristicas.push(1);}else{caracteristicas.push(0);} 
+                if(document.getElementById(`PI_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.push(1);}else{caracteristicas.push(0);}
+                
+                caracteristicas.push(document.getElementById(`mg_${i}_db_txt`));
+                caracteristicas.push(document.getElementById(`mg_${i}_b_txt`));
+                caracteristicas.push(document.getElementById(`mg_${i}_mb_txt`));
+
+                caracteristicas.push(document.getElementById(`st_${i}_db_txt`));
+                caracteristicas.push(document.getElementById(`st_${i}_b_txt`));
+                caracteristicas.push(document.getElementById(`st_${i}_mb_txt`));
+            }
+        }
+        for (let i = 21; i < 29; i++) {
+            //console.log(document.getElementById(`tooth_line_${i}_b`));
+        }
+        for (let i = 48; i >= 41; i--) {
+            //console.log(document.getElementById(`tooth_line_${i}_b`));
+        }
+        for (let i = 31; i < 39; i++) {
+            //console.log(document.getElementById(`tooth_line_${i}_b`));
+        }
+    }
+
+    function getFurkation(i) {
+        if (document.getElementById(`furkation_1_${i}_b_tab`).style.display === 'block') {
+            return 1;
+        } else if (document.getElementById(`furkation_2_${i}_b_tab`).style.display === 'block') {
+            return 2;
+        } else if (document.getElementById(`furkation_3_${i}_b_tab`).style.display === 'block') {
+            return 3;
+        }
+    }
+
+   
