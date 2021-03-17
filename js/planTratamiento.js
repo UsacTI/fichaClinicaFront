@@ -312,15 +312,14 @@ function guardarDiagnostico() {
             if (document.getElementById(`tooth_line_${i}_b`).style.display === 'block') {
                 console.log('hola');
             }else{
-                console.log(document.getElementById(`beweglichkeit_${i}_txt`).value);
-                caracteristicas.movilidad = document.getElementById(`beweglichkeit_${i}_txt`).value;
+                caracteristicas.movilidad = Number(document.getElementById(`beweglichkeit_${i}_txt`).value);
                 if (document.getElementById(`implantat_${i}_tab`).style.display === 'block') {
                     caracteristicas.implante = 1;
                 }else{
                     caracteristicas.implante = 0;
                 }
                 if (i == 18 || i == 17 || i == 16) {
-                    if (document.getElementById('furkation_18_b_btn').style.display != 'none') {
+                    if (document.getElementById(`furkation_${i}_b_btn`).style.display != 'none') {
                         caracteristicas.furcacion = getFurkation(i);
                     }else{
                         caracteristicas.furcacion = 0;
@@ -362,7 +361,7 @@ function guardarDiagnostico() {
                 if(document.getElementById(`BOP_${i}_mp_rectangle`).style.display === 'block'){caracteristicas.sangrado_mp = 1;}else{caracteristicas.sangrado_mp = 0;}
 
                 if (i == 18 || i == 17 && i == 16 || i == 14) {
-                    if (document.getElementById('furkation_18_mp_btn').style.display != 'none') {
+                    if (document.getElementById(`furkation_${i}_mp_btn`).style.display != 'none') {
                         caracteristicas.furcacion_dp = getFurkationDP(i);
                         caracteristicas.furcacion_mp = getFurkationMP(i);
                     }else{
@@ -383,8 +382,7 @@ function guardarDiagnostico() {
             if (document.getElementById(`tooth_line_${i}_b`).style.display === 'block') {
                 console.log('hola');
             }else{
-                console.log(document.getElementById(`beweglichkeit_${i}_txt`).value);
-                caracteristicas.movilidad = document.getElementById(`beweglichkeit_${i}_txt`).value;
+                caracteristicas.movilidad = Number(document.getElementById(`beweglichkeit_${i}_txt`).value);
                 if (document.getElementById(`implantat_${i}_tab`).style.display === 'block') {
                     caracteristicas.implante = 1;
                 }else{
@@ -454,8 +452,7 @@ function guardarDiagnostico() {
             if (document.getElementById(`tooth_line_${i}_b`).style.display === 'block') {
                 console.log('hola');
             }else{
-                console.log(document.getElementById(`beweglichkeit_${i}_txt`).value);
-                caracteristicas.movilidad = document.getElementById(`beweglichkeit_${i}_txt`).value;
+                caracteristicas.movilidad = Number(document.getElementById(`beweglichkeit_${i}_txt`).value);
                 if (document.getElementById(`implantat_${i}_tab`).style.display === 'block') {
                     caracteristicas.implante = 1;
                 }else{
@@ -522,8 +519,8 @@ function guardarDiagnostico() {
             if (document.getElementById(`tooth_line_${i}_b`).style.display === 'block') {
                 console.log('hola');
             }else{
-                console.log(document.getElementById(`beweglichkeit_${i}_txt`).value);
-                caracteristicas.movilidad = document.getElementById(`beweglichkeit_${i}_txt`).value;
+                
+                caracteristicas.movilidad = Number(document.getElementById(`beweglichkeit_${i}_txt`).value);
                 if (document.getElementById(`implantat_${i}_tab`).style.display === 'block') {
                     caracteristicas.implante = 1;
                 }else{
@@ -594,6 +591,7 @@ function guardarDiagnostico() {
         } else if (document.getElementById(`furkation_3_${i}_b_tab`).style.display === 'block') {
             return 3;
         }
+        return 0;
     }
 
     function getFurkationDP(i) {
@@ -604,6 +602,7 @@ function guardarDiagnostico() {
         } else if (document.getElementById(`furkation_3_${i}_dp_tab`).style.display === 'block') {
             return 3;
         }
+        return 0;
     }
 
     function getFurkationMP(i) {
@@ -614,6 +613,7 @@ function guardarDiagnostico() {
         } else if (document.getElementById(`furkation_3_${i}_mp_tab`).style.display === 'block') {
             return 3;
         }
+        return 0;
     }
 
     function getFurkationL(i) {
@@ -624,6 +624,7 @@ function guardarDiagnostico() {
         } else if (document.getElementById(`furkation_3_${i}_l_tab`).style.display === 'block') {
             return 3;
         }
+        return 0;
     }
 
    
