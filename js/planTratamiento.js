@@ -203,7 +203,7 @@ function comprobarPlan() {
         //data: data,
         success: function (data) {
             //console.log(data.expediente.aprobar_plan);
-            console.log(data);
+            //console.log(JSON.parse(data.expediente.odontograma));
             document.getElementById('diagnostico').value = data.expediente.diagnostico;
             estadoExpediente = data.expediente.aprobar_expediente;
             idPaciente = data.expediente.idpaciente;
@@ -581,6 +581,19 @@ function guardarDiagnostico() {
             piezas.push(caracteristicas);
         }
         console.log(piezas);
+
+        $.ajax({
+            type: 'PUT',
+            url: dominio + `insertarOdontograma/${idExpediente}`,
+            contentType: 'application/json',
+            dataType: 'json',
+            crossDomain: true,
+            async: false,
+            data: JSON.stringify({odontograma: JSON.stringify(piezas)}),
+            success: function (data) {
+                console.log(data);
+            }
+        })
     }
 
     function getFurkation(i) {
