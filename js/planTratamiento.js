@@ -15,6 +15,7 @@ var clasificaciones = [
 
 var estadoExpediente = 0;
 
+
 function loadClasificaciones() {
     clasificaciones.forEach(element => {
         let opcion = document.createElement('option');
@@ -66,6 +67,157 @@ function loadTratamiento(e){
 
         }
     });
+}
+
+function loadOdontograma(odontograma) {
+    console.log(odontograma);
+    odontograma.forEach(pieza => {
+        if (pieza.existencia == 1) {
+            //console.log(pieza);
+            //console.log(document.getElementById(`beweglichkeit_${pieza.pieza}_txt`));
+            document.getElementById(`beweglichkeit_${pieza.pieza}_txt`).value = Number(pieza.movilidad);
+            if (pieza.implante == 1) {
+                switch (pieza.pieza) {
+                    case 11:
+                        toggle_implant_11();        
+                        break;
+                    case 12:
+                        toggle_implant_12();        
+                        break;
+                    case 13:
+                        toggle_implant_13();        
+                        break;
+                    case 14:
+                        toggle_implant_14();        
+                        break;
+                    case 15:
+                        toggle_implant_15();        
+                        break;
+                    case 16:
+                        toggle_implant_16();        
+                        break;
+                    case 17:
+                        toggle_implant_17();        
+                        break;
+                    case 18:
+                        toggle_implant_18();        
+                        break;
+                }
+            }
+            if (pieza.pieza == 18 || pieza.pieza == 17 || pieza.pieza == 16) {
+                if (pieza.furcacion != 0 && document.getElementById(`furkation_${pieza.pieza}_b_btn`).style.display != 'none') {
+                    console.log('pato');
+                    console.log(`furkation_${pieza.furcacion}_${pieza.pieza}_b_tab`);
+                    console.log(document.getElementById(`furkation_${pieza.furcacion}_${pieza.pieza}_b_tab`));
+                    //document.getElementById(`furkation_${pieza.furcacion}_${pieza.pieza}_b_tab`).style.display = 'block';
+                    switch (pieza.pieza) {
+                        case 16:
+                            for (let i = 0; i < pieza.furcacion; i++) {
+                                toggle_furcation_16_b();    
+                            }
+                            break;
+                        case 17:
+                            for (let i = 0; i < pieza.furcacion; i++) {
+                                toggle_furcation_17_b();    
+                            }       
+                            break;
+                        case 18:
+                            for (let i = 0; i < pieza.furcacion; i++) {
+                                toggle_furcation_18_b();    
+                            }
+                            break;
+                    }
+                }else{
+                    
+                }
+            }
+        }else{
+            switch (pieza.pieza) {
+                case 11:
+                    toggle_tooth_11();        
+                    break;
+                case 12:
+                    toggle_tooth_12();        
+                    break;
+                case 13:
+                    toggle_tooth_13();        
+                    break;
+                case 14:
+                    toggle_tooth_14();        
+                    break;
+                case 15:
+                    toggle_tooth_15();        
+                    break;
+                case 16:
+                    toggle_tooth_16();        
+                    break;
+                case 17:
+                    toggle_tooth_17();        
+                    break;
+                case 18:
+                    toggle_tooth_18();        
+                    break;
+            }
+            calc();
+        }    
+    });
+    
+    
+    /*
+    if (i == 18 || i == 17 || i == 16) {
+        if (document.getElementById(`furkation_${i}_b_btn`).style.display != 'none') {
+            caracteristicas.furcacion = getFurkation(i);
+            document.getElementById(`furkation_${.furcacion}_${i}_b_tab`).style.display = 'block';
+        }else{
+            caracteristicas.furcacion = 0;
+            document.getElementById(`furkation_${.furcacion}_${i}_b_tab`).style.display = 'none';
+        }
+    }
+    
+    if(document.getElementById(`BOP_${i}_db_rectangle`).style.display === 'block'){caracteristicas.sangrado_db = 1;}else{caracteristicas.sangrado_db = 0;}
+    if(document.getElementById(`BOP_${i}_b_rectangle`).style.display === 'block'){caracteristicas.sangrado_b = 1;}else{caracteristicas.sangrado_b = 0;} 
+    if(document.getElementById(`BOP_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.sangrado_mb = 1;}else{caracteristicas.sangrado_mb = 0;}
+
+    if(document.getElementById(`PI_${i}_db_rectangle`).style.display === 'block'){caracteristicas.placa_db = 1;}else{caracteristicas.placa_db = 0;}
+    if(document.getElementById(`PI_${i}_b_rectangle`).style.display === 'block'){caracteristicas.placa_b = 1;}else{caracteristicas.placa_b = 0;} 
+    if(document.getElementById(`PI_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.placa_mb = 1;}else{caracteristicas.placa_mb = 0;}
+    
+    caracteristicas.profundidad_db = Number(document.getElementById(`st_${i}_db_txt`).value);
+    caracteristicas.profundidad_b = Number(document.getElementById(`st_${i}_b_txt`).value);
+    caracteristicas.profundidad_mb = Number(document.getElementById(`st_${i}_mb_txt`).value);
+
+    caracteristicas.margen_db = Number(document.getElementById(`mg_${i}_db_txt`).value);
+    caracteristicas.margen_b = Number(document.getElementById(`mg_${i}_b_txt`).value);
+    caracteristicas.margen_mb = Number(document.getElementById(`mg_${i}_mb_txt`).value);
+
+    caracteristicas.margen_dp = Number(document.getElementById(`mg_${i}_dp_txt`).value);
+    caracteristicas.margen_p = Number(document.getElementById(`mg_${i}_p_txt`).value);
+    caracteristicas.margen_mp = Number(document.getElementById(`mg_${i}_mp_txt`).value);
+
+    caracteristicas.profundidad_dp = Number(document.getElementById(`st_${i}_dp_txt`).value);
+    caracteristicas.profundidad_p = Number(document.getElementById(`st_${i}_p_txt`).value);
+    caracteristicas.profundidad_mp = Number(document.getElementById(`st_${i}_mp_txt`).value);
+    
+    if(document.getElementById(`PI_${i}_dp_rectangle`).style.display === 'block'){caracteristicas.placa_dp = 1;}else{caracteristicas.placa_dp = 0;}
+    if(document.getElementById(`PI_${i}_p_rectangle`).style.display === 'block'){caracteristicas.placa_p = 1;}else{caracteristicas.placa_p = 0;} 
+    if(document.getElementById(`PI_${i}_mp_rectangle`).style.display === 'block'){caracteristicas.placa_mp = 1;}else{caracteristicas.placa_mp = 0;}
+    
+    if(document.getElementById(`BOP_${i}_dp_rectangle`).style.display === 'block'){caracteristicas.sangrado_dp = 1;}else{caracteristicas.sangrado_dp = 0;}
+    if(document.getElementById(`BOP_${i}_p_rectangle`).style.display === 'block'){caracteristicas.sangrado_p = 1;}else{caracteristicas.sangrado_p = 0;} 
+    if(document.getElementById(`BOP_${i}_mp_rectangle`).style.display === 'block'){caracteristicas.sangrado_mp = 1;}else{caracteristicas.sangrado_mp = 0;}
+
+    if (i == 18 || i == 17 && i == 16 || i == 14) {
+        if (document.getElementById(`furkation_${i}_mp_btn`).style.display != 'none') {
+            caracteristicas.furcacion_dp = getFurkationDP(i);
+            caracteristicas.furcacion_mp = getFurkationMP(i);
+        }else{
+            caracteristicas.furcacion_dp = 0;
+            caracteristicas.furcacion_mp = 0;
+        }
+    }else{
+        caracteristicas.furcacion_dp = 0;
+        caracteristicas.furcacion_mp = 0;
+    }*/
 }
 
 function goToExpediente() {
@@ -210,6 +362,10 @@ function comprobarPlan() {
             if (data.expediente.aprobar_plan == 1) {
                 document.getElementById('aprobar').removeAttribute('hidden');
             }
+            setTimeout(() => {
+                loadOdontograma(JSON.parse(data.expediente.odontograma))    
+            }, 2000);
+            
         }
     })
 }
@@ -254,7 +410,7 @@ function guardarDiagnostico() {
 }
   
 
-  function mostrarfoto(idpaciente) {
+function mostrarfoto(idpaciente) {
 
     $.ajax({
         type: 'GET',
@@ -266,378 +422,385 @@ function guardarDiagnostico() {
         //crossDomain: true,
         //async: false,
         success: function (data) {
-          //console.log(data);
+        //console.log(data);
 
-           if (data.expediente.fotografia != null) {
+        if (data.expediente.fotografia != null) {
 
-              hideLoaderWTimer();
-              document.getElementById("datosPaciente").innerHTML = `<div class="col-xs-12 col-md-6">
-                              <div class="row">
+            hideLoaderWTimer();
+            document.getElementById("datosPaciente").innerHTML = `<div class="col-xs-12 col-md-6">
+                            <div class="row">
 
-                                  <div class="col-xs-4">
-                                      <p style="font-size: 1.2em"><img width="100px" height="125px" src="data:image/jpg;base64,${data.expediente.fotografia}" alt=""></p>
-                                  </div>
-                                  <div class="col-xs-4" style="text-align: left; padding-left: 10px;">
-                                  <p style="font-size: 1em"><strong>Nombres: ${nombrePaciente} </strong></p>
-                                  <p style="font-size: 1em"><strong>Apellidos: ${apellidoPaciente}</strong></p>
-                                  <p style="font-size: 1em"><strong>DPI: ${dpiPaciente} </strong></p>
-                                  </div>
-                              </div>`;
+                                <div class="col-xs-4">
+                                    <p style="font-size: 1.2em"><img width="100px" height="125px" src="data:image/jpg;base64,${data.expediente.fotografia}" alt=""></p>
+                                </div>
+                                <div class="col-xs-4" style="text-align: left; padding-left: 10px;">
+                                <p style="font-size: 1em"><strong>Nombres: ${nombrePaciente} </strong></p>
+                                <p style="font-size: 1em"><strong>Apellidos: ${apellidoPaciente}</strong></p>
+                                <p style="font-size: 1em"><strong>DPI: ${dpiPaciente} </strong></p>
+                                </div>
+                            </div>`;
             } else {
-              document.getElementById("datosPaciente").innerHTML = `<div class="col-xs-12 col-md-6">
-                              <div class="row">
+            document.getElementById("datosPaciente").innerHTML = `<div class="col-xs-12 col-md-6">
+                            <div class="row">
 
-                                  <div class="col-xs-4">
-                                      <p style="font-size: 1.2em"><img width="100px" height="125px" src="img/fotoperfil.jpg" alt=""></p>
-                                  </div>
-                                  <div class="col-xs-4" style="text-align: left; padding-left: 10px;">
-                                  <p style="font-size: 1em"><strong>Nombres: ${nombrePaciente} </strong></p>
-                                  <p style="font-size: 1em"><strong>Apellidos: ${apellidoPaciente}</strong></p>
-                                  <p style="font-size: 1em"><strong>DPI: ${dpiPaciente} </strong></p>
-                                  </div>
-                              </div>`;
+                                <div class="col-xs-4">
+                                    <p style="font-size: 1.2em"><img width="100px" height="125px" src="img/fotoperfil.jpg" alt=""></p>
+                                </div>
+                                <div class="col-xs-4" style="text-align: left; padding-left: 10px;">
+                                <p style="font-size: 1em"><strong>Nombres: ${nombrePaciente} </strong></p>
+                                <p style="font-size: 1em"><strong>Apellidos: ${apellidoPaciente}</strong></p>
+                                <p style="font-size: 1em"><strong>DPI: ${dpiPaciente} </strong></p>
+                                </div>
+                            </div>`;
             }
 
         }
     })
 
-  }
+}
 
-    function guardarOdontograma() {
-        let piezas = [];
-        for (let i = 18; i >= 11; i--) {
-            let caracteristicas = {};
-            caracteristicas.pieza = i;
-            //console.log(document.getElementById(`tooth_line_${i}_b`));
-            if (document.getElementById(`tooth_line_${i}_b`).style.display === 'block') {
-                console.log('hola');
+function guardarOdontograma() {
+    let piezas = [];
+    for (let i = 18; i >= 11; i--) {
+        let caracteristicas = {};
+        caracteristicas.pieza = i;
+        //console.log(document.getElementById(`tooth_line_${i}_b`));
+        if (document.getElementById(`tooth_line_${i}_b`).style.display === 'block') {
+            console.log('hola');
+            caracteristicas.existencia = 0;
+        }else{
+            caracteristicas.existencia = 1;
+            caracteristicas.movilidad = Number(document.getElementById(`beweglichkeit_${i}_txt`).value);
+            if (document.getElementById(`implantat_${i}_tab`).style.display === 'block') {
+                caracteristicas.implante = 1;
             }else{
-                caracteristicas.movilidad = Number(document.getElementById(`beweglichkeit_${i}_txt`).value);
-                if (document.getElementById(`implantat_${i}_tab`).style.display === 'block') {
-                    caracteristicas.implante = 1;
-                }else{
-                    caracteristicas.implante = 0;
-                }
-                if (i == 18 || i == 17 || i == 16) {
-                    if (document.getElementById(`furkation_${i}_b_btn`).style.display != 'none') {
-                        caracteristicas.furcacion = getFurkation(i);
-                    }else{
-                        caracteristicas.furcacion = 0;
-                    }
+                caracteristicas.implante = 0;
+            }
+            if (i == 18 || i == 17 || i == 16) {
+                if (document.getElementById(`furkation_${i}_b_btn`).style.display != 'none') {
+                    caracteristicas.furcacion = getFurkation(i);
                 }else{
                     caracteristicas.furcacion = 0;
                 }
-                
-                if(document.getElementById(`BOP_${i}_db_rectangle`).style.display === 'block'){caracteristicas.sangrado_db = 1;}else{caracteristicas.sangrado_db = 0;}
-                if(document.getElementById(`BOP_${i}_b_rectangle`).style.display === 'block'){caracteristicas.sangrado_b = 1;}else{caracteristicas.sangrado_b = 0;} 
-                if(document.getElementById(`BOP_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.sangrado_mb = 1;}else{caracteristicas.sangrado_mb = 0;}
+            }else{
+                caracteristicas.furcacion = 0;
+            }
+            
+            if(document.getElementById(`BOP_${i}_db_rectangle`).style.display === 'block'){caracteristicas.sangrado_db = 1;}else{caracteristicas.sangrado_db = 0;}
+            if(document.getElementById(`BOP_${i}_b_rectangle`).style.display === 'block'){caracteristicas.sangrado_b = 1;}else{caracteristicas.sangrado_b = 0;} 
+            if(document.getElementById(`BOP_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.sangrado_mb = 1;}else{caracteristicas.sangrado_mb = 0;}
 
-                if(document.getElementById(`PI_${i}_db_rectangle`).style.display === 'block'){caracteristicas.placa_db = 1;}else{caracteristicas.placa_db = 0;}
-                if(document.getElementById(`PI_${i}_b_rectangle`).style.display === 'block'){caracteristicas.placa_b = 1;}else{caracteristicas.placa_b = 0;} 
-                if(document.getElementById(`PI_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.placa_mb = 1;}else{caracteristicas.placa_mb = 0;}
-                
-                caracteristicas.profundidad_db = Number(document.getElementById(`st_${i}_db_txt`).value);
-                caracteristicas.profundidad_b = Number(document.getElementById(`st_${i}_b_txt`).value);
-                caracteristicas.profundidad_mb = Number(document.getElementById(`st_${i}_mb_txt`).value);
+            if(document.getElementById(`PI_${i}_db_rectangle`).style.display === 'block'){caracteristicas.placa_db = 1;}else{caracteristicas.placa_db = 0;}
+            if(document.getElementById(`PI_${i}_b_rectangle`).style.display === 'block'){caracteristicas.placa_b = 1;}else{caracteristicas.placa_b = 0;} 
+            if(document.getElementById(`PI_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.placa_mb = 1;}else{caracteristicas.placa_mb = 0;}
+            
+            caracteristicas.profundidad_db = Number(document.getElementById(`st_${i}_db_txt`).value);
+            caracteristicas.profundidad_b = Number(document.getElementById(`st_${i}_b_txt`).value);
+            caracteristicas.profundidad_mb = Number(document.getElementById(`st_${i}_mb_txt`).value);
 
-                caracteristicas.margen_db = Number(document.getElementById(`mg_${i}_db_txt`).value);
-                caracteristicas.margen_b = Number(document.getElementById(`mg_${i}_b_txt`).value);
-                caracteristicas.margen_mb = Number(document.getElementById(`mg_${i}_mb_txt`).value);
+            caracteristicas.margen_db = Number(document.getElementById(`mg_${i}_db_txt`).value);
+            caracteristicas.margen_b = Number(document.getElementById(`mg_${i}_b_txt`).value);
+            caracteristicas.margen_mb = Number(document.getElementById(`mg_${i}_mb_txt`).value);
 
-                caracteristicas.margen_dp = Number(document.getElementById(`mg_${i}_dp_txt`).value);
-                caracteristicas.margen_p = Number(document.getElementById(`mg_${i}_p_txt`).value);
-                caracteristicas.margen_mp = Number(document.getElementById(`mg_${i}_mp_txt`).value);
+            caracteristicas.margen_dp = Number(document.getElementById(`mg_${i}_dp_txt`).value);
+            caracteristicas.margen_p = Number(document.getElementById(`mg_${i}_p_txt`).value);
+            caracteristicas.margen_mp = Number(document.getElementById(`mg_${i}_mp_txt`).value);
 
-                caracteristicas.profundidad_dp = Number(document.getElementById(`st_${i}_dp_txt`).value);
-                caracteristicas.profundidad_p = Number(document.getElementById(`st_${i}_p_txt`).value);
-                caracteristicas.profundidad_mp = Number(document.getElementById(`st_${i}_mp_txt`).value);
-                
-                if(document.getElementById(`PI_${i}_dp_rectangle`).style.display === 'block'){caracteristicas.placa_dp = 1;}else{caracteristicas.placa_dp = 0;}
-                if(document.getElementById(`PI_${i}_p_rectangle`).style.display === 'block'){caracteristicas.placa_p = 1;}else{caracteristicas.placa_p = 0;} 
-                if(document.getElementById(`PI_${i}_mp_rectangle`).style.display === 'block'){caracteristicas.placa_mp = 1;}else{caracteristicas.placa_mp = 0;}
-                
-                if(document.getElementById(`BOP_${i}_dp_rectangle`).style.display === 'block'){caracteristicas.sangrado_dp = 1;}else{caracteristicas.sangrado_dp = 0;}
-                if(document.getElementById(`BOP_${i}_p_rectangle`).style.display === 'block'){caracteristicas.sangrado_p = 1;}else{caracteristicas.sangrado_p = 0;} 
-                if(document.getElementById(`BOP_${i}_mp_rectangle`).style.display === 'block'){caracteristicas.sangrado_mp = 1;}else{caracteristicas.sangrado_mp = 0;}
+            caracteristicas.profundidad_dp = Number(document.getElementById(`st_${i}_dp_txt`).value);
+            caracteristicas.profundidad_p = Number(document.getElementById(`st_${i}_p_txt`).value);
+            caracteristicas.profundidad_mp = Number(document.getElementById(`st_${i}_mp_txt`).value);
+            
+            if(document.getElementById(`PI_${i}_dp_rectangle`).style.display === 'block'){caracteristicas.placa_dp = 1;}else{caracteristicas.placa_dp = 0;}
+            if(document.getElementById(`PI_${i}_p_rectangle`).style.display === 'block'){caracteristicas.placa_p = 1;}else{caracteristicas.placa_p = 0;} 
+            if(document.getElementById(`PI_${i}_mp_rectangle`).style.display === 'block'){caracteristicas.placa_mp = 1;}else{caracteristicas.placa_mp = 0;}
+            
+            if(document.getElementById(`BOP_${i}_dp_rectangle`).style.display === 'block'){caracteristicas.sangrado_dp = 1;}else{caracteristicas.sangrado_dp = 0;}
+            if(document.getElementById(`BOP_${i}_p_rectangle`).style.display === 'block'){caracteristicas.sangrado_p = 1;}else{caracteristicas.sangrado_p = 0;} 
+            if(document.getElementById(`BOP_${i}_mp_rectangle`).style.display === 'block'){caracteristicas.sangrado_mp = 1;}else{caracteristicas.sangrado_mp = 0;}
 
-                if (i == 18 || i == 17 && i == 16 || i == 14) {
-                    if (document.getElementById(`furkation_${i}_mp_btn`).style.display != 'none') {
-                        caracteristicas.furcacion_dp = getFurkationDP(i);
-                        caracteristicas.furcacion_mp = getFurkationMP(i);
-                    }else{
-                        caracteristicas.furcacion_dp = 0;
-                        caracteristicas.furcacion_mp = 0;
-                    }
+            if (i == 18 || i == 17 && i == 16 || i == 14) {
+                if (document.getElementById(`furkation_${i}_mp_btn`).style.display != 'none') {
+                    caracteristicas.furcacion_dp = getFurkationDP(i);
+                    caracteristicas.furcacion_mp = getFurkationMP(i);
                 }else{
                     caracteristicas.furcacion_dp = 0;
                     caracteristicas.furcacion_mp = 0;
                 }
-            }
-            piezas.push(caracteristicas);
-        }
-        for (let i = 21; i < 29; i++) {
-            //console.log(document.getElementById(`tooth_line_${i}_b`));
-            let caracteristicas = {};
-            caracteristicas.pieza = i;
-            if (document.getElementById(`tooth_line_${i}_b`).style.display === 'block') {
-                console.log('hola');
             }else{
-                caracteristicas.movilidad = Number(document.getElementById(`beweglichkeit_${i}_txt`).value);
-                if (document.getElementById(`implantat_${i}_tab`).style.display === 'block') {
-                    caracteristicas.implante = 1;
-                }else{
-                    caracteristicas.implante = 0;
-                }
-                if (i == 28 || i == 27 || i == 26) {
-                    if (document.getElementById(`furkation_${i}_b_btn`).style.display != 'none') {
-                        caracteristicas.furcacion = getFurkation(i);
-                    }else{
-                        caracteristicas.furcacion = 0;
-                    }
+                caracteristicas.furcacion_dp = 0;
+                caracteristicas.furcacion_mp = 0;
+            }
+        }
+        piezas.push(caracteristicas);
+    }
+    for (let i = 21; i < 29; i++) {
+        //console.log(document.getElementById(`tooth_line_${i}_b`));
+        let caracteristicas = {};
+        caracteristicas.pieza = i;
+        if (document.getElementById(`tooth_line_${i}_b`).style.display === 'block') {
+            console.log('hola');
+            caracteristicas.existencia = 0;
+        }else{
+            caracteristicas.existencia = 1;
+            caracteristicas.movilidad = Number(document.getElementById(`beweglichkeit_${i}_txt`).value);
+            if (document.getElementById(`implantat_${i}_tab`).style.display === 'block') {
+                caracteristicas.implante = 1;
+            }else{
+                caracteristicas.implante = 0;
+            }
+            if (i == 28 || i == 27 || i == 26) {
+                if (document.getElementById(`furkation_${i}_b_btn`).style.display != 'none') {
+                    caracteristicas.furcacion = getFurkation(i);
                 }else{
                     caracteristicas.furcacion = 0;
                 }
-                
-                if(document.getElementById(`BOP_${i}_db_rectangle`).style.display === 'block'){caracteristicas.sangrado_db = 1;}else{caracteristicas.sangrado_db = 0;}
-                if(document.getElementById(`BOP_${i}_b_rectangle`).style.display === 'block'){caracteristicas.sangrado_b = 1;}else{caracteristicas.sangrado_b = 0;} 
-                if(document.getElementById(`BOP_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.sangrado_mb = 1;}else{caracteristicas.sangrado_mb = 0;}
+            }else{
+                caracteristicas.furcacion = 0;
+            }
+            
+            if(document.getElementById(`BOP_${i}_db_rectangle`).style.display === 'block'){caracteristicas.sangrado_db = 1;}else{caracteristicas.sangrado_db = 0;}
+            if(document.getElementById(`BOP_${i}_b_rectangle`).style.display === 'block'){caracteristicas.sangrado_b = 1;}else{caracteristicas.sangrado_b = 0;} 
+            if(document.getElementById(`BOP_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.sangrado_mb = 1;}else{caracteristicas.sangrado_mb = 0;}
 
-                if(document.getElementById(`PI_${i}_db_rectangle`).style.display === 'block'){caracteristicas.placa_db = 1;}else{caracteristicas.placa_db = 0;}
-                if(document.getElementById(`PI_${i}_b_rectangle`).style.display === 'block'){caracteristicas.placa_b = 1;}else{caracteristicas.placa_b = 0;} 
-                if(document.getElementById(`PI_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.placa_mb = 1;}else{caracteristicas.placa_mb = 0;}
-                
-                caracteristicas.profundidad_db = Number(document.getElementById(`st_${i}_db_txt`).value);
-                caracteristicas.profundidad_b = Number(document.getElementById(`st_${i}_b_txt`).value);
-                caracteristicas.profundidad_mb = Number(document.getElementById(`st_${i}_mb_txt`).value);
+            if(document.getElementById(`PI_${i}_db_rectangle`).style.display === 'block'){caracteristicas.placa_db = 1;}else{caracteristicas.placa_db = 0;}
+            if(document.getElementById(`PI_${i}_b_rectangle`).style.display === 'block'){caracteristicas.placa_b = 1;}else{caracteristicas.placa_b = 0;} 
+            if(document.getElementById(`PI_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.placa_mb = 1;}else{caracteristicas.placa_mb = 0;}
+            
+            caracteristicas.profundidad_db = Number(document.getElementById(`st_${i}_db_txt`).value);
+            caracteristicas.profundidad_b = Number(document.getElementById(`st_${i}_b_txt`).value);
+            caracteristicas.profundidad_mb = Number(document.getElementById(`st_${i}_mb_txt`).value);
 
-                caracteristicas.margen_db = Number(document.getElementById(`mg_${i}_db_txt`).value);
-                caracteristicas.margen_b = Number(document.getElementById(`mg_${i}_b_txt`).value);
-                caracteristicas.margen_mb = Number(document.getElementById(`mg_${i}_mb_txt`).value);
+            caracteristicas.margen_db = Number(document.getElementById(`mg_${i}_db_txt`).value);
+            caracteristicas.margen_b = Number(document.getElementById(`mg_${i}_b_txt`).value);
+            caracteristicas.margen_mb = Number(document.getElementById(`mg_${i}_mb_txt`).value);
 
-                caracteristicas.margen_dp = Number(document.getElementById(`mg_${i}_dp_txt`).value);
-                caracteristicas.margen_p = Number(document.getElementById(`mg_${i}_p_txt`).value);
-                caracteristicas.margen_mp = Number(document.getElementById(`mg_${i}_mp_txt`).value);
+            caracteristicas.margen_dp = Number(document.getElementById(`mg_${i}_dp_txt`).value);
+            caracteristicas.margen_p = Number(document.getElementById(`mg_${i}_p_txt`).value);
+            caracteristicas.margen_mp = Number(document.getElementById(`mg_${i}_mp_txt`).value);
 
-                caracteristicas.profundidad_dp = Number(document.getElementById(`st_${i}_dp_txt`).value);
-                caracteristicas.profundidad_p = Number(document.getElementById(`st_${i}_p_txt`).value);
-                caracteristicas.profundidad_mp = Number(document.getElementById(`st_${i}_mp_txt`).value);
-                
-                if(document.getElementById(`PI_${i}_dp_rectangle`).style.display === 'block'){caracteristicas.placa_dp = 1;}else{caracteristicas.placa_dp = 0;}
-                if(document.getElementById(`PI_${i}_p_rectangle`).style.display === 'block'){caracteristicas.placa_p = 1;}else{caracteristicas.placa_p = 0;} 
-                if(document.getElementById(`PI_${i}_mp_rectangle`).style.display === 'block'){caracteristicas.placa_mp = 1;}else{caracteristicas.placa_mp = 0;}
-                
-                if(document.getElementById(`BOP_${i}_dp_rectangle`).style.display === 'block'){caracteristicas.sangrado_dp = 1;}else{caracteristicas.sangrado_dp = 0;}
-                if(document.getElementById(`BOP_${i}_p_rectangle`).style.display === 'block'){caracteristicas.sangrado_p = 1;}else{caracteristicas.sangrado_p = 0;} 
-                if(document.getElementById(`BOP_${i}_mp_rectangle`).style.display === 'block'){caracteristicas.sangrado_mp = 1;}else{caracteristicas.sangrado_mp = 0;}
+            caracteristicas.profundidad_dp = Number(document.getElementById(`st_${i}_dp_txt`).value);
+            caracteristicas.profundidad_p = Number(document.getElementById(`st_${i}_p_txt`).value);
+            caracteristicas.profundidad_mp = Number(document.getElementById(`st_${i}_mp_txt`).value);
+            
+            if(document.getElementById(`PI_${i}_dp_rectangle`).style.display === 'block'){caracteristicas.placa_dp = 1;}else{caracteristicas.placa_dp = 0;}
+            if(document.getElementById(`PI_${i}_p_rectangle`).style.display === 'block'){caracteristicas.placa_p = 1;}else{caracteristicas.placa_p = 0;} 
+            if(document.getElementById(`PI_${i}_mp_rectangle`).style.display === 'block'){caracteristicas.placa_mp = 1;}else{caracteristicas.placa_mp = 0;}
+            
+            if(document.getElementById(`BOP_${i}_dp_rectangle`).style.display === 'block'){caracteristicas.sangrado_dp = 1;}else{caracteristicas.sangrado_dp = 0;}
+            if(document.getElementById(`BOP_${i}_p_rectangle`).style.display === 'block'){caracteristicas.sangrado_p = 1;}else{caracteristicas.sangrado_p = 0;} 
+            if(document.getElementById(`BOP_${i}_mp_rectangle`).style.display === 'block'){caracteristicas.sangrado_mp = 1;}else{caracteristicas.sangrado_mp = 0;}
 
-                if (i == 28 || i == 27 || i == 26 || i == 24) {
-                    if (document.getElementById(`furkation_${i}_mp_btn`).style.display != 'none') {
-                        caracteristicas.furcacion_dp = getFurkationDP(i);
-                        caracteristicas.furcacion_mp = getFurkationMP(i);
-                    }else{
-                        caracteristicas.furcacion_dp = 0;
-                        caracteristicas.furcacion_mp = 0;
-                    }
+            if (i == 28 || i == 27 || i == 26 || i == 24) {
+                if (document.getElementById(`furkation_${i}_mp_btn`).style.display != 'none') {
+                    caracteristicas.furcacion_dp = getFurkationDP(i);
+                    caracteristicas.furcacion_mp = getFurkationMP(i);
                 }else{
                     caracteristicas.furcacion_dp = 0;
                     caracteristicas.furcacion_mp = 0;
                 }
-            }
-            piezas.push(caracteristicas);
-        }
-        for (let i = 48; i >= 41; i--) {
-            //console.log(document.getElementById(`tooth_line_${i}_b`));
-            let caracteristicas = {};
-            caracteristicas.pieza = i;
-            if (document.getElementById(`tooth_line_${i}_b`).style.display === 'block') {
-                console.log('hola');
             }else{
-                caracteristicas.movilidad = Number(document.getElementById(`beweglichkeit_${i}_txt`).value);
-                if (document.getElementById(`implantat_${i}_tab`).style.display === 'block') {
-                    caracteristicas.implante = 1;
-                }else{
-                    caracteristicas.implante = 0;
-                }
-                if (i == 48 || i == 47 || i == 46) {
-                    if (document.getElementById(`furkation_${i}_b_btn`).style.display != 'none') {
-                        caracteristicas.furcacion = getFurkation(i);
-                    }else{
-                        caracteristicas.furcacion = 0;
-                    }
+                caracteristicas.furcacion_dp = 0;
+                caracteristicas.furcacion_mp = 0;
+            }
+        }
+        piezas.push(caracteristicas);
+    }
+    for (let i = 48; i >= 41; i--) {
+        //console.log(document.getElementById(`tooth_line_${i}_b`));
+        let caracteristicas = {};
+        caracteristicas.pieza = i;
+        if (document.getElementById(`tooth_line_${i}_b`).style.display === 'block') {
+            console.log('hola');
+            caracteristicas.existencia = 0;
+        }else{
+            caracteristicas.existencia = 1;
+            caracteristicas.movilidad = Number(document.getElementById(`beweglichkeit_${i}_txt`).value);
+            if (document.getElementById(`implantat_${i}_tab`).style.display === 'block') {
+                caracteristicas.implante = 1;
+            }else{
+                caracteristicas.implante = 0;
+            }
+            if (i == 48 || i == 47 || i == 46) {
+                if (document.getElementById(`furkation_${i}_b_btn`).style.display != 'none') {
+                    caracteristicas.furcacion = getFurkation(i);
                 }else{
                     caracteristicas.furcacion = 0;
                 }
-                
-                if(document.getElementById(`BOP_${i}_db_rectangle`).style.display === 'block'){caracteristicas.sangrado_db = 1;}else{caracteristicas.sangrado_db = 0;}
-                if(document.getElementById(`BOP_${i}_b_rectangle`).style.display === 'block'){caracteristicas.sangrado_b = 1;}else{caracteristicas.sangrado_b = 0;} 
-                if(document.getElementById(`BOP_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.sangrado_mb = 1;}else{caracteristicas.sangrado_mb = 0;}
+            }else{
+                caracteristicas.furcacion = 0;
+            }
+            
+            if(document.getElementById(`BOP_${i}_db_rectangle`).style.display === 'block'){caracteristicas.sangrado_db = 1;}else{caracteristicas.sangrado_db = 0;}
+            if(document.getElementById(`BOP_${i}_b_rectangle`).style.display === 'block'){caracteristicas.sangrado_b = 1;}else{caracteristicas.sangrado_b = 0;} 
+            if(document.getElementById(`BOP_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.sangrado_mb = 1;}else{caracteristicas.sangrado_mb = 0;}
 
-                if(document.getElementById(`PI_${i}_db_rectangle`).style.display === 'block'){caracteristicas.placa_db = 1;}else{caracteristicas.placa_db = 0;}
-                if(document.getElementById(`PI_${i}_b_rectangle`).style.display === 'block'){caracteristicas.placa_b = 1;}else{caracteristicas.placa_b = 0;} 
-                if(document.getElementById(`PI_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.placa_mb = 1;}else{caracteristicas.placa_mb = 0;}
-                
-                caracteristicas.profundidad_db = Number(document.getElementById(`st_${i}_db_txt`).value);
-                caracteristicas.profundidad_b = Number(document.getElementById(`st_${i}_b_txt`).value);
-                caracteristicas.profundidad_mb = Number(document.getElementById(`st_${i}_mb_txt`).value);
+            if(document.getElementById(`PI_${i}_db_rectangle`).style.display === 'block'){caracteristicas.placa_db = 1;}else{caracteristicas.placa_db = 0;}
+            if(document.getElementById(`PI_${i}_b_rectangle`).style.display === 'block'){caracteristicas.placa_b = 1;}else{caracteristicas.placa_b = 0;} 
+            if(document.getElementById(`PI_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.placa_mb = 1;}else{caracteristicas.placa_mb = 0;}
+            
+            caracteristicas.profundidad_db = Number(document.getElementById(`st_${i}_db_txt`).value);
+            caracteristicas.profundidad_b = Number(document.getElementById(`st_${i}_b_txt`).value);
+            caracteristicas.profundidad_mb = Number(document.getElementById(`st_${i}_mb_txt`).value);
 
-                caracteristicas.margen_db = Number(document.getElementById(`mg_${i}_db_txt`).value);
-                caracteristicas.margen_b = Number(document.getElementById(`mg_${i}_b_txt`).value);
-                caracteristicas.margen_mb = Number(document.getElementById(`mg_${i}_mb_txt`).value);
+            caracteristicas.margen_db = Number(document.getElementById(`mg_${i}_db_txt`).value);
+            caracteristicas.margen_b = Number(document.getElementById(`mg_${i}_b_txt`).value);
+            caracteristicas.margen_mb = Number(document.getElementById(`mg_${i}_mb_txt`).value);
 
-                caracteristicas.margen_dp = Number(document.getElementById(`mg_${i}_dl_txt`).value);
-                caracteristicas.margen_p = Number(document.getElementById(`mg_${i}_l_txt`).value);
-                caracteristicas.margen_mp = Number(document.getElementById(`mg_${i}_ml_txt`).value);
+            caracteristicas.margen_dp = Number(document.getElementById(`mg_${i}_dl_txt`).value);
+            caracteristicas.margen_p = Number(document.getElementById(`mg_${i}_l_txt`).value);
+            caracteristicas.margen_mp = Number(document.getElementById(`mg_${i}_ml_txt`).value);
 
-                caracteristicas.profundidad_dp = Number(document.getElementById(`st_${i}_dl_txt`).value);
-                caracteristicas.profundidad_p = Number(document.getElementById(`st_${i}_l_txt`).value);
-                caracteristicas.profundidad_mp = Number(document.getElementById(`st_${i}_ml_txt`).value);
-                
-                if(document.getElementById(`PI_${i}_dl_rectangle`).style.display === 'block'){caracteristicas.placa_dp = 1;}else{caracteristicas.placa_dp = 0;}
-                if(document.getElementById(`PI_${i}_l_rectangle`).style.display === 'block'){caracteristicas.placa_p = 1;}else{caracteristicas.placa_p = 0;} 
-                if(document.getElementById(`PI_${i}_ml_rectangle`).style.display === 'block'){caracteristicas.placa_mp = 1;}else{caracteristicas.placa_mp = 0;}
-                
-                if(document.getElementById(`BOP_${i}_dl_rectangle`).style.display === 'block'){caracteristicas.sangrado_dp = 1;}else{caracteristicas.sangrado_dp = 0;}
-                if(document.getElementById(`BOP_${i}_l_rectangle`).style.display === 'block'){caracteristicas.sangrado_p = 1;}else{caracteristicas.sangrado_p = 0;} 
-                if(document.getElementById(`BOP_${i}_ml_rectangle`).style.display === 'block'){caracteristicas.sangrado_mp = 1;}else{caracteristicas.sangrado_mp = 0;}
+            caracteristicas.profundidad_dp = Number(document.getElementById(`st_${i}_dl_txt`).value);
+            caracteristicas.profundidad_p = Number(document.getElementById(`st_${i}_l_txt`).value);
+            caracteristicas.profundidad_mp = Number(document.getElementById(`st_${i}_ml_txt`).value);
+            
+            if(document.getElementById(`PI_${i}_dl_rectangle`).style.display === 'block'){caracteristicas.placa_dp = 1;}else{caracteristicas.placa_dp = 0;}
+            if(document.getElementById(`PI_${i}_l_rectangle`).style.display === 'block'){caracteristicas.placa_p = 1;}else{caracteristicas.placa_p = 0;} 
+            if(document.getElementById(`PI_${i}_ml_rectangle`).style.display === 'block'){caracteristicas.placa_mp = 1;}else{caracteristicas.placa_mp = 0;}
+            
+            if(document.getElementById(`BOP_${i}_dl_rectangle`).style.display === 'block'){caracteristicas.sangrado_dp = 1;}else{caracteristicas.sangrado_dp = 0;}
+            if(document.getElementById(`BOP_${i}_l_rectangle`).style.display === 'block'){caracteristicas.sangrado_p = 1;}else{caracteristicas.sangrado_p = 0;} 
+            if(document.getElementById(`BOP_${i}_ml_rectangle`).style.display === 'block'){caracteristicas.sangrado_mp = 1;}else{caracteristicas.sangrado_mp = 0;}
 
-                if (i == 48 || i == 47 || i == 46) {
-                    if (document.getElementById(`furkation_${i}_l_btn`).style.display != 'none') {
-                        caracteristicas.furcacion_l = getFurkationL(i);
-                    }else{
-                        caracteristicas.furcacion_l = 0;
-                    }
+            if (i == 48 || i == 47 || i == 46) {
+                if (document.getElementById(`furkation_${i}_l_btn`).style.display != 'none') {
+                    caracteristicas.furcacion_l = getFurkationL(i);
                 }else{
                     caracteristicas.furcacion_l = 0;
                 }
-            }
-            piezas.push(caracteristicas);
-        }
-        for (let i = 31; i < 39; i++) {
-            //console.log(document.getElementById(`tooth_line_${i}_b`));
-            let caracteristicas = {};
-            caracteristicas.pieza = i;
-            if (document.getElementById(`tooth_line_${i}_b`).style.display === 'block') {
-                console.log('hola');
             }else{
-                
-                caracteristicas.movilidad = Number(document.getElementById(`beweglichkeit_${i}_txt`).value);
-                if (document.getElementById(`implantat_${i}_tab`).style.display === 'block') {
-                    caracteristicas.implante = 1;
-                }else{
-                    caracteristicas.implante = 0;
-                }
-                if (i == 38 || i == 37 || i == 36) {
-                    if (document.getElementById(`furkation_${i}_b_btn`).style.display != 'none') {
-                        caracteristicas.furcacion = getFurkation(i);
-                    }else{
-                        caracteristicas.furcacion = 0;
-                    }
+                caracteristicas.furcacion_l = 0;
+            }
+        }
+        piezas.push(caracteristicas);
+    }
+    for (let i = 31; i < 39; i++) {
+        //console.log(document.getElementById(`tooth_line_${i}_b`));
+        let caracteristicas = {};
+        caracteristicas.pieza = i;
+        if (document.getElementById(`tooth_line_${i}_b`).style.display === 'block') {
+            console.log('hola');
+            caracteristicas.existencia = 0;
+        }else{
+            caracteristicas.existencia = 1;
+            caracteristicas.movilidad = Number(document.getElementById(`beweglichkeit_${i}_txt`).value);
+            if (document.getElementById(`implantat_${i}_tab`).style.display === 'block') {
+                caracteristicas.implante = 1;
+            }else{
+                caracteristicas.implante = 0;
+            }
+            if (i == 38 || i == 37 || i == 36) {
+                if (document.getElementById(`furkation_${i}_b_btn`).style.display != 'none') {
+                    caracteristicas.furcacion = getFurkation(i);
                 }else{
                     caracteristicas.furcacion = 0;
                 }
-                
-                if(document.getElementById(`BOP_${i}_db_rectangle`).style.display === 'block'){caracteristicas.sangrado_db = 1;}else{caracteristicas.sangrado_db = 0;}
-                if(document.getElementById(`BOP_${i}_b_rectangle`).style.display === 'block'){caracteristicas.sangrado_b = 1;}else{caracteristicas.sangrado_b = 0;} 
-                if(document.getElementById(`BOP_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.sangrado_mb = 1;}else{caracteristicas.sangrado_mb = 0;}
+            }else{
+                caracteristicas.furcacion = 0;
+            }
+            
+            if(document.getElementById(`BOP_${i}_db_rectangle`).style.display === 'block'){caracteristicas.sangrado_db = 1;}else{caracteristicas.sangrado_db = 0;}
+            if(document.getElementById(`BOP_${i}_b_rectangle`).style.display === 'block'){caracteristicas.sangrado_b = 1;}else{caracteristicas.sangrado_b = 0;} 
+            if(document.getElementById(`BOP_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.sangrado_mb = 1;}else{caracteristicas.sangrado_mb = 0;}
 
-                if(document.getElementById(`PI_${i}_db_rectangle`).style.display === 'block'){caracteristicas.placa_db = 1;}else{caracteristicas.placa_db = 0;}
-                if(document.getElementById(`PI_${i}_b_rectangle`).style.display === 'block'){caracteristicas.placa_b = 1;}else{caracteristicas.placa_b = 0;} 
-                if(document.getElementById(`PI_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.placa_mb = 1;}else{caracteristicas.placa_mb = 0;}
-                
-                caracteristicas.profundidad_db = Number(document.getElementById(`st_${i}_db_txt`).value);
-                caracteristicas.profundidad_b = Number(document.getElementById(`st_${i}_b_txt`).value);
-                caracteristicas.profundidad_mb = Number(document.getElementById(`st_${i}_mb_txt`).value);
+            if(document.getElementById(`PI_${i}_db_rectangle`).style.display === 'block'){caracteristicas.placa_db = 1;}else{caracteristicas.placa_db = 0;}
+            if(document.getElementById(`PI_${i}_b_rectangle`).style.display === 'block'){caracteristicas.placa_b = 1;}else{caracteristicas.placa_b = 0;} 
+            if(document.getElementById(`PI_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.placa_mb = 1;}else{caracteristicas.placa_mb = 0;}
+            
+            caracteristicas.profundidad_db = Number(document.getElementById(`st_${i}_db_txt`).value);
+            caracteristicas.profundidad_b = Number(document.getElementById(`st_${i}_b_txt`).value);
+            caracteristicas.profundidad_mb = Number(document.getElementById(`st_${i}_mb_txt`).value);
 
-                caracteristicas.margen_db = Number(document.getElementById(`mg_${i}_db_txt`).value);
-                caracteristicas.margen_b = Number(document.getElementById(`mg_${i}_b_txt`).value);
-                caracteristicas.margen_mb = Number(document.getElementById(`mg_${i}_mb_txt`).value);
+            caracteristicas.margen_db = Number(document.getElementById(`mg_${i}_db_txt`).value);
+            caracteristicas.margen_b = Number(document.getElementById(`mg_${i}_b_txt`).value);
+            caracteristicas.margen_mb = Number(document.getElementById(`mg_${i}_mb_txt`).value);
 
-                caracteristicas.margen_dp = Number(document.getElementById(`mg_${i}_dl_txt`).value);
-                caracteristicas.margen_p = Number(document.getElementById(`mg_${i}_l_txt`).value);
-                caracteristicas.margen_mp = Number(document.getElementById(`mg_${i}_ml_txt`).value);
+            caracteristicas.margen_dp = Number(document.getElementById(`mg_${i}_dl_txt`).value);
+            caracteristicas.margen_p = Number(document.getElementById(`mg_${i}_l_txt`).value);
+            caracteristicas.margen_mp = Number(document.getElementById(`mg_${i}_ml_txt`).value);
 
-                caracteristicas.profundidad_dp = Number(document.getElementById(`st_${i}_dl_txt`).value);
-                caracteristicas.profundidad_p = Number(document.getElementById(`st_${i}_l_txt`).value);
-                caracteristicas.profundidad_mp = Number(document.getElementById(`st_${i}_ml_txt`).value);
-                
-                if(document.getElementById(`PI_${i}_dl_rectangle`).style.display === 'block'){caracteristicas.placa_dp = 1;}else{caracteristicas.placa_dp = 0;}
-                if(document.getElementById(`PI_${i}_l_rectangle`).style.display === 'block'){caracteristicas.placa_p = 1;}else{caracteristicas.placa_p = 0;} 
-                if(document.getElementById(`PI_${i}_ml_rectangle`).style.display === 'block'){caracteristicas.placa_mp = 1;}else{caracteristicas.placa_mp = 0;}
-                
-                if(document.getElementById(`BOP_${i}_dl_rectangle`).style.display === 'block'){caracteristicas.sangrado_dp = 1;}else{caracteristicas.sangrado_dp = 0;}
-                if(document.getElementById(`BOP_${i}_l_rectangle`).style.display === 'block'){caracteristicas.sangrado_p = 1;}else{caracteristicas.sangrado_p = 0;} 
-                if(document.getElementById(`BOP_${i}_ml_rectangle`).style.display === 'block'){caracteristicas.sangrado_mp = 1;}else{caracteristicas.sangrado_mp = 0;}
+            caracteristicas.profundidad_dp = Number(document.getElementById(`st_${i}_dl_txt`).value);
+            caracteristicas.profundidad_p = Number(document.getElementById(`st_${i}_l_txt`).value);
+            caracteristicas.profundidad_mp = Number(document.getElementById(`st_${i}_ml_txt`).value);
+            
+            if(document.getElementById(`PI_${i}_dl_rectangle`).style.display === 'block'){caracteristicas.placa_dp = 1;}else{caracteristicas.placa_dp = 0;}
+            if(document.getElementById(`PI_${i}_l_rectangle`).style.display === 'block'){caracteristicas.placa_p = 1;}else{caracteristicas.placa_p = 0;} 
+            if(document.getElementById(`PI_${i}_ml_rectangle`).style.display === 'block'){caracteristicas.placa_mp = 1;}else{caracteristicas.placa_mp = 0;}
+            
+            if(document.getElementById(`BOP_${i}_dl_rectangle`).style.display === 'block'){caracteristicas.sangrado_dp = 1;}else{caracteristicas.sangrado_dp = 0;}
+            if(document.getElementById(`BOP_${i}_l_rectangle`).style.display === 'block'){caracteristicas.sangrado_p = 1;}else{caracteristicas.sangrado_p = 0;} 
+            if(document.getElementById(`BOP_${i}_ml_rectangle`).style.display === 'block'){caracteristicas.sangrado_mp = 1;}else{caracteristicas.sangrado_mp = 0;}
 
-                if (i == 38 || i == 37 || i == 36) {
-                    if (document.getElementById(`furkation_${i}_l_btn`).style.display != 'none') {
-                        caracteristicas.furcacion_l = getFurkationL(i);
-                    }else{
-                        caracteristicas.furcacion_l = 0;
-                    }
+            if (i == 38 || i == 37 || i == 36) {
+                if (document.getElementById(`furkation_${i}_l_btn`).style.display != 'none') {
+                    caracteristicas.furcacion_l = getFurkationL(i);
                 }else{
                     caracteristicas.furcacion_l = 0;
                 }
+            }else{
+                caracteristicas.furcacion_l = 0;
             }
-            piezas.push(caracteristicas);
         }
-        console.log(piezas);
-
-        $.ajax({
-            type: 'PUT',
-            url: dominio + `insertarOdontograma/${idExpediente}`,
-            contentType: 'application/json',
-            dataType: 'json',
-            crossDomain: true,
-            async: false,
-            data: JSON.stringify({odontograma: JSON.stringify(piezas)}),
-            success: function (data) {
-                console.log(data);
-            }
-        })
+        piezas.push(caracteristicas);
     }
+    console.log(piezas);
 
-    function getFurkation(i) {
-        if (document.getElementById(`furkation_1_${i}_b_tab`).style.display === 'block') {
-            return 1;
-        } else if (document.getElementById(`furkation_2_${i}_b_tab`).style.display === 'block') {
-            return 2;
-        } else if (document.getElementById(`furkation_3_${i}_b_tab`).style.display === 'block') {
-            return 3;
+    $.ajax({
+        type: 'PUT',
+        url: dominio + `insertarOdontograma/${idExpediente}`,
+        contentType: 'application/json',
+        dataType: 'json',
+        crossDomain: true,
+        async: false,
+        data: JSON.stringify({odontograma: JSON.stringify(piezas)}),
+        success: function (data) {
+            console.log(data);
         }
-        return 0;
-    }
+    })
+}
 
-    function getFurkationDP(i) {
-        if (document.getElementById(`furkation_1_${i}_dp_tab`).style.display === 'block') {
-            return 1;
-        } else if (document.getElementById(`furkation_2_${i}_dp_tab`).style.display === 'block') {
-            return 2;
-        } else if (document.getElementById(`furkation_3_${i}_dp_tab`).style.display === 'block') {
-            return 3;
-        }
-        return 0;
+function getFurkation(i) {
+    if (document.getElementById(`furkation_1_${i}_b_tab`).style.display === 'block') {
+        return 1;
+    } else if (document.getElementById(`furkation_2_${i}_b_tab`).style.display === 'block') {
+        return 2;
+    } else if (document.getElementById(`furkation_3_${i}_b_tab`).style.display === 'block') {
+        return 3;
     }
+    return 0;
+}
 
-    function getFurkationMP(i) {
-        if (document.getElementById(`furkation_1_${i}_mp_tab`).style.display === 'block') {
-            return 1;
-        } else if (document.getElementById(`furkation_2_${i}_mp_tab`).style.display === 'block') {
-            return 2;
-        } else if (document.getElementById(`furkation_3_${i}_mp_tab`).style.display === 'block') {
-            return 3;
-        }
-        return 0;
+function getFurkationDP(i) {
+    if (document.getElementById(`furkation_1_${i}_dp_tab`).style.display === 'block') {
+        return 1;
+    } else if (document.getElementById(`furkation_2_${i}_dp_tab`).style.display === 'block') {
+        return 2;
+    } else if (document.getElementById(`furkation_3_${i}_dp_tab`).style.display === 'block') {
+        return 3;
     }
+    return 0;
+}
 
-    function getFurkationL(i) {
-        if (document.getElementById(`furkation_1_${i}_l_tab`).style.display === 'block') {
-            return 1;
-        } else if (document.getElementById(`furkation_2_${i}_l_tab`).style.display === 'block') {
-            return 2;
-        } else if (document.getElementById(`furkation_3_${i}_l_tab`).style.display === 'block') {
-            return 3;
-        }
-        return 0;
+function getFurkationMP(i) {
+    if (document.getElementById(`furkation_1_${i}_mp_tab`).style.display === 'block') {
+        return 1;
+    } else if (document.getElementById(`furkation_2_${i}_mp_tab`).style.display === 'block') {
+        return 2;
+    } else if (document.getElementById(`furkation_3_${i}_mp_tab`).style.display === 'block') {
+        return 3;
     }
+    return 0;
+}
+
+function getFurkationL(i) {
+    if (document.getElementById(`furkation_1_${i}_l_tab`).style.display === 'block') {
+        return 1;
+    } else if (document.getElementById(`furkation_2_${i}_l_tab`).style.display === 'block') {
+        return 2;
+    } else if (document.getElementById(`furkation_3_${i}_l_tab`).style.display === 'block') {
+        return 3;
+    }
+    return 0;
+}
 
    
