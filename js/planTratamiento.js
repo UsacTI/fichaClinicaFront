@@ -79,35 +79,34 @@ function loadOdontograma(odontograma) {
             if (pieza.implante == 1) {
                 switch (pieza.pieza) {
                     case 11:
-                        toggle_implant_11();        
+                        toggle_implant_11();
                         break;
                     case 12:
-                        toggle_implant_12();        
+                        toggle_implant_12();
                         break;
                     case 13:
-                        toggle_implant_13();        
+                        toggle_implant_13();
                         break;
                     case 14:
-                        toggle_implant_14();        
+                        toggle_implant_14();
                         break;
                     case 15:
-                        toggle_implant_15();        
+                        toggle_implant_15();
                         break;
                     case 16:
-                        toggle_implant_16();        
+                        toggle_implant_16();
                         break;
                     case 17:
-                        toggle_implant_17();        
+                        toggle_implant_17();
                         break;
                     case 18:
-                        toggle_implant_18();        
+                        toggle_implant_18();
                         break;
                 }
             }
             if (pieza.pieza == 18 || pieza.pieza == 17 || pieza.pieza == 16) {
                 if (pieza.furcacion != 0 && document.getElementById(`furkation_${pieza.pieza}_b_btn`).style.display != 'none') {
-                    console.log('pato');
-                    console.log(`furkation_${pieza.furcacion}_${pieza.pieza}_b_tab`);
+                    //console.log(`furkation_${pieza.furcacion}_${pieza.pieza}_b_tab`);
                     console.log(document.getElementById(`furkation_${pieza.furcacion}_${pieza.pieza}_b_tab`));
                     //document.getElementById(`furkation_${pieza.furcacion}_${pieza.pieza}_b_tab`).style.display = 'block';
                     switch (pieza.pieza) {
@@ -115,22 +114,77 @@ function loadOdontograma(odontograma) {
                             for (let i = 0; i < pieza.furcacion; i++) {
                                 toggle_furcation_16_b();    
                             }
+                            for (let i = 0; i < pieza.furcacion_dp; i++) {
+                                toggle_furcation_16_dp();
+                            }
+                            for (let i = 0; i < pieza.furcacion_mp; i++) {
+                                toggle_furcation_16_mp();
+                            }
                             break;
                         case 17:
                             for (let i = 0; i < pieza.furcacion; i++) {
                                 toggle_furcation_17_b();    
                             }       
+                            for (let i = 0; i < pieza.furcacion_dp; i++) {
+                                toggle_furcation_17_dp();
+                            }
+                            for (let i = 0; i < pieza.furcacion_mp; i++) {
+                                toggle_furcation_17_mp();
+                            }
                             break;
                         case 18:
                             for (let i = 0; i < pieza.furcacion; i++) {
-                                toggle_furcation_18_b();    
+                                toggle_furcation_18_b();
+                            }
+                            for (let i = 0; i < pieza.furcacion_dp; i++) {
+                                toggle_furcation_18_dp();
+                            }
+                            for (let i = 0; i < pieza.furcacion_mp; i++) {
+                                toggle_furcation_18_mp();
                             }
                             break;
                     }
-                }else{
-                    
+                }
+            }else if(pieza.pieza == 14 && pieza.pieza == 24){
+                if (pieza.furcacion_dp != 0 && document.getElementById(`furkation_${pieza.pieza}_dp_btn`).style.display != 'none') {
+                    switch (pieza.pieza) {
+                        case 14:
+                            for (let i = 0; i < pieza.furcacion_dp; i++) {
+                                toggle_furcation_14_dp();
+                            }
+                            for (let i = 0; i < pieza.furcacion_mp; i++) {
+                                toggle_furcation_14_mp();
+                            }       
+                            break;
+                        case 24:
+                            for (let i = 0; i < pieza.furcacion_dp; i++) {
+                                toggle_furcation_24_dp();
+                            }
+                            for (let i = 0; i < pieza.furcacion_mp; i++) {
+                                toggle_furcation_24_mp();
+                            }
+                            break;
+                    }
                 }
             }
+            insertSangradoPlaca(pieza);
+            if (pieza.pieza >= 11 && pieza.pieza <= 18) {
+                document.getElementById(`mg_${pieza.pieza}_db_txt`).value = pieza.margen_db;
+                document.getElementById(`mg_${pieza.pieza}_b_txt`).value = pieza.margen_b;
+                document.getElementById(`mg_${pieza.pieza}_mb_txt`).value = pieza.margen_mb;
+                document.getElementById(`st_${pieza.pieza}_db_txt`).value = pieza.profundidad_db;
+                document.getElementById(`st_${pieza.pieza}_b_txt`).value = pieza.profundidad_b;
+                document.getElementById(`st_${pieza.pieza}_mb_txt`).value = pieza.profundidad_mb;
+                document.getElementById(`mg_${pieza.pieza}_dp_txt`).value = pieza.margen_dp;
+                document.getElementById(`mg_${pieza.pieza}_p_txt`).value = pieza.margen_p;
+                document.getElementById(`mg_${pieza.pieza}_mp_txt`).value = pieza.margen_mp;
+                document.getElementById(`st_${pieza.pieza}_dp_txt`).value = pieza.profundidad_dp;
+                document.getElementById(`st_${pieza.pieza}_p_txt`).value = pieza.profundidad_p;
+                document.getElementById(`st_${pieza.pieza}_mp_txt`).value = pieza.profundidad_mp;
+                updateMargen(pieza);
+            }
+            
+            
         }else{
             switch (pieza.pieza) {
                 case 11:
@@ -161,63 +215,184 @@ function loadOdontograma(odontograma) {
             calc();
         }    
     });
-    
-    
-    /*
-    if (i == 18 || i == 17 || i == 16) {
-        if (document.getElementById(`furkation_${i}_b_btn`).style.display != 'none') {
-            caracteristicas.furcacion = getFurkation(i);
-            document.getElementById(`furkation_${.furcacion}_${i}_b_tab`).style.display = 'block';
-        }else{
-            caracteristicas.furcacion = 0;
-            document.getElementById(`furkation_${.furcacion}_${i}_b_tab`).style.display = 'none';
-        }
+}
+
+function updateMargen(pieza){
+    switch (pieza.pieza) {
+        case 11:
+            change_probing_11();
+            break;
+        case 12:
+            change_probing_12();
+            break;
+        case 13:
+            change_probing_13();
+            break;
+        case 14:
+            change_probing_14();
+            break;
+        case 15:
+            change_probing_15();
+            break;
+        case 16:
+            change_probing_16();
+            break;
+        case 17:
+            change_probing_17();
+            break;
+        case 18:
+            change_probing_18();
+            break;
     }
-    
-    if(document.getElementById(`BOP_${i}_db_rectangle`).style.display === 'block'){caracteristicas.sangrado_db = 1;}else{caracteristicas.sangrado_db = 0;}
-    if(document.getElementById(`BOP_${i}_b_rectangle`).style.display === 'block'){caracteristicas.sangrado_b = 1;}else{caracteristicas.sangrado_b = 0;} 
-    if(document.getElementById(`BOP_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.sangrado_mb = 1;}else{caracteristicas.sangrado_mb = 0;}
+}
 
-    if(document.getElementById(`PI_${i}_db_rectangle`).style.display === 'block'){caracteristicas.placa_db = 1;}else{caracteristicas.placa_db = 0;}
-    if(document.getElementById(`PI_${i}_b_rectangle`).style.display === 'block'){caracteristicas.placa_b = 1;}else{caracteristicas.placa_b = 0;} 
-    if(document.getElementById(`PI_${i}_mb_rectangle`).style.display === 'block'){caracteristicas.placa_mb = 1;}else{caracteristicas.placa_mb = 0;}
-    
-    caracteristicas.profundidad_db = Number(document.getElementById(`st_${i}_db_txt`).value);
-    caracteristicas.profundidad_b = Number(document.getElementById(`st_${i}_b_txt`).value);
-    caracteristicas.profundidad_mb = Number(document.getElementById(`st_${i}_mb_txt`).value);
-
-    caracteristicas.margen_db = Number(document.getElementById(`mg_${i}_db_txt`).value);
-    caracteristicas.margen_b = Number(document.getElementById(`mg_${i}_b_txt`).value);
-    caracteristicas.margen_mb = Number(document.getElementById(`mg_${i}_mb_txt`).value);
-
-    caracteristicas.margen_dp = Number(document.getElementById(`mg_${i}_dp_txt`).value);
-    caracteristicas.margen_p = Number(document.getElementById(`mg_${i}_p_txt`).value);
-    caracteristicas.margen_mp = Number(document.getElementById(`mg_${i}_mp_txt`).value);
-
-    caracteristicas.profundidad_dp = Number(document.getElementById(`st_${i}_dp_txt`).value);
-    caracteristicas.profundidad_p = Number(document.getElementById(`st_${i}_p_txt`).value);
-    caracteristicas.profundidad_mp = Number(document.getElementById(`st_${i}_mp_txt`).value);
-    
-    if(document.getElementById(`PI_${i}_dp_rectangle`).style.display === 'block'){caracteristicas.placa_dp = 1;}else{caracteristicas.placa_dp = 0;}
-    if(document.getElementById(`PI_${i}_p_rectangle`).style.display === 'block'){caracteristicas.placa_p = 1;}else{caracteristicas.placa_p = 0;} 
-    if(document.getElementById(`PI_${i}_mp_rectangle`).style.display === 'block'){caracteristicas.placa_mp = 1;}else{caracteristicas.placa_mp = 0;}
-    
-    if(document.getElementById(`BOP_${i}_dp_rectangle`).style.display === 'block'){caracteristicas.sangrado_dp = 1;}else{caracteristicas.sangrado_dp = 0;}
-    if(document.getElementById(`BOP_${i}_p_rectangle`).style.display === 'block'){caracteristicas.sangrado_p = 1;}else{caracteristicas.sangrado_p = 0;} 
-    if(document.getElementById(`BOP_${i}_mp_rectangle`).style.display === 'block'){caracteristicas.sangrado_mp = 1;}else{caracteristicas.sangrado_mp = 0;}
-
-    if (i == 18 || i == 17 && i == 16 || i == 14) {
-        if (document.getElementById(`furkation_${i}_mp_btn`).style.display != 'none') {
-            caracteristicas.furcacion_dp = getFurkationDP(i);
-            caracteristicas.furcacion_mp = getFurkationMP(i);
-        }else{
-            caracteristicas.furcacion_dp = 0;
-            caracteristicas.furcacion_mp = 0;
-        }
-    }else{
-        caracteristicas.furcacion_dp = 0;
-        caracteristicas.furcacion_mp = 0;
-    }*/
+function insertSangradoPlaca(pieza) {
+    switch (pieza.pieza) {
+        case 11:
+            if (pieza.sangrado_db == 1) {toggle_BOP_11_db();} 
+            if (pieza.sangrado_b == 1) {toggle_BOP_11_b();}
+            if (pieza.sangrado_mb == 1) {toggle_BOP_11_mb();}
+            calc();
+            if (pieza.placa_db == 1) {toggle_PI_11_db();} 
+            if (pieza.placa_b == 1) {toggle_PI_11_b();}
+            if (pieza.placa_mb == 1) {toggle_PI_11_mb();}
+            calc();
+            if (pieza.placa_dp == 1) {toggle_PI_11_dp();} 
+            if (pieza.placa_p == 1) {toggle_PI_11_p();}
+            if (pieza.placa_mp == 1) {toggle_PI_11_mp();}
+            calc();
+            if (pieza.sangrado_dp == 1) {toggle_BOP_11_dp();} 
+            if (pieza.sangrado_p == 1) {toggle_BOP_11_p();}
+            if (pieza.sangrado_mp == 1) {toggle_BOP_11_mp();}
+            calc();
+            break;
+        case 12:
+            if (pieza.sangrado_db == 1) {toggle_BOP_12_db();} 
+            if (pieza.sangrado_b == 1) {toggle_BOP_12_b();}
+            if (pieza.sangrado_mb == 1) {toggle_BOP_12_mb();}
+            calc();
+            if (pieza.placa_db == 1) {toggle_PI_12_db();} 
+            if (pieza.placa_b == 1) {toggle_PI_12_b();}
+            if (pieza.placa_mb == 1) {toggle_PI_12_mb();}
+            calc();
+            if (pieza.placa_dp == 1) {toggle_PI_12_dp();} 
+            if (pieza.placa_p == 1) {toggle_PI_12_p();}
+            if (pieza.placa_mp == 1) {toggle_PI_12_mp();}
+            calc();
+            if (pieza.sangrado_dp == 1) {toggle_BOP_12_dp();} 
+            if (pieza.sangrado_p == 1) {toggle_BOP_12_p();}
+            if (pieza.sangrado_mp == 1) {toggle_BOP_12_mp();}
+            calc();
+            break;
+        case 13:
+            if (pieza.sangrado_db == 1) {toggle_BOP_13_db();} 
+            if (pieza.sangrado_b == 1) {toggle_BOP_13_b();}
+            if (pieza.sangrado_mb == 1) {toggle_BOP_13_mb();}
+            calc();
+            if (pieza.placa_db == 1) {toggle_PI_13_db();} 
+            if (pieza.placa_b == 1) {toggle_PI_13_b();}
+            if (pieza.placa_mb == 1) {toggle_PI_13_mb();}
+            calc();
+            if (pieza.placa_dp == 1) {toggle_PI_13_dp();} 
+            if (pieza.placa_p == 1) {toggle_PI_13_p();}
+            if (pieza.placa_mp == 1) {toggle_PI_13_mp();}
+            calc();
+            if (pieza.sangrado_dp == 1) {toggle_BOP_13_dp();} 
+            if (pieza.sangrado_p == 1) {toggle_BOP_13_p();}
+            if (pieza.sangrado_mp == 1) {toggle_BOP_13_mp();}
+            calc();
+            break;
+        case 14:
+            if (pieza.sangrado_db == 1) {toggle_BOP_14_db();} 
+            if (pieza.sangrado_b == 1) {toggle_BOP_14_b();}
+            if (pieza.sangrado_mb == 1) {toggle_BOP_14_mb();}
+            calc();
+            if (pieza.placa_db == 1) {toggle_PI_14_db();} 
+            if (pieza.placa_b == 1) {toggle_PI_14_b();}
+            if (pieza.placa_mb == 1) {toggle_PI_14_mb();}
+            calc();
+            if (pieza.placa_dp == 1) {toggle_PI_14_dp();} 
+            if (pieza.placa_p == 1) {toggle_PI_14_p();}
+            if (pieza.placa_mp == 1) {toggle_PI_14_mp();}
+            calc();
+            if (pieza.sangrado_dp == 1) {toggle_BOP_14_dp();} 
+            if (pieza.sangrado_p == 1) {toggle_BOP_14_p();}
+            if (pieza.sangrado_mp == 1) {toggle_BOP_14_mp();}
+            calc();
+            break;
+        case 15:
+            if (pieza.sangrado_db == 1) {toggle_BOP_15_db();} 
+            if (pieza.sangrado_b == 1) {toggle_BOP_15_b();}
+            if (pieza.sangrado_mb == 1) {toggle_BOP_15_mb();}
+            calc();
+            if (pieza.placa_db == 1) {toggle_PI_15_db();} 
+            if (pieza.placa_b == 1) {toggle_PI_15_b();}
+            if (pieza.placa_mb == 1) {toggle_PI_15_mb();}
+            calc();
+            if (pieza.placa_dp == 1) {toggle_PI_15_dp();} 
+            if (pieza.placa_p == 1) {toggle_PI_15_p();}
+            if (pieza.placa_mp == 1) {toggle_PI_15_mp();}
+            calc();
+            if (pieza.sangrado_dp == 1) {toggle_BOP_15_dp();} 
+            if (pieza.sangrado_p == 1) {toggle_BOP_15_p();}
+            if (pieza.sangrado_mp == 1) {toggle_BOP_15_mp();}
+            calc();
+            break;
+        case 16:
+            if (pieza.sangrado_db == 1) {toggle_BOP_16_db();} 
+            if (pieza.sangrado_b == 1) {toggle_BOP_16_b();}
+            if (pieza.sangrado_mb == 1) {toggle_BOP_16_mb();}
+            calc();
+            if (pieza.placa_db == 1) {toggle_PI_16_db();} 
+            if (pieza.placa_b == 1) {toggle_PI_16_b();}
+            if (pieza.placa_mb == 1) {toggle_PI_16_mb();}
+            calc();
+            if (pieza.placa_dp == 1) {toggle_PI_16_dp();} 
+            if (pieza.placa_p == 1) {toggle_PI_16_p();}
+            if (pieza.placa_mp == 1) {toggle_PI_16_mp();}
+            calc();
+            if (pieza.sangrado_dp == 1) {toggle_BOP_16_dp();} 
+            if (pieza.sangrado_p == 1) {toggle_BOP_16_p();}
+            if (pieza.sangrado_mp == 1) {toggle_BOP_16_mp();}
+            calc();
+            break;
+        case 17:
+            if (pieza.sangrado_db == 1) {toggle_BOP_17_db();} 
+            if (pieza.sangrado_b == 1) {toggle_BOP_17_b();}
+            if (pieza.sangrado_mb == 1) {toggle_BOP_17_mb();}
+            calc();
+            if (pieza.placa_db == 1) {toggle_PI_17_db();} 
+            if (pieza.placa_b == 1) {toggle_PI_17_b();}
+            if (pieza.placa_mb == 1) {toggle_PI_17_mb();}
+            calc();
+            if (pieza.placa_dp == 1) {toggle_PI_17_dp();} 
+            if (pieza.placa_p == 1) {toggle_PI_17_p();}
+            if (pieza.placa_mp == 1) {toggle_PI_17_mp();}
+            calc();
+            if (pieza.sangrado_dp == 1) {toggle_BOP_17_dp();} 
+            if (pieza.sangrado_p == 1) {toggle_BOP_17_p();}
+            if (pieza.sangrado_mp == 1) {toggle_BOP_17_mp();}
+            calc();
+            break;
+        case 18:
+            if (pieza.sangrado_db == 1) {toggle_BOP_18_db();} 
+            if (pieza.sangrado_b == 1) {toggle_BOP_18_b();}
+            if (pieza.sangrado_mb == 1) {toggle_BOP_18_mb();}
+            calc();
+            if (pieza.placa_db == 1) {toggle_PI_18_db();} 
+            if (pieza.placa_b == 1) {toggle_PI_18_b();}
+            if (pieza.placa_mb == 1) {toggle_PI_18_mb();}
+            calc();
+            if (pieza.placa_dp == 1) {toggle_PI_18_dp();} 
+            if (pieza.placa_p == 1) {toggle_PI_18_p();}
+            if (pieza.placa_mp == 1) {toggle_PI_18_mp();}
+            calc();
+            if (pieza.sangrado_dp == 1) {toggle_BOP_18_dp();} 
+            if (pieza.sangrado_p == 1) {toggle_BOP_18_p();}
+            if (pieza.sangrado_mp == 1) {toggle_BOP_18_mp();}
+            calc();
+            break;
+    }
 }
 
 function goToExpediente() {
@@ -743,7 +918,7 @@ function guardarOdontograma() {
         }
         piezas.push(caracteristicas);
     }
-    console.log(piezas);
+    //console.log(piezas);
 
     $.ajax({
         type: 'PUT',
